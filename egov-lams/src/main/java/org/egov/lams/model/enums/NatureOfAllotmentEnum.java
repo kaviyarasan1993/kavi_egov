@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum NatureOfAllotmentEnum {
 	
-	TENDER("tender"),DIRECT("direct"),AUCTION("auction");
+	TENDER("TENDER"),DIRECT("DIRECT"),AUCTION("AUCTION");
 
     private String value;
 

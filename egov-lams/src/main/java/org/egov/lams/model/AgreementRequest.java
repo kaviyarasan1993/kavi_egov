@@ -1,8 +1,6 @@
 package org.egov.lams.model;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class AgreementRequest   {
   

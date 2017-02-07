@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum PaymentCycleEnum {
 	
-	 MONTH("Month"),QUARTER("Quarter"),HALFYEAR("HalfYear"),ANNUAL("Annual");
+	 MONTH("MONTH"),QUARTER("QUARTER"),HALFYEAR("HALFYEAR"),ANNUAL("ANNUAL");
 
 	 private String value;
 	 

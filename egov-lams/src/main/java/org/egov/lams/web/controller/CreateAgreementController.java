@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 @RestController
 public class CreateAgreementController {
@@ -37,7 +36,6 @@ public class CreateAgreementController {
 		System.out.println("agreementRequest: controller:"+agreementRequest);
 		System.out.println("agreementRequest: controller:"+agreementRequest.getAgreement().getStatus());
 		//agreementService.insert();
-		RestTemplate restTemplate=new RestTemplate();
 		
 		return null;
 	}

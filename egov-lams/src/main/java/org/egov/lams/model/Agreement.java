@@ -9,107 +9,105 @@ import org.egov.lams.model.enums.StatusEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
 public class Agreement {
-	
+
 	@JsonProperty("id")
 	private Long id;
-	
+
 	@JsonProperty("agreement_number")
 	private String agreementNumber;
-	
+
 	@JsonProperty("agreement_date")
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date agreementDate;
-	
+
 	@JsonProperty("allottee")
 	private Allottee allottee;
-	
+
 	@JsonProperty("asset")
 	private Asset asset;
-	  
+
 	@JsonProperty("tender_number")
 	private String tenderNumber;
-	
+
 	@JsonProperty("tender_date")
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date tenderDate;
-	
+
 	@JsonProperty("council_number")
 	private String councilNumber;
-	
+
 	@JsonProperty("council_date")
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date councilDate;
-	
+
 	@JsonProperty("bank_guarantee_amount")
 	private Double bankGuaranteeAmount;
-	
+
 	@JsonProperty("bank_guarantee_date")
 	private Date bankGuaranteeDate;
-	
+
 	@JsonProperty("security_deposit")
 	private Double securityDeposit;
-	
+
 	@JsonProperty("security_deposit_date")
-	@JsonFormat(pattern="dd/MM/yyyy")
-	private Date securityDepositDate;	
-	
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	private Date securityDepositDate;
+
 	@JsonProperty("status")
 	private StatusEnum status;
-	
+
 	@JsonProperty("nature_of_allotment")
 	private NatureOfAllotmentEnum natureOfAllotment;
-	
+
 	@JsonProperty("registration_fee")
-	private	Double registrationFee;
-	
+	private Double registrationFee;
+
 	@JsonProperty("case_no")
-	private	String caseNo;
-	
+	private String caseNo;
+
 	@JsonProperty("commencement_date")
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date commencementDate;
-	
+
 	@JsonProperty("expiry_date")
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date expiryDate;
-	
+
 	@JsonProperty("order_details")
 	private String orderDetails;
-	
+
 	@JsonProperty("rent")
 	private Double rent;
-	
+
 	@JsonProperty("tradelicense_number")
 	private String tradelicenseNumber;
-	
+
 	@JsonProperty("payment_cycle")
 	private PaymentCycleEnum paymentCycle;
-	
+
 	@JsonProperty("rent_increment_method")
 	private RentIncrementType rentIncrementMethod;
-	
+
 	@JsonProperty("order_no")
-	private String orderNo;	
-	
+	private String orderNo;
+
 	@JsonProperty("order_date")
-	@JsonFormat(pattern="dd/MM/yyyy")
-	private	Date orderDate;	
-	
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	private Date orderDate;
+
 	@JsonProperty("rr_reading_no")
-	private	String rrReadingNo;
-	
+	private String rrReadingNo;
+
 	@JsonProperty("remarks")
-	private	String remarks;	
-	
+	private String remarks;
+
 	@JsonProperty("solvency_certificate_no")
-	private String solvencyCertificateNo;	
-	
+	private String solvencyCertificateNo;
+
 	@JsonProperty("solvency_certificate_date")
-	@JsonFormat(pattern="dd/MM/yyyy")
-	private	Date solvencyCertificateDate;
-	
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	private Date solvencyCertificateDate;
 
 	public Long getId() {
 		return id;
@@ -118,6 +116,7 @@ public class Agreement {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getAgreementNumber() {
 		return agreementNumber;
 	}
@@ -213,6 +212,7 @@ public class Agreement {
 	public void setSecurityDepositDate(Date securityDepositDate) {
 		this.securityDepositDate = securityDepositDate;
 	}
+
 	public StatusEnum getStatus() {
 		return status;
 	}
@@ -220,6 +220,7 @@ public class Agreement {
 	public void setStatus(StatusEnum status) {
 		this.status = status;
 	}
+
 	public NatureOfAllotmentEnum getNatureOfAllotment() {
 		return natureOfAllotment;
 	}
@@ -363,6 +364,5 @@ public class Agreement {
 				+ ", solvencyCertificateNo=" + solvencyCertificateNo + ", solvencyCertificateDate="
 				+ solvencyCertificateDate + "]";
 	}
-	
-		
+
 }

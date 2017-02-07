@@ -1,33 +1,31 @@
 package org.egov.lams.model;
 
 import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 
 public class RentIncrementType {
 
 	@JsonProperty("id")
 	private Long id;
-	
+
 	@JsonProperty("type")
 	private String type;
-	
+
 	@JsonProperty("asset_category")
-	private String assetCategory;	
-	
+	private String assetCategory;
+
 	@JsonProperty("fromdate")
 	private Date fromDate;
-	
+
 	@JsonProperty("todate")
 	private Date toDate;
-	
+
 	@JsonProperty("percentage")
 	private Double percentage;
-	
+
 	@JsonProperty("flat_amount")
 	private Double flatAmount;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -89,8 +87,5 @@ public class RentIncrementType {
 		return "RentIncrementType [id=" + id + ", type=" + type + ", assetCategory=" + assetCategory + ", fromDate="
 				+ fromDate + ", toDate=" + toDate + ", percentage=" + percentage + ", flatAmount=" + flatAmount + "]";
 	}
-	
-	
-	
-	
+
 }
