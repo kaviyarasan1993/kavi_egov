@@ -7,7 +7,7 @@ import org.egov.lams.model.enums.StatusEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class FetchAgreementsModel {
+public class SearchAgreementsModel {
 
 	
 	// private RequestInfo requestInfo;
@@ -15,13 +15,13 @@ public class FetchAgreementsModel {
 	 @JsonProperty("tenant_id")
 	 private String tenantId;
 	 
-	 @JsonProperty("tenant_id")
+	 @JsonProperty("agreement_id")
 	 private Long agreementId;
 	 
-	 @JsonProperty("tenant_id")
+	 @JsonProperty("agreement_number")
 	 private String agreementNumber;
 	 
-	 @JsonProperty("tenant_id")
+	 @JsonProperty("tender_number")
 	 private String tenderNumber;
 	 
 	 @JsonFormat(pattern="dd/MM/yyyy")
@@ -42,7 +42,7 @@ public class FetchAgreementsModel {
 	 private String tradelicenseNumber;
 	 
 	 @JsonProperty("asset_category")
-	 private String assetCategory;
+	 private Long assetCategory;
 	 
 	 @JsonProperty("shopping_complex_no")
 	 private String shoppingComplexNo;
@@ -146,11 +146,11 @@ public class FetchAgreementsModel {
 		this.tradelicenseNumber = tradelicenseNumber;
 	}
 
-	public String getAssetCategory() {
+	public Long getAssetCategory() {
 		return assetCategory;
 	}
 
-	public void setAssetCategory(String assetCategory) {
+	public void setAssetCategory(Long assetCategory) {
 		this.assetCategory = assetCategory;
 	}
 

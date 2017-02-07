@@ -23,10 +23,10 @@ public class RentIncrementType {
 	private Date toDate;
 	
 	@JsonProperty("percentage")
-	private String percentage;
+	private Double percentage;
 	
 	@JsonProperty("flat_amount")
-	private String flatAmount;
+	private Double flatAmount;
 	
 	public Long getId() {
 		return id;
@@ -68,20 +68,20 @@ public class RentIncrementType {
 		this.toDate = toDate;
 	}
 
-	public String getPercentage() {
+	public Double getPercentage() {
 		return percentage;
 	}
 
-	public void setPercentage(String percentage) {
+	public void setPercentage(Double percentage) {
 		this.percentage = percentage;
 	}
 
-	public String getFlatAmount() {
+	public Double getFlatAmount() {
 		return flatAmount;
 	}
 
-	public void setFlatAmount(String flatAmount) {
-		this.flatAmount = flatAmount;
+	public void setFlatAmount(Double d) {
+		this.flatAmount = d;
 	}
 
 	@Override

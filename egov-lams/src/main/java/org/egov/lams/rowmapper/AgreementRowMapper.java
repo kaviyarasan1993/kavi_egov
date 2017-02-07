@@ -12,9 +12,8 @@ import org.egov.lams.model.enums.StatusEnum;
 import org.springframework.jdbc.core.RowMapper;
 
 public class AgreementRowMapper implements RowMapper<Agreement> {
-//TODO parameter names should be meaningful.
 	@Override
-	public Agreement mapRow(ResultSet rs, int arg1) throws SQLException {
+	public Agreement mapRow(ResultSet rs, int rowNum) throws SQLException {
 		//TODO : do not use SOP, use loggers
 		Agreement agreement=new Agreement();
 		RentIncrementType rentIncrementMethod = new RentIncrementType();
@@ -47,10 +46,10 @@ public class AgreementRowMapper implements RowMapper<Agreement> {
 */
 		// setting values for RentIncrementType object.
 		rentIncrementMethod.setAssetCategory(rs.getString("asset_category"));
-		rentIncrementMethod.setFlatAmount(rs.getString("flat_amount"));
+		rentIncrementMethod.setFlatAmount(rs.getDouble("flat_amount"));
 		rentIncrementMethod.setFromDate(rs.getDate("FromDate"));
 		rentIncrementMethod.setId(rs.getLong("rent_increment_method"));
-		rentIncrementMethod.setPercentage(rs.getString("percentage"));
+		rentIncrementMethod.setPercentage(rs.getDouble("percentage"));
 		rentIncrementMethod.setToDate(rs.getDate("toDate"));
 		rentIncrementMethod.setType(rs.getString("type"));
 
@@ -76,7 +75,7 @@ public class AgreementRowMapper implements RowMapper<Agreement> {
 		agreement.setOrderNo(rs.getString("order_no"));
 		String PaymentCycle = (rs.getString("payment_cycle"));
 		agreement.setPaymentCycle(PaymentCycleEnum.fromValue(PaymentCycle)); //throws RuntimeExcepton("enum key not found")
-		agreement.setRegistrationFree(rs.getDouble("registration_free"));
+		agreement.setRegistrationFree(rs.getDouble("registration_fee"));
 		agreement.setRemarks(rs.getString("remarks"));
 		agreement.setRent(rs.getDouble("rent"));
 		agreement.setRrReadingNo(rs.getString("rr_reading_no"));

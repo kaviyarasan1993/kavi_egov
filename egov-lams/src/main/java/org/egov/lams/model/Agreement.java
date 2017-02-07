@@ -61,8 +61,8 @@ public class Agreement {
 	@JsonProperty("nature_of_allotment")
 	private NatureOfAllotmentEnum natureOfAllotment;
 	
-	@JsonProperty("registration_free")
-	private	Double registrationFree;
+	@JsonProperty("registration_fee")
+	private	Double registrationFee;
 	
 	@JsonProperty("case_no")
 	private	String caseNo;
@@ -229,11 +229,11 @@ public class Agreement {
 	}
 
 	public Double getRegistrationFree() {
-		return registrationFree;
+		return registrationFee;
 	}
 
 	public void setRegistrationFree(Double registrationFree) {
-		this.registrationFree = registrationFree;
+		this.registrationFee = registrationFree;
 	}
 
 	public String getCaseNo() {
@@ -355,7 +355,7 @@ public class Agreement {
 				+ ", councilNumber=" + councilNumber + ", councilDate=" + councilDate + ", bankGuaranteeAmount="
 				+ bankGuaranteeAmount + ", bankGuaranteeDate=" + bankGuaranteeDate + ", securityDeposit="
 				+ securityDeposit + ", securityDepositDate=" + securityDepositDate + ", status=" + status
-				+ ", natureOfAllotment=" + natureOfAllotment + ", registrationFree=" + registrationFree + ", caseNo="
+				+ ", natureOfAllotment=" + natureOfAllotment + ", registrationFree=" + registrationFee + ", caseNo="
 				+ caseNo + ", commencementDate=" + commencementDate + ", expiryDate=" + expiryDate + ", orderDetails="
 				+ orderDetails + ", rent=" + rent + ", tradelicenseNumber=" + tradelicenseNumber + ", paymentCycle="
 				+ paymentCycle + ", rentIncrementMethod=" + rentIncrementMethod + ", orderNo=" + orderNo

@@ -100,9 +100,9 @@ public class CreateAgreementController {
 		
 		RentIncrementType incrementType=new RentIncrementType();
 		incrementType.setAssetCategory("Land");
-		incrementType.setFlatAmount("flat_amount");
+		incrementType.setFlatAmount(78.00);
 		incrementType.setFromDate(new Date());
-		incrementType.setPercentage("percentage");
+		incrementType.setPercentage(89.00);
 		incrementType.setToDate(new Date());
 		incrementType.setType("type");
 		

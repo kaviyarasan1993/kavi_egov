@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.egov.lams.model.Agreement;
 import org.egov.lams.model.AgreementResponse;
-import org.egov.lams.model.FetchAgreementsModel;
+import org.egov.lams.model.SearchAgreementsModel;
 import org.egov.lams.model.ResponseInfo;
 import org.egov.lams.model.enums.StatusEnum;
 import org.egov.lams.web.service.AgreementService;
@@ -19,10 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-//TODO name the class with Search instead fetch
 @RestController
-public class FetchAgreementController {
-    public static final Logger LOG=LoggerFactory.getLogger(FetchAgreementController.class);
+public class SearchAgreementController {
+    public static final Logger LOG=LoggerFactory.getLogger(SearchAgreementController.class);
 
 	@Autowired
 	AgreementService agreementService; 
@@ -37,7 +36,7 @@ public class FetchAgreementController {
 			   @RequestParam(name="from_date",required=false)@DateTimeFormat(pattern="dd/MM/yyyy") Date fromDate,
 			   @RequestParam(name="to_date",required=false)@DateTimeFormat(pattern="dd/MM/yyyy") Date toDate,
 			   @RequestParam(name="status",required=false)StatusEnum status,
-			   @RequestParam(name="asset_category",required=false)String asset_category,
+			   @RequestParam(name="asset_category",required=false)Long asset_category,
 			   @RequestParam(name="shopping_complex_no",required=false)String shoppingComplexNo,
 			   @RequestParam(name="asset_code",required=false)String assetCode,
 			   @RequestParam(name="locality",required=false)String locality,
@@ -53,7 +52,7 @@ public class FetchAgreementController {
 	{
 		
 		//TODO rename FetchAgreementsModel to SearchAgreementModel
-		FetchAgreementsModel fetchAgreementsModel=new FetchAgreementsModel();
+		SearchAgreementsModel fetchAgreementsModel=new SearchAgreementsModel();
 		fetchAgreementsModel.setTenantId(tenantId); //TODO - tenant_id no need to be taken for search API.
 		fetchAgreementsModel.setAgreementId(agreementId);
 		fetchAgreementsModel.setAgreementNumber(agreementNumber);

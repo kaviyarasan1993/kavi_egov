@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.egov.lams.model.Agreement;
-import org.egov.lams.model.FetchAgreementsModel;
+import org.egov.lams.model.SearchAgreementsModel;
 import org.egov.lams.querybuilder.AgreementQueryBuilder;
 import org.egov.lams.rowmapper.AgreementRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class AgreementService {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	public List<Agreement> searchAgreement(FetchAgreementsModel fetchAgreementsModel) {
+	public List<Agreement> searchAgreement(SearchAgreementsModel fetchAgreementsModel) {
 		List<Object> preparedStatementValues = new ArrayList<Object>();
 		String queryStr = AgreementQueryBuilder.searchQueryBuilder(fetchAgreementsModel, preparedStatementValues);
 		List<Agreement> agreements = null;
