@@ -53,10 +53,7 @@ CREATE TABLE eglams_agreement
   allottee bigint NOT NULL, 
   asset bigint NOT NULL, 
   rent_increment_method bigint NOT NULL,
-  CONSTRAINT pk_eglams_agreement PRIMARY KEY (id),  
-  CONSTRAINT fk_rent_incrementmethod_type FOREIGN KEY (rent_increment_method) 
-      REFERENCES eglams_rentincrementtype (id) 
- 
+  CONSTRAINT pk_eglams_agreement PRIMARY KEY (id) 
 );
 
 
