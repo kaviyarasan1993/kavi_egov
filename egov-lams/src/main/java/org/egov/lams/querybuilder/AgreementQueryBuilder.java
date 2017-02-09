@@ -11,8 +11,7 @@ public class AgreementQueryBuilder {
 			@SuppressWarnings("rawtypes") List preparedStatementValues) {
 
 		StringBuilder selectQuery = new StringBuilder(
-				"select * from eglams_agreement agreement inner join eglams_rentincrementtype  rentincrementtype on agreement.rent_increment_method=rentincrementtype.id "
-						+ " inner join  eglams_asset asset on agreement.asset = asset.asset_id");
+				"select * from eglams_agreement agreement inner join  eglams_asset asset on agreement.asset = asset.asset_id");
 
 		// if statement to check the arguments and build the where criteria
 		if (!(agreementsModel.getAgreementId() == null && agreementsModel.getAgreementNumber() == null

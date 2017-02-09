@@ -2,7 +2,6 @@ package org.egov.lams.web.controller;
 
 import java.util.Date;
 import java.util.List;
-
 import org.egov.lams.model.Agreement;
 import org.egov.lams.model.AgreementResponse;
 import org.egov.lams.model.SearchAgreementsModel;
@@ -39,10 +38,10 @@ public class SearchAgreementController {
 			   @RequestParam(name="asset_category",required=false)Long asset_category,
 			   @RequestParam(name="shopping_complex_no",required=false)String shoppingComplexNo,
 			   @RequestParam(name="asset_code",required=false)String assetCode,
-			   @RequestParam(name="locality",required=false)String locality,
-			   @RequestParam(name="revenue_ward",required=false)String revenueWard,
-			   @RequestParam(name="election_ward",required=false)String electionWard,
-			   @RequestParam(name="doorno",required=false)String doorno,
+			   @RequestParam(name="locality",required=false)Long locality,
+			   @RequestParam(name="revenue_ward",required=false)Long revenueWard,
+			   @RequestParam(name="election_ward",required=false)Long electionWard,
+			   @RequestParam(name="doorno",required=false)Long doorno,
 			   @RequestParam(name="offset",required=false)String offset,
 			   @RequestParam(name="allottee_name",required=false)String allotteeName,
 			   @RequestParam(name="mobilenumber",required=false)Long mobilenumber,
@@ -65,7 +64,7 @@ public class SearchAgreementController {
 		fetchAgreementsModel.setAssetCategory(asset_category);
 		fetchAgreementsModel.setShoppingComplexNo(shoppingComplexNo);;
 		fetchAgreementsModel.setAssetCode(assetCode);
-		fetchAgreementsModel.setLocality(locality); //TODO All the ids should be number, wherever the form feld is drop down its valid.
+		fetchAgreementsModel.setLocality(locality); //TODO All the ids should be number, wherever the form field is drop down its valid.
 		fetchAgreementsModel.setRevenueWard(revenueWard);
 		fetchAgreementsModel.setElectionWard(electionWard);
 		fetchAgreementsModel.setDoorno(doorno);

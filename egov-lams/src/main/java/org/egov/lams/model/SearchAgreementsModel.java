@@ -51,16 +51,16 @@ public class SearchAgreementsModel {
 	 private String assetCode;
 	 
 	 @JsonProperty("locality")
-	 private String locality;
+	 private Long locality;
 	 
 	 @JsonProperty("revenue_ward")
-	 private String revenueWard;
+	 private Long revenueWard;
 	 
 	 @JsonProperty("election_ward")
-	 private String electionWard;
+	 private Long electionWard;
 	 
 	 @JsonProperty("doorno")
-	 private String doorno;
+	 private Long doorno;
 	 
 	 @JsonProperty("allottee_name")
 	 private String allotteeName;
@@ -170,35 +170,35 @@ public class SearchAgreementsModel {
 		this.assetCode = assetCode;
 	}
 
-	public String getLocality() {
+	public Long getLocality() {
 		return locality;
 	}
 
-	public void setLocality(String locality) {
+	public void setLocality(Long locality) {
 		this.locality = locality;
 	}
 
-	public String getRevenueWard() {
+	public Long getRevenueWard() {
 		return revenueWard;
 	}
 
-	public void setRevenueWard(String revenueWard) {
+	public void setRevenueWard(Long revenueWard) {
 		this.revenueWard = revenueWard;
 	}
 
-	public String getElectionWard() {
+	public Long getElectionWard() {
 		return electionWard;
 	}
 
-	public void setElectionWard(String electionWard) {
+	public void setElectionWard(Long electionWard) {
 		this.electionWard = electionWard;
 	}
 
-	public String getDoorno() {
+	public Long getDoorno() {
 		return doorno;
 	}
 
-	public void setDoorno(String doorno) {
+	public void setDoorno(Long doorno) {
 		this.doorno = doorno;
 	}
 

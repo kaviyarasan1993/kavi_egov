@@ -30,12 +30,16 @@ public class AgreementRowMapper implements RowMapper<Agreement> {
 		//setting value for the asset object
 		
 		Asset asset=new Asset();
-		asset.setCategory(rs.getString("asset_category"));
+		asset.setCategory(rs.getLong("asset_category"));
 		asset.setId(rs.getLong("asset_id")); 
-		asset.setLocality(rs.getString("locality"));
+		asset.setLocality(rs.getLong("locality"));
 		asset.setCode(rs.getString("asset_code"));
-		asset.setElectionward(rs.getString("election_ward"));
+		asset.setElectionward(rs.getLong("election_ward"));
+		asset.setWard(rs.getLong("revenue_ward"));
+		asset.setDoorNo(rs.getLong("doorno"));
+		
 		agreement.setAsset(asset);
+		//  shopping_complex_no 
 		
 		
 	/*	these variables are not present in asset model 

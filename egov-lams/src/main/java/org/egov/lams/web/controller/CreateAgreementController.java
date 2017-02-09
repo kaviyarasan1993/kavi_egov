@@ -76,7 +76,7 @@ public class CreateAgreementController {
 		
 		Asset asset=new Asset();
 		asset.setBlock("5");
-		asset.setCategory("land");
+		asset.setCategory(7l);
 		asset.setCode("029");
 		agreement.setAsset(asset);
 		

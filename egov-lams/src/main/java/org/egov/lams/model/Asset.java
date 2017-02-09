@@ -8,7 +8,7 @@ public class Asset {
 	private Long id;
 
 	@JsonProperty("category")
-	private String category;
+	private Long category;
 
 	@JsonProperty("name")
 	private String name;
@@ -17,7 +17,7 @@ public class Asset {
 	private String code;
 
 	@JsonProperty("locality")
-	private String locality;
+	private Long locality;
 
 	@JsonProperty("street")
 	private String street;
@@ -26,14 +26,17 @@ public class Asset {
 	private String zone;
 
 	@JsonProperty("ward")
-	private String ward;
+	private Long ward;
 
 	@JsonProperty("block")
 	private String block;
 
 	@JsonProperty("electionward")
-	private String electionward;
-
+	private Long electionward;
+	
+	@JsonProperty("door_no")
+	private Long doorNo;
+	
 	public Long getId() {
 		return id;
 	}
@@ -42,11 +45,11 @@ public class Asset {
 		this.id = id;
 	}
 
-	public String getCategory() {
+	public Long getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(Long category) {
 		this.category = category;
 	}
 
@@ -66,11 +69,11 @@ public class Asset {
 		this.code = code;
 	}
 
-	public String getLocality() {
+	public Long getLocality() {
 		return locality;
 	}
 
-	public void setLocality(String locality) {
+	public void setLocality(Long locality) {
 		this.locality = locality;
 	}
 
@@ -90,11 +93,11 @@ public class Asset {
 		this.zone = zone;
 	}
 
-	public String getWard() {
+	public Long getWard() {
 		return ward;
 	}
 
-	public void setWard(String ward) {
+	public void setWard(Long ward) {
 		this.ward = ward;
 	}
 
@@ -106,12 +109,20 @@ public class Asset {
 		this.block = block;
 	}
 
-	public String getElectionward() {
+	public Long getElectionward() {
 		return electionward;
 	}
 
-	public void setElectionward(String electionward) {
+	public void setElectionward(Long electionward) {
 		this.electionward = electionward;
+	}
+
+	public Long getDoorNo() {
+		return doorNo;
+	}
+
+	public void setDoorNo(Long doorNo) {
+		this.doorNo = doorNo;
 	}
 
 }
