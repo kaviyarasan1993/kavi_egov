@@ -2,31 +2,23 @@ package org.egov.lams.model;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ResponseInfo {
 
-	@JsonProperty("api_id")
 	private String apiId;
 	
-	@JsonProperty("ver")
 	private String ver;	
 	
 	private Date ts;	
 	
-	@JsonProperty("action")
 	private String action;	
 	
-	@JsonProperty("did")
 	private String did;	
 	
-	@JsonProperty("key")
 	private String key;	
 	
-	@JsonProperty("msg_id")
 	private String msgId;
 	
-	@JsonProperty("requester_id")
 	private String requesterId;
 	
 	

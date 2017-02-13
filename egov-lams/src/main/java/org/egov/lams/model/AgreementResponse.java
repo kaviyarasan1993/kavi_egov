@@ -2,14 +2,11 @@ package org.egov.lams.model;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AgreementResponse {
 	
-	@JsonProperty("ResposneInfo")
 	private ResponseInfo resposneInfo;
 	
-	@JsonProperty("Agreements")
 	private List<Agreement> agreement;
 	
 	public ResponseInfo getResposneInfo() {

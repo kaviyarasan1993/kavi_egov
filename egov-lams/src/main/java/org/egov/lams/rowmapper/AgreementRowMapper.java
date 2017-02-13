@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import org.egov.lams.model.Agreement;
 import org.egov.lams.model.Allottee;
 import org.egov.lams.model.Asset;
-import org.egov.lams.model.RentIncrementType;
 import org.egov.lams.model.enums.NatureOfAllotmentEnum;
 import org.egov.lams.model.enums.PaymentCycleEnum;
 import org.egov.lams.model.enums.StatusEnum;
@@ -16,7 +15,6 @@ public class AgreementRowMapper implements RowMapper<Agreement> {
 	public Agreement mapRow(ResultSet rs, int rowNum) throws SQLException {
 		//TODO : do not use SOP, use loggers
 		Agreement agreement=new Agreement();
-		RentIncrementType rentIncrementMethod = new RentIncrementType();
 
 		// setting id value for allotte object
 
@@ -42,26 +40,11 @@ public class AgreementRowMapper implements RowMapper<Agreement> {
 		//  shopping_complex_no 
 		
 		
-	/*	these variables are not present in asset model 
-	 * shopping_complex_no 
-	   revenue_ward
-	   tenant_id
-	   doorno 
-*/
-		// setting values for RentIncrementType object.
-		rentIncrementMethod.setAssetCategory(rs.getString("asset_category"));
-		rentIncrementMethod.setFlatAmount(rs.getDouble("flat_amount"));
-		rentIncrementMethod.setFromDate(rs.getDate("FromDate"));
-		rentIncrementMethod.setId(rs.getLong("rent_increment_method"));
-		rentIncrementMethod.setPercentage(rs.getDouble("percentage"));
-		rentIncrementMethod.setToDate(rs.getDate("toDate"));
-		rentIncrementMethod.setType(rs.getString("type"));
-
 		// setting values for Agreement object
 		
 		agreement.setId(rs.getLong("id"));
 		agreement.setAgreementDate(rs.getDate("agreement_Date"));
-		agreement.setAgreementNumber(rs.getString("agreement_number"));
+		agreement.setAgreementNumber(rs.getString("agreement_no"));
 		agreement.setBankGuaranteeAmount(rs.getDouble("bank_guarantee_amount"));
 		agreement.setBankGuaranteeDate(rs.getDate("bank_guarantee_date"));
 		agreement.setCaseNo(rs.getString("case_no"));
@@ -79,7 +62,7 @@ public class AgreementRowMapper implements RowMapper<Agreement> {
 		agreement.setOrderNo(rs.getString("order_no"));
 		String PaymentCycle = (rs.getString("payment_cycle"));
 		agreement.setPaymentCycle(PaymentCycleEnum.fromValue(PaymentCycle)); //throws RuntimeExcepton("enum key not found")
-		agreement.setRegistrationFree(rs.getDouble("registration_fee"));
+		agreement.setRegistrationFee(rs.getDouble("registration_fee"));
 		agreement.setRemarks(rs.getString("remarks"));
 		agreement.setRent(rs.getDouble("rent"));
 		agreement.setRrReadingNo(rs.getString("rr_reading_no"));
@@ -88,16 +71,14 @@ public class AgreementRowMapper implements RowMapper<Agreement> {
 		agreement.setSolvencyCertificateDate(rs.getDate("solvency_certificate_date"));
 		agreement.setSolvencyCertificateNo(rs.getString("solvency_certificate_no"));
 		String status = (rs.getString("status"));
-		agreement.setStatus(StatusEnum.fromValue(status)); //throws RuntimeExcepton("enum key not found")
-		
-		agreement.setTradelicenseNumber(rs.getString("tin_number")); 
+		agreement.setStatus(StatusEnum.fromValue(status)); 
+		agreement.setTinNumber(rs.getString("tin_number"));
 
 		// agreement.setTenantId(rs.get("tenant_id"));
 		agreement.setTenderDate(rs.getDate("tender_date"));
 		agreement.setTenderNumber(rs.getString("tender_number"));
-		agreement.setTradelicenseNumber(rs.getString("tradelicense_number"));
+		agreement.setTradelicenseNumber(rs.getString("trade_license_number"));
 
-		agreement.setRentIncrementMethod(rentIncrementMethod);
 		
 		
 		return agreement;

@@ -14,7 +14,7 @@ import org.egov.lams.model.RequestInfo;
 import org.egov.lams.model.enums.NatureOfAllotmentEnum;
 import org.egov.lams.model.enums.PaymentCycleEnum;
 import org.egov.lams.model.enums.StatusEnum;
-import org.egov.lams.web.service.AgreementService;
+import org.egov.lams.web.service.SearchAgreementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CreateAgreementController {
 
 	@Autowired
-	AgreementService agreementService;
+	SearchAgreementService agreementService;
 	
 	@RequestMapping(value="/_Post_Create_Agreement",
 					method=RequestMethod.POST,
@@ -92,7 +92,7 @@ public class CreateAgreementController {
 		agreement.setOrderDetails("order details");
 		agreement.setOrderNo("oreder_no");
 		agreement.setPaymentCycle(PaymentCycleEnum.ANNUAL);
-		agreement.setRegistrationFree(new Double(500));
+		agreement.setRegistrationFee(new Double(500));
 		agreement.setRemarks("remarks");
 		agreement.setRent(new Double(25000));
 		
@@ -103,8 +103,6 @@ public class CreateAgreementController {
 		incrementType.setPercentage(89.00);
 		incrementType.setToDate(new Date());
 		incrementType.setType("type");
-		
-		agreement.setRentIncrementMethod(incrementType);
 		
 		agreement.setRrReadingNo("rr_reading_no");
 		agreement.setSecurityDeposit(new Double(5000));

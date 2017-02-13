@@ -1,40 +1,28 @@
 package org.egov.lams.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Asset {
 
-	@JsonProperty("id")
 	private Long id;
 
-	@JsonProperty("category")
 	private Long category;
 
-	@JsonProperty("name")
 	private String name;
 
-	@JsonProperty("code")
 	private String code;
 
-	@JsonProperty("locality")
 	private Long locality;
 
-	@JsonProperty("street")
 	private String street;
 
-	@JsonProperty("zone")
 	private String zone;
 
-	@JsonProperty("ward")
 	private Long ward;
 
-	@JsonProperty("block")
 	private String block;
 
-	@JsonProperty("electionward")
 	private Long electionward;
 	
-	@JsonProperty("door_no")
 	private Long doorNo;
 	
 	public Long getId() {

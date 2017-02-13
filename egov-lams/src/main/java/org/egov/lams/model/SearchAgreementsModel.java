@@ -5,73 +5,56 @@ import java.util.Date;
 import org.egov.lams.model.enums.StatusEnum;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SearchAgreementsModel {
 
 	
 	// private RequestInfo requestInfo;
 	
-	 @JsonProperty("tenant_id")
+	
 	 private String tenantId;
 	 
-	 @JsonProperty("agreement_id")
+	 
 	 private Long agreementId;
 	 
-	 @JsonProperty("agreement_number")
+	
 	 private String agreementNumber;
 	 
-	 @JsonProperty("tender_number")
+	
 	 private String tenderNumber;
 	 
 	 @JsonFormat(pattern="dd/MM/yyyy")
-	 @JsonProperty("from_date")
 	 private Date fromDate;
 	 
 	 @JsonFormat(pattern="dd/MM/yyyy")
-	 @JsonProperty("to_date")
 	 private Date toDate;
 	 
-	 @JsonProperty("status")
 	 private StatusEnum status;
 	 
-	 @JsonProperty("tin_number")
 	 private String tinNumber;
 	 
-	 @JsonProperty("tradelicense_number")
 	 private String tradelicenseNumber;
 	 
-	 @JsonProperty("asset_category")
 	 private Long assetCategory;
 	 
-	 @JsonProperty("shopping_complex_no")
 	 private String shoppingComplexNo;
 	 
-	 @JsonProperty("asset_code")
 	 private String assetCode;
 	 
-	 @JsonProperty("locality")
 	 private Long locality;
 	 
-	 @JsonProperty("revenue_ward")
 	 private Long revenueWard;
 	 
-	 @JsonProperty("election_ward")
 	 private Long electionWard;
 	 
-	 @JsonProperty("doorno")
 	 private Long doorno;
 	 
-	 @JsonProperty("allottee_name")
 	 private String allotteeName;
 	 
-	 @JsonProperty("mobilenumber")
 	 private Long mobilenumber;
 	 
-	 @JsonProperty("offSet")
 	 private String offSet;
 	 
-	 @JsonProperty("size")
 	 private String size;
 
 	public String getTenantId() {

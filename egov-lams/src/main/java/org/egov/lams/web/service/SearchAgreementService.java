@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AgreementService {
+public class SearchAgreementService {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -23,7 +23,6 @@ public class AgreementService {
 		List<Agreement> agreements = null;
 		try {
 			agreements = jdbcTemplate.query(queryStr, preparedStatementValues.toArray(), new AgreementRowMapper());
-			System.out.println("agreement:" + agreements);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			throw new RuntimeException("No record found");

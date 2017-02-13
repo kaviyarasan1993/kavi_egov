@@ -160,8 +160,6 @@ public class AgreementQueryBuilder {
 			preparedStatementValues.add(Integer.parseInt(agreementsModel.getOffSet()));
 		else
 			preparedStatementValues.add(0);
-// remove sys err
-		System.err.println("The dynamic query is:: " + selectQuery);
 
 		return selectQuery.toString();
 	}

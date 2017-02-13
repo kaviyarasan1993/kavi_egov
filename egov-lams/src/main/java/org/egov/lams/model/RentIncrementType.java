@@ -1,29 +1,21 @@
 package org.egov.lams.model;
 
 import java.util.Date;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class RentIncrementType {
 
-	@JsonProperty("id")
 	private Long id;
 
-	@JsonProperty("type")
 	private String type;
 
-	@JsonProperty("asset_category")
 	private String assetCategory;
 
-	@JsonProperty("fromdate")
 	private Date fromDate;
 
-	@JsonProperty("todate")
 	private Date toDate;
 
-	@JsonProperty("percentage")
 	private Double percentage;
 
-	@JsonProperty("flat_amount")
 	private Double flatAmount;
 
 	public Long getId() {

@@ -5,89 +5,80 @@ import java.util.Date;
 import org.egov.lams.model.enums.NatureOfAllotmentEnum;
 import org.egov.lams.model.enums.PaymentCycleEnum;
 import org.egov.lams.model.enums.StatusEnum;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Agreement {
 
-	@JsonProperty("id")
 	private Long id;
 
-	@JsonProperty("agreement_number")
 	private String agreementNumber;
 
-	@JsonProperty("agreement_date")
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date agreementDate;
 
-	@JsonProperty("allottee")
 	private Allottee allottee;
 
-	@JsonProperty("asset")
 	private Asset asset;
 
-	@JsonProperty("tender_number")
 	private String tenderNumber;
 
-	@JsonProperty("tender_date")
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date tenderDate;
 
-	@JsonProperty("council_number")
 	private String councilNumber;
 
-	@JsonProperty("council_date")
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date councilDate;
 
-	@JsonProperty("bank_guarantee_amount")
 	private Double bankGuaranteeAmount;
 
-	@JsonProperty("bank_guarantee_date")
 	private Date bankGuaranteeDate;
 
-	@JsonProperty("security_deposit")
 	private Double securityDeposit;
 
-	@JsonProperty("security_deposit_date")
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date securityDepositDate;
 
-	@JsonProperty("status")
 	private StatusEnum status;
 
-	@JsonProperty("nature_of_allotment")
 	private NatureOfAllotmentEnum natureOfAllotment;
 
-	@JsonProperty("registration_fee")
 	private Double registrationFee;
 
-	@JsonProperty("case_no")
 	private String caseNo;
 
-	@JsonProperty("commencement_date")
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date commencementDate;
 
-	@JsonProperty("expiry_date")
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date expiryDate;
 
-	@JsonProperty("order_details")
 	private String orderDetails;
 
-	@JsonProperty("rent")
 	private Double rent;
 
-	@JsonProperty("tradelicense_number")
 	private String tradelicenseNumber;
 
-	@JsonProperty("payment_cycle")
 	private PaymentCycleEnum paymentCycle;
 
-	@JsonProperty("rent_increment_method")
-	private RentIncrementType rentIncrementMethod;
+	private String tinNumber;
+
+	public Double getRegistrationFee() {
+		return registrationFee;
+	}
+
+	public void setRegistrationFee(Double registrationFee) {
+		this.registrationFee = registrationFee;
+	}
+
+	public String getTinNumber() {
+		return tinNumber;
+	}
+
+	public void setTinNumber(String tinNumber) {
+		this.tinNumber = tinNumber;
+	}
 
 	@JsonProperty("order_no")
 	private String orderNo;
@@ -229,14 +220,6 @@ public class Agreement {
 		this.natureOfAllotment = natureOfAllotment;
 	}
 
-	public Double getRegistrationFree() {
-		return registrationFee;
-	}
-
-	public void setRegistrationFree(Double registrationFree) {
-		this.registrationFee = registrationFree;
-	}
-
 	public String getCaseNo() {
 		return caseNo;
 	}
@@ -293,14 +276,6 @@ public class Agreement {
 		this.paymentCycle = paymentCycle;
 	}
 
-	public RentIncrementType getRentIncrementMethod() {
-		return rentIncrementMethod;
-	}
-
-	public void setRentIncrementMethod(RentIncrementType rentIncrementMethod) {
-		this.rentIncrementMethod = rentIncrementMethod;
-	}
-
 	public String getOrderNo() {
 		return orderNo;
 	}
@@ -351,15 +326,15 @@ public class Agreement {
 
 	@Override
 	public String toString() {
-		return "Agreement [id=" + id + ", agreementNum=" + agreementNumber + ", agreementDate=" + agreementDate
-				+ ", allottee=" + allottee + ", tenderNumber=" + tenderNumber + ", tenderDate=" + tenderDate
-				+ ", councilNumber=" + councilNumber + ", councilDate=" + councilDate + ", bankGuaranteeAmount="
-				+ bankGuaranteeAmount + ", bankGuaranteeDate=" + bankGuaranteeDate + ", securityDeposit="
-				+ securityDeposit + ", securityDepositDate=" + securityDepositDate + ", status=" + status
-				+ ", natureOfAllotment=" + natureOfAllotment + ", registrationFree=" + registrationFee + ", caseNo="
-				+ caseNo + ", commencementDate=" + commencementDate + ", expiryDate=" + expiryDate + ", orderDetails="
-				+ orderDetails + ", rent=" + rent + ", tradelicenseNumber=" + tradelicenseNumber + ", paymentCycle="
-				+ paymentCycle + ", rentIncrementMethod=" + rentIncrementMethod + ", orderNo=" + orderNo
+		return "Agreement [id=" + id + ", agreementNumber=" + agreementNumber + ", agreementDate=" + agreementDate
+				+ ", allottee=" + allottee + ", asset=" + asset + ", tenderNumber=" + tenderNumber + ", tenderDate="
+				+ tenderDate + ", councilNumber=" + councilNumber + ", councilDate=" + councilDate
+				+ ", bankGuaranteeAmount=" + bankGuaranteeAmount + ", bankGuaranteeDate=" + bankGuaranteeDate
+				+ ", securityDeposit=" + securityDeposit + ", securityDepositDate=" + securityDepositDate + ", status="
+				+ status + ", natureOfAllotment=" + natureOfAllotment + ", registrationFee=" + registrationFee
+				+ ", caseNo=" + caseNo + ", commencementDate=" + commencementDate + ", expiryDate=" + expiryDate
+				+ ", orderDetails=" + orderDetails + ", rent=" + rent + ", tradelicenseNumber=" + tradelicenseNumber
+				+ ", paymentCycle=" + paymentCycle + ", tinNumber=" + tinNumber + ", orderNo=" + orderNo
 				+ ", orderDate=" + orderDate + ", rrReadingNo=" + rrReadingNo + ", remarks=" + remarks
 				+ ", solvencyCertificateNo=" + solvencyCertificateNo + ", solvencyCertificateDate="
 				+ solvencyCertificateDate + "]";
