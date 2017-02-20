@@ -20,25 +20,26 @@ public class AgreementRowMapper implements RowMapper<Agreement> {
 
 		Allottee allottee = new Allottee();
 		allottee.setId(rs.getLong("allottee"));
-		allottee.setName(rs.getString("allottee_name"));
-		allottee.setContactNo(rs.getLong("mobilenumber"));
+		
+		/*allottee.setName(rs.getString("allottee_name"));
+		allottee.setContactNo(rs.getLong("mobilenumber"));*/
 		agreement.setAllottee(allottee);
 		
 		
 		//setting value for the asset object
 		
 		Asset asset=new Asset();
-		asset.setCategory(rs.getLong("asset_category"));
-		asset.setId(rs.getLong("asset_id")); 
-		asset.setLocality(rs.getLong("locality"));
+	//	asset.setCategory(rs.getLong("asset_category"));
+		asset.setId(rs.getLong("asset")); 
+	/*	asset.setLocality(rs.getLong("locality"));
 		asset.setCode(rs.getString("asset_code"));
 		asset.setElectionward(rs.getLong("election_ward"));
 		asset.setWard(rs.getLong("revenue_ward"));
-		asset.setDoorNo(rs.getLong("doorno"));
+		asset.setDoorNo(rs.getLong("doorno"));*/
 		
 		agreement.setAsset(asset);
 		//  shopping_complex_no 
-		
+	
 		
 		// setting values for Agreement object
 		

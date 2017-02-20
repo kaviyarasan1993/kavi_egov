@@ -15,8 +15,6 @@ public class AssetCategoryRowMapper implements RowMapper<AssetCategory>{
 		assetCategory.setId(rs.getLong("id"));
 		assetCategory.setName(rs.getString("name"));
 		assetCategory.setCode(rs.getString("code"));
-		
 		return assetCategory;
 	}
-
 }

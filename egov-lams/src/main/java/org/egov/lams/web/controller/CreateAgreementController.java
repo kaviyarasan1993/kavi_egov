@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.egov.lams.model.Agreement;
-import org.egov.lams.model.AgreementRequest;
-import org.egov.lams.model.AgreementResponse;
 import org.egov.lams.model.Allottee;
 import org.egov.lams.model.Asset;
 import org.egov.lams.model.RentIncrementType;
@@ -14,6 +12,8 @@ import org.egov.lams.model.RequestInfo;
 import org.egov.lams.model.enums.NatureOfAllotmentEnum;
 import org.egov.lams.model.enums.PaymentCycleEnum;
 import org.egov.lams.model.enums.StatusEnum;
+import org.egov.lams.model.wrapper.AgreementRequest;
+import org.egov.lams.model.wrapper.AgreementResponse;
 import org.egov.lams.web.service.SearchAgreementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
