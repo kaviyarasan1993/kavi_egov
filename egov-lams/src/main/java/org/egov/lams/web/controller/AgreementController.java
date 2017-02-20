@@ -19,17 +19,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AgreementController {
-    public static final Logger LOGGER=LoggerFactory.getLogger(AgreementController.class);
+	public static final Logger LOGGER = LoggerFactory.getLogger(AgreementController.class);
 
 	@Autowired
-	SearchAgreementService agreementService; 
-	
-	@RequestMapping(value="/", 
-					method=RequestMethod.GET,
-					produces=MediaType.APPLICATION_JSON_VALUE)
-	public AgreementResponse getAgreements(@ModelAttribute SearchAgreementsModel searchAgreementsModel)
-	{
-		LOGGER.info("AgreementController getAgreements() searchAgreementsModel:"+searchAgreementsModel);
+	SearchAgreementService agreementService;
+
+	@RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public AgreementResponse getAgreements(@ModelAttribute SearchAgreementsModel searchAgreementsModel) {
+
+		LOGGER.info("AgreementController getAgreements() searchAgreementsModel:" + searchAgreementsModel);
 		AgreementResponse agreementResponse = null;
 		List<Agreement> agreements = null;
 		try {
@@ -37,7 +35,7 @@ public class AgreementController {
 			agreementResponse = new AgreementResponse();
 			agreementResponse.setAgreement(agreements);
 			agreementResponse.setResposneInfo(
-			new ResponseInfo("Get Agreement", "ver", new Date(), "GET", "did", "key", "msgId", "rqstID"));
+					new ResponseInfo("Get Agreement", "ver", new Date(), "GET", "did", "key", "msgId", "rqstID"));
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

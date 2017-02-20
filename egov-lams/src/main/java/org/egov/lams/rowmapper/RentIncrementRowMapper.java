@@ -9,8 +9,8 @@ public class RentIncrementRowMapper implements RowMapper<RentIncrementType> {
 
 	@Override
 	public RentIncrementType mapRow(ResultSet rs, int rowNum) throws SQLException {
-		
-		RentIncrementType rentIncrementType=new RentIncrementType();
+
+		RentIncrementType rentIncrementType = new RentIncrementType();
 		rentIncrementType.setId(rs.getLong("id"));
 		rentIncrementType.setType(rs.getString("type"));
 		return rentIncrementType;

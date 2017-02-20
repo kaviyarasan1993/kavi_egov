@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LamsMasterController {
 
+	@Autowired
+	GetRentIncrementService getRentIncrementService;
+
 	@RequestMapping(value = "/getstatus")
 	public Map<StatusEnum, StatusEnum> getSatusEnum() {
-
 		Map<StatusEnum, StatusEnum> status = new HashMap<>();
-
 		for (StatusEnum key : StatusEnum.values()) {
-
 			status.put(key, StatusEnum.valueOf(key.toString()));
 		}
 		return status;
@@ -30,11 +30,8 @@ public class LamsMasterController {
 
 	@RequestMapping(value = "/getpaymentcycle")
 	public Map<PaymentCycleEnum, PaymentCycleEnum> getPayementCycleEnum() {
-
 		Map<PaymentCycleEnum, PaymentCycleEnum> payementCycle = new HashMap<>();
-
 		for (PaymentCycleEnum key : PaymentCycleEnum.values()) {
-
 			payementCycle.put(key, PaymentCycleEnum.valueOf(key.toString()));
 		}
 		return payementCycle;
@@ -42,22 +39,15 @@ public class LamsMasterController {
 
 	@RequestMapping(value = "/getnatureofallotment")
 	public Map<NatureOfAllotmentEnum, NatureOfAllotmentEnum> getNatureOfAllotmentEnum() {
-
 		Map<NatureOfAllotmentEnum, NatureOfAllotmentEnum> natureOfAllotment = new HashMap<>();
-
 		for (NatureOfAllotmentEnum key : NatureOfAllotmentEnum.values()) {
-
 			natureOfAllotment.put(key, NatureOfAllotmentEnum.valueOf(key.toString()));
 		}
 		return natureOfAllotment;
 	}
-	
-	@Autowired
-	GetRentIncrementService getRentIncrementService;
-	
+
 	@RequestMapping(value = "/getrentincrements")
 	public List<RentIncrementType> rentIncrementService() {
-		
 		return getRentIncrementService.getRentIncrements();
 	}
 }

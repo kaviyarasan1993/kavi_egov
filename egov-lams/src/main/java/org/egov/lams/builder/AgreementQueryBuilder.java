@@ -1,10 +1,14 @@
 package org.egov.lams.builder;
 
 import java.util.List;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.egov.lams.model.SearchAgreementsModel;
+import org.egov.lams.web.controller.AgreementController;
 
 public class AgreementQueryBuilder {
+
+	public static final Logger logger = LoggerFactory.getLogger(AgreementController.class);
 
 	@SuppressWarnings("unchecked")
 	public static String agreementQueryBuilder(SearchAgreementsModel agreementsModel,
@@ -15,7 +19,8 @@ public class AgreementQueryBuilder {
 		if (!(agreementsModel.getAgreementId() == null && agreementsModel.getAgreementNumber() == null
 				&& (agreementsModel.getFromDate() == null && agreementsModel.getToDate() == null)
 				&& agreementsModel.getStatus() == null && agreementsModel.getTenderNumber() == null
-				&& agreementsModel.getTinNumber() == null && agreementsModel.getTradelicenseNumber() == null)) {
+				&& agreementsModel.getTinNumber() == null && agreementsModel.getTradelicenseNumber() == null))
+		{
 			selectQuery.append(" where");
 			boolean isAppendAndClause = false;
 
@@ -89,8 +94,8 @@ public class AgreementQueryBuilder {
 		}
 
 		/*
-		 * need to put default date value of one year span, considering current
-		 * date as toDate
+		 * put default date value of one year span, considering current date as toDate
+		 * default offset value has to be set
 		 */
 
 		selectQuery.append(" ORDER BY agreement.id");

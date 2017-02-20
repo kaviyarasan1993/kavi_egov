@@ -18,7 +18,7 @@ public class AllotteeBuilder {
 		StringBuilder allotteeParams = new StringBuilder();
 
 		if (searchAllottee.getAllottee() != null) {
-			allotteeParams.append("allotteeId=" + getIdQuery(searchAllottee.getAllottee()));
+			allotteeParams.append("allotteeId=" + getIdParams(searchAllottee.getAllottee()));
 			isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, allotteeParams);
 		}
 
@@ -59,9 +59,8 @@ public class AllotteeBuilder {
 		}
 		return true;
 	}
-	
-	//throw null pointer expection 
-	private static String getIdQuery(List<Long> idList) {
+
+	private static String getIdParams(List<Long> idList) {
 		StringBuilder query = new StringBuilder(Long.toString(idList.get(0)));
 		for (int i = 1; i < idList.size(); i++) {
 			query.append("," + idList.get(i));

@@ -17,8 +17,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class AgreementResponse {
-	
+
 	private ResponseInfo resposneInfo;
-	
+
 	private List<Agreement> agreement;
 }

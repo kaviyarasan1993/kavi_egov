@@ -13,18 +13,17 @@ public class AssetBuilder {
 
 		StringBuilder assetParams = new StringBuilder();
 
-		if (searchAsset.getAssetCategory() == null && searchAsset.getAssetCode() == null
-				&& searchAsset.getRevenueWard() == null && searchAsset.getElectionWard() == null
-				&& searchAsset.getLocality() == null && searchAsset.getAsset() == null) {
+		if (searchAsset.getAssetCategory() == null && searchAsset.getElectionWard() == null
+				&& searchAsset.getRevenueWard() == null && searchAsset.getAsset() == null
+				&& searchAsset.getLocality() == null && searchAsset.getAssetCode() == null) {
 			throw new RuntimeException("All search criteria for asset details are null");
 		}
 		boolean isAppendAndClause = false;
 
 		if (searchAsset.getAsset() != null) {
-			assetParams.append("Id=" + getIdQuery(searchAsset.getAsset()));
+			assetParams.append("Id=" + getIdParams(searchAsset.getAsset()));
 			isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, assetParams);
 		}
-
 		if (searchAsset.getAssetCategory() != null) {
 			isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, assetParams);
 			assetParams.append("assetCategory=" + searchAsset.getAssetCategory());
@@ -32,19 +31,17 @@ public class AssetBuilder {
 		/*
 		 * if (searchAsset.getShoppingComplexNo() != null) { isAppendAndClause =
 		 * addAndClauseIfRequired(isAppendAndClause, assetParams);
-		 * assetParams.append("getShoppingComplexNo=?"); }
+		 * assetParams.append("getShoppingComplexNo="+searchAsset.
+		 * getShoppingComplexNo()); }
 		 */
-
 		if (searchAsset.getAssetCode() != null) {
 			isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, assetParams);
 			assetParams.append("AssetCode=" + searchAsset.getAssetCode());
 		}
-
 		if (searchAsset.getLocality() != null) {
 			isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, assetParams);
 			assetParams.append("locality=" + searchAsset.getLocality());
 		}
-
 		if (searchAsset.getRevenueWard() != null) {
 			isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, assetParams);
 			assetParams.append("ward=" + searchAsset.getRevenueWard());
@@ -53,14 +50,12 @@ public class AssetBuilder {
 		/*
 		 * if (searchAsset.getElectionWard() != null) { isAppendAndClause =
 		 * addAndClauseIfRequired(isAppendAndClause, assetParams);
-		 * assetParams.append("election_Ward=searchAsset.getElectionWard()"); }
+		 * assetParams.append("election_Ward="+searchAsset.getElectionWard()); }
 		 */
-
 		if (searchAsset.getTenantId() != null) {
 			isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, assetParams);
 			assetParams.append("tenantId=searchAsset.getTenantId()");
 		}
-
 		/*
 		 * if (searchAsset.getDoorNo() != null) { isAppendAndClause =
 		 * addAndClauseIfRequired(isAppendAndClause, assetParams);
@@ -68,21 +63,6 @@ public class AssetBuilder {
 		 * preparedStatementValues.add(searchAsset.getDoorNo()); }
 		 */
 		return assetParams.toString();
-	}
-
-	private static boolean addAndClauseIfRequired(boolean appendAndClauseFlag, StringBuilder queryString) {
-		if (appendAndClauseFlag) {
-			queryString.append(" &");
-		}
-		return true;
-	}
-
-	private static String getIdQuery(List<Long> idList) {
-		StringBuilder query = new StringBuilder(Long.toString(idList.get(0)));
-		for (int i = 1; i < idList.size(); i++) {
-			query.append("," + idList.get(i));
-		}
-		return query.toString();
 	}
 
 	public List<Long> getAssetIdList(List<Asset> assetList) {
@@ -94,20 +74,30 @@ public class AssetBuilder {
 			}
 		}
 		return idList;
-
 	}
 
 	public List<Long> getAssetIdListByAgreements(List<Agreement> agreementList) {
 		List<Long> idList = new ArrayList<>();
-		if (agreementList.size() >= 1) {
-			for (Agreement agreement : agreementList) {
+		if (agreementList.size() >= 1 && agreementList!=null) {
+			for (Agreement agreement : agreementList) 
 				idList.add(agreement.getAsset().getId());
-			}
 		} else
-			//throw null pointer expection 
 			throw new RuntimeException("the agreement list is null");
-
 		return idList;
+	}
 
+	private static boolean addAndClauseIfRequired(boolean appendAndClauseFlag, StringBuilder queryString) {
+		if (appendAndClauseFlag) {
+			queryString.append(" &");
+		}
+		return true;
+	}
+
+	private static String getIdParams(List<Long> idList) {
+		StringBuilder query = new StringBuilder(Long.toString(idList.get(0)));
+		for (int i = 1; i < idList.size(); i++) {
+			query.append("," + idList.get(i));
+		}
+		return query.toString();
 	}
 }

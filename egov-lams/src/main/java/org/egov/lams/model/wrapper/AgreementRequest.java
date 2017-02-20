@@ -13,11 +13,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class AgreementRequest   {
-  
-  private RequestInfo requestInfo = null;
+public class AgreementRequest {
 
-  private Agreement agreement = null;
+	private RequestInfo requestInfo = null;
+
+	private Agreement agreement = null;
 
 }
-

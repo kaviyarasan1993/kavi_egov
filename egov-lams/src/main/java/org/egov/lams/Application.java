@@ -7,12 +7,12 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class Application {
-	
+
 	@Bean
-	public RestTemplate getRestTemplate(){
+	public RestTemplate getRestTemplate() {
 		return new RestTemplate();
 	}
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
