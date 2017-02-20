@@ -5,10 +5,7 @@ import java.util.Date;
 import org.egov.lams.model.enums.NatureOfAllotmentEnum;
 import org.egov.lams.model.enums.PaymentCycleEnum;
 import org.egov.lams.model.enums.StatusEnum;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

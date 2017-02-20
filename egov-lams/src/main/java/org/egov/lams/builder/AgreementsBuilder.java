@@ -15,7 +15,7 @@ public class AgreementsBuilder {
 			List<Asset> assets) {
 		List<Agreement> newAgreements = new ArrayList<>();
 		Map<Long, Asset> assetMap = new HashMap<>();
-		Map<Long, Allottee> allotteeMap = new HashMap<>();
+		//Map<Long, Allottee> allotteeMap = new HashMap<>();
 
 		/*for (Allottee allottee : allottees) {
 			allotteeMap.put(allottee.getId(), allottee);

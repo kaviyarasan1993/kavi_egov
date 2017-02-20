@@ -33,11 +33,9 @@ public class SearchAgreementService {
 	@Autowired
 	RestTemplate restTemplate;
 
-	@Autowired
-	private AllotteeBuilder allotteeBuilder;
+	private AllotteeBuilder allotteeBuilder = new AllotteeBuilder();
 
-	@Autowired
-	private AssetBuilder assetBuilder;
+	private AssetBuilder assetBuilder= new AssetBuilder();
 
 	public List<Agreement> searchAgreement(SearchAgreementsModel fetchAgreementsModel) {
 
@@ -173,7 +171,7 @@ public class SearchAgreementService {
 	 * method to return a list of Allottee objects by making an API call to Allottee API 
 	 */
 	public List<Allottee> getAllottees(String string) {
-		URI url = null;
+		//URI url = null;
 		// restTemplate.getForObject(url, Allottee.class);
 		return null;
 	}
