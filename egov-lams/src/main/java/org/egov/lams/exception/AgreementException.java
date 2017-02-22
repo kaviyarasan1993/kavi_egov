@@ -8,13 +8,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class AgreementException {
 	
-	@ExceptionHandler(Exception.class)
-	public ResponseEntity<ErrorResponse> exceptionHandler(Exception ex) {
-		
+	@ExceptionHandler(value=Exception.class)
+	public ResponseEntity<ErrorResponse> exceptionHandler(Exception e) {
 		ErrorResponse errorResponse = new ErrorResponse();
 		Error error=new Error();
 		error.setCode(400);
-		error.setMessage(ex.getMessage());
+		error.setMessage(e.getMessage());
 		errorResponse.setError(error);
 		return new ResponseEntity<ErrorResponse>(errorResponse, HttpStatus.OK);
 	}

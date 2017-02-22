@@ -1,4 +1,4 @@
-package org.egov.lams.rowmapper;
+package org.egov.lams.repository.rowmapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

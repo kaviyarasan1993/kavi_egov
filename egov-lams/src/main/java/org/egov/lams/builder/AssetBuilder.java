@@ -82,7 +82,7 @@ public class AssetBuilder {
 			for (Agreement agreement : agreementList) 
 				idList.add(agreement.getAsset().getId());
 		} else
-			throw new RuntimeException("the agreement list is null");
+			throw new RuntimeException("the agreement list is null for given criteria");
 		return idList;
 	}
 

@@ -3,7 +3,7 @@ package org.egov.lams.web.service;
 import java.util.List;
 
 import org.egov.lams.model.RentIncrementType;
-import org.egov.lams.rowmapper.RentIncrementRowMapper;
+import org.egov.lams.repository.rowmapper.RentIncrementRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;

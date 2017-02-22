@@ -1,5 +1,8 @@
 package org.egov.lams.exception;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Error {
@@ -14,7 +17,7 @@ public class Error {
 	  private String description = null;
 
 	  @JsonProperty("filelds")
-	  private Object filelds = null;
+	  private List<Object> filelds = new ArrayList<Object>();
 
 	public Integer getCode() {
 		return code;
@@ -40,14 +43,14 @@ public class Error {
 		this.description = description;
 	}
 
-	public Object getFilelds() {
+	public List<Object> getFilelds() {
 		return filelds;
 	}
 
-	public void setFilelds(Object filelds) {
+	public void setFilelds(List<Object> filelds) {
 		this.filelds = filelds;
 	}
-	  
+
 	  
 	
 }

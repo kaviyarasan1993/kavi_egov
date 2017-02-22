@@ -23,19 +23,19 @@ public class SearchAsset {
 
 	private Long assetCategory;
 
-	private Long doorNo;
+	private String doorNo;
 	
 	private String ShoppingComplexNo;
 
 	private String TenantId;
 
-	private String zone;
+	private Long zone;
 
-	private String ward;
+	private Long ward;
 
-	private String block;
+	private Long block;
 
-	private String locality;
+	private Long locality;
 
-	private String electionWard;
+	private Long electionWard;
 }

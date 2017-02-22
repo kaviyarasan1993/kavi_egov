@@ -15,11 +15,10 @@ public class AssetRowMapper implements RowMapper<Asset> {
 		searchAsset.setCode(rs.getString("code"));
 		searchAsset.setName(rs.getString("name"));
 		searchAsset.setId(rs.getLong("id"));
-		searchAsset.setLocality(rs.getLong("locationdetails_id"));
-		// searchAsset.setWard(rs.getLong("ward_id"));
-		// searchAsset.setZone(rs.getLong("zone"));
-		//searchAsset.setElectionward(rs.getLong("electionward_id"));
-		//searchAsset.setDoorNo(rs.getString("doorno"));
+		searchAsset.setWard(rs.getLong("revenue_ward_id"));
+		searchAsset.setZone(rs.getLong("zone_id"));
+		searchAsset.setElectionward(rs.getLong("election_ward_id"));
+		searchAsset.setDoorNumber(rs.getString("doornumber"));
 		return searchAsset;
 	}
 

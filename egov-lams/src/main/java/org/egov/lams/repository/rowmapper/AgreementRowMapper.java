@@ -1,8 +1,7 @@
-package org.egov.lams.rowmapper;
+package org.egov.lams.repository.rowmapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.egov.lams.model.Agreement;
 import org.egov.lams.model.Allottee;
@@ -20,29 +19,27 @@ public class AgreementRowMapper implements RowMapper<Agreement> {
 
 	@Override
 	public Agreement mapRow(ResultSet rs, int rowNum) throws SQLException {
-
+		
 		Agreement agreement = new Agreement();
 		agreement.setId(rs.getLong("id"));
-		SimpleDateFormat dt = new SimpleDateFormat();
-		Date date = null;
-		try {
-			dt.applyPattern("dd-MM-yyyy HH-mm-ss");
-			date = new Date(rs.getDate("agreement_Date").getTime() + 19800000);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		agreement.setAgreementDate(date);
+		Date agreementDate = new Date(rs.getTimestamp("agreement_Date").getTime());
+		agreement.setAgreementDate(agreementDate);
 		agreement.setAgreementNumber(rs.getString("agreement_no"));
 		agreement.setBankGuaranteeAmount(rs.getDouble("bank_guarantee_amount"));
-		agreement.setBankGuaranteeDate(rs.getDate("bank_guarantee_date"));
+		Date bankGuaranteeDate = new Date(rs.getTimestamp("bank_guarantee_date").getTime());
+		agreement.setBankGuaranteeDate(bankGuaranteeDate);
 		agreement.setCaseNo(rs.getString("case_no"));
-		agreement.setCommencementDate(rs.getDate("commencement_date"));
-		agreement.setCouncilDate(rs.getDate("council_date"));
+		Date commencementDate = new Date(rs.getTimestamp("commencement_date").getTime());
+		agreement.setCommencementDate(commencementDate);
+		Date councilDate = new Date(rs.getTimestamp("council_date").getTime());
+		agreement.setCouncilDate(councilDate);
 		agreement.setCouncilNumber(rs.getString("council_number"));
-		agreement.setExpiryDate(rs.getDate("expiry_date"));
+		Date expiryDate = new Date(rs.getTimestamp("expiry_date").getTime());
+		agreement.setExpiryDate(expiryDate);
 		String natureOfAllotment = (rs.getString("nature_of_allotment"));
 		agreement.setNatureOfAllotment(NatureOfAllotmentEnum.fromValue(natureOfAllotment));
-		agreement.setOrderDate(rs.getDate("order_date"));
+		Date orderDate = new Date(rs.getTimestamp("order_date").getTime());
+		agreement.setOrderDate(orderDate);
 		agreement.setOrderDetails(rs.getString("order_details"));
 		agreement.setOrderNo(rs.getString("order_no"));
 		String PaymentCycle = (rs.getString("payment_cycle"));
@@ -55,11 +52,14 @@ public class AgreementRowMapper implements RowMapper<Agreement> {
 		agreement.setStatus(StatusEnum.fromValue(status));
 		agreement.setTinNumber(rs.getString("tin_number"));
 		// agreement.setTenantId(rs.getString("tenant_id"));
-		agreement.setTenderDate(rs.getDate("tender_date"));
+		Date tenderDate = new Date(rs.getTimestamp("tender_date").getTime());
+		agreement.setTenderDate(tenderDate);
 		agreement.setTenderNumber(rs.getString("tender_number"));
 		agreement.setSecurityDeposit(rs.getDouble("security_deposit"));
-		agreement.setSecurityDepositDate(rs.getDate("security_deposit_date"));
-		agreement.setSolvencyCertificateDate(rs.getDate("solvency_certificate_date"));
+		Date securityDepositDate = new Date(rs.getTimestamp("security_deposit_date").getTime());
+		agreement.setSecurityDepositDate(securityDepositDate);
+		Date solvencyCertificateDate = new Date(rs.getTimestamp("solvency_certificate_date").getTime());
+		agreement.setSolvencyCertificateDate(solvencyCertificateDate);
 		agreement.setSolvencyCertificateNo(rs.getString("solvency_certificate_no"));
 		agreement.setTradelicenseNumber(rs.getString("trade_license_number"));
 

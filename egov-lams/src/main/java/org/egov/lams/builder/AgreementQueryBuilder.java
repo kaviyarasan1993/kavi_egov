@@ -31,7 +31,7 @@ public class AgreementQueryBuilder {
 
 			if (agreementsModel.getAgreementNumber() != null) {
 				isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, selectQuery);
-				selectQuery.append(" agreement.agreement_number=?");
+				selectQuery.append(" agreement.agreement_no=?");
 				preparedStatementValues.add(agreementsModel.getAgreementNumber());
 			}
 
@@ -61,7 +61,7 @@ public class AgreementQueryBuilder {
 
 			if (agreementsModel.getTradelicenseNumber() != null) {
 				isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, selectQuery);
-				selectQuery.append(" agreement.TradeLicense_number=?");
+				selectQuery.append(" agreement.Trade_License_number=?");
 				preparedStatementValues.add(agreementsModel.getTradelicenseNumber());
 			}
 
@@ -111,7 +111,7 @@ public class AgreementQueryBuilder {
 			preparedStatementValues.add(Integer.parseInt(agreementsModel.getOffSet()));
 		else
 			preparedStatementValues.add(0);
-
+		System.err.println(selectQuery.toString());
 		return selectQuery.toString();
 	}
 

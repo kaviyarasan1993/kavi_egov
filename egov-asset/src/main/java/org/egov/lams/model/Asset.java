@@ -33,6 +33,6 @@ public class Asset {
 
 	private Long electionward;
 	
-	private String doorNo;
+	private String doorNumber;
 	
 }

@@ -3,6 +3,9 @@ package org.egov.lams.web.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.egov.lams.exception.ErrorResponse;
 import org.egov.lams.model.Agreement;
 import org.egov.lams.model.ResponseInfo;
 import org.egov.lams.model.SearchAgreementsModel;
@@ -11,11 +14,15 @@ import org.egov.lams.web.service.SearchAgreementService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.egov.lams.exception.Error;
 
 @RestController
 public class AgreementController {
@@ -24,21 +31,44 @@ public class AgreementController {
 	@Autowired
 	SearchAgreementService agreementService;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public AgreementResponse getAgreements(@ModelAttribute SearchAgreementsModel searchAgreementsModel) {
+	@GetMapping
+	@ResponseBody
+	public ResponseEntity<?> getAgreements(@ModelAttribute @Valid SearchAgreementsModel searchAgreementsModel,BindingResult bindingResult) {
 
-		LOGGER.info("AgreementController getAgreements() searchAgreementsModel:" + searchAgreementsModel);
+		if(bindingResult.hasErrors()){
+			ErrorResponse errorResponse=populateErrors(bindingResult);
+			return new ResponseEntity<ErrorResponse>(errorResponse, HttpStatus.BAD_REQUEST);
+		}
+		LOGGER.info("AgreementController:getAgreements():searchAgreementsModel:" + searchAgreementsModel);
 		AgreementResponse agreementResponse = null;
 		List<Agreement> agreements = null;
-		try {
+		
 			agreements = agreementService.searchAgreement(searchAgreementsModel);
 			agreementResponse = new AgreementResponse();
 			agreementResponse.setAgreement(agreements);
 			agreementResponse.setResposneInfo(
 					new ResponseInfo("Get Agreement", "ver", new Date(), "GET", "did", "key", "msgId", "rqstID"));
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		return agreementResponse;
+		return new ResponseEntity<AgreementResponse>(agreementResponse, HttpStatus.OK);
 	}
+	
+	private ErrorResponse populateErrors(BindingResult errors) {
+		ErrorResponse errRes = new ErrorResponse();
+
+		ResponseInfo responseInfo = new ResponseInfo();
+		/*responseInfo.setStatus(HttpStatus.BAD_REQUEST.toString());
+		responseInfo.setApi_id("");
+		errRes.setResponseInfo(responseInfo);*/
+		Error error = new Error();
+		error.setCode(1);
+		error.setDescription("Error while binding request");
+		if (errors.hasFieldErrors()) {
+			for (FieldError errs : errors.getFieldErrors()) {
+				error.getFilelds().add(errs.getField());
+				error.getFilelds().add(errs.getRejectedValue());
+			}
+		}
+		errRes.setError(error);
+		return errRes;
+	}
+
 }

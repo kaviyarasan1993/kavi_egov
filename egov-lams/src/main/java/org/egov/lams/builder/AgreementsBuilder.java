@@ -18,9 +18,9 @@ public class AgreementsBuilder {
 		Map<Long, Asset> assetMap = new HashMap<>();
 		Map<Long, Allottee> allotteeMap = new HashMap<>();
 
-		for (Allottee allottee : allottees) {
+		/*for (Allottee allottee : allottees) {
 			allotteeMap.put(allottee.getId(), allottee);
-		}
+		}*/
 		for (Asset asset : assets) {
 			assetMap.put(asset.getId(), asset);
 		}
