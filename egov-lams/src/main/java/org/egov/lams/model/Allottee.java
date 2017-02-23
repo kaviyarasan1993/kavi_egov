@@ -14,17 +14,11 @@ import lombok.ToString;
 public class Allottee {
 
 	private Long id;
-
 	private String name;
-
 	private String address;
-
 	private Long contactNo;
-
 	private String aadhaarNo;
-
 	private String panNo;
-
 	private String emailId;
 
 }

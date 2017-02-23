@@ -20,9 +20,6 @@ import lombok.ToString;
 @ToString
 public class AssetResponse {
 
-	@JsonProperty("ResposneInfo")
 	private ResponseInfo responseInfo;
-
-	@JsonProperty("Assets")
 	private List<Asset> assets;
 }

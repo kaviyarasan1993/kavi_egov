@@ -15,8 +15,7 @@ import lombok.ToString;
 @ToString
 public class AgreementRequest {
 
-	private RequestInfo requestInfo = null;
-
-	private Agreement agreement = null;
+	private RequestInfo requestInfo;
+	private Agreement agreement;
 
 }

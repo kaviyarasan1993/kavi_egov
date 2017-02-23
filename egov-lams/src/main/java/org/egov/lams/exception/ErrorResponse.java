@@ -6,10 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ErrorResponse {
 
-	 @JsonProperty("ResposneInfo")
 	 private ResponseInfo resposneInfo;
-
-	 @JsonProperty("Error")
 	 private Error error;
 
 	public ResponseInfo getResposneInfo() {

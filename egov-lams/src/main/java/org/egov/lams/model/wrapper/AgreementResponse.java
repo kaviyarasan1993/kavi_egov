@@ -19,6 +19,5 @@ import lombok.ToString;
 public class AgreementResponse {
 
 	private ResponseInfo resposneInfo;
-
 	private List<Agreement> agreement;
 }

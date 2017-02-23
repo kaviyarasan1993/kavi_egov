@@ -23,14 +23,8 @@ import lombok.ToString;
 public class SearchAgreementsModel {
 
 	 private String tenantId;
-	 
-	 
 	 private List<Long> agreementId;
-	 
-	
 	 private String agreementNumber;
-	 
-	
 	 private String tenderNumber;
 	 
 	 @JsonFormat(pattern="dd/MM/yyyy")
@@ -38,37 +32,21 @@ public class SearchAgreementsModel {
 	 
 	 @JsonFormat(pattern="dd/MM/yyyy")
 	 private Date toDate;
-	 
 	 private StatusEnum status;
-	 
 	 private String tinNumber;
-	 
 	 private String tradelicenseNumber;
-	 
 	 private Long assetCategory;
-	 
 	 private String shoppingComplexNo;
-	 
 	 private String assetCode;
-	 
 	 private List<Long> asset;
-	 
 	 private List<Long> allottee;
-	 
 	 private Long locality;
-	 
 	 private Long revenueWard;
-	 
 	 private Long electionWard;
-	 
 	 private Long doorno;
-	 
 	 private String allotteeName;
-	 
 	 private Long mobilenumber;
-	 
 	 private String offSet;
-	 
 	 private String size;
 	 
 }

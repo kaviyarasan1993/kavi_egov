@@ -22,41 +22,31 @@ import lombok.ToString;
 public class Agreement {
 
 	private Long id;
-
 	private String agreementNumber;
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date agreementDate;
-
 	private Allottee allottee;
-
 	private Asset asset;
-
 	private String tenderNumber;
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date tenderDate;
-
 	private String councilNumber;
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date councilDate;
-
 	private Double bankGuaranteeAmount;
 
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date bankGuaranteeDate;
-
 	private Double securityDeposit;
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date securityDepositDate;
-
 	private StatusEnum status;
-
 	private NatureOfAllotmentEnum natureOfAllotment;
-
 	private Double registrationFee;
-
 	private String caseNo;
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
@@ -64,31 +54,20 @@ public class Agreement {
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date expiryDate;
-
 	private String orderDetails;
-
 	private Double rent;
-
 	private String tradelicenseNumber;
-
 	private PaymentCycleEnum paymentCycle;
-
 	private RentIncrementType rentIncrementMethod;
-
 	private String orderNo;
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date orderDate;
-
 	private String rrReadingNo;
-
 	private String remarks;
-
 	private String solvencyCertificateNo;
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date solvencyCertificateDate;
-
 	private String tinNumber;
-
 }

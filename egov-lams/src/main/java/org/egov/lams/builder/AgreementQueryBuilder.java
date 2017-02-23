@@ -130,4 +130,9 @@ public class AgreementQueryBuilder {
 		}
 		return query.toString();
 	}
+	
+	public static String findRentIncrementTypeQuery() {
+		String query = "SELECT * FROM eglams_rentincrementtype rent where rent.id=?";
+		return query;
+	}
 }
