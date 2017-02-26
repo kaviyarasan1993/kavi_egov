@@ -181,16 +181,18 @@ public class AgreementRepository {
 	public List<Asset> getAssets(String string) {
 		logger.info("AgreementController SearchAgreementService AgreementRepository : inside Asset API caller");
 		URI url = null;
-		AssetResponse assetResponse = null;
+		AssetResponse AssetResponse = null;
 		try {
 			url = new URI(propertiesManager.getAssetServiceHostName() + "?" + string);
-			assetResponse = restTemplate.getForObject(url, AssetResponse.class);
+			logger.info(url.toString());
+			AssetResponse = restTemplate.getForObject(url, AssetResponse.class);
 		} catch (Exception e) {
 			throw new RuntimeException("check if entered asset API url is correct or the asset service is running");
 		}
-		if (assetResponse.getAssets() == null || assetResponse.getAssets().size()<=0)
+		System.err.println(AssetResponse);
+		if (AssetResponse.getAssets() == null || AssetResponse.getAssets().size()<=0)
 			throw new RuntimeException("No assets found for given criteria");
 
-		return assetResponse.getAssets();
+		return AssetResponse.getAssets();
 	}
 }

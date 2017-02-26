@@ -21,7 +21,7 @@ public class AssetBuilder {
 		boolean isAppendAndClause = false;
 
 		if (searchAsset.getAsset() != null) {
-			assetParams.append("Id=" + getIdParams(searchAsset.getAsset()));
+			assetParams.append("id=" + getIdParams(searchAsset.getAsset()));
 			isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, assetParams);
 		}
 		if (searchAsset.getAssetCategory() != null) {

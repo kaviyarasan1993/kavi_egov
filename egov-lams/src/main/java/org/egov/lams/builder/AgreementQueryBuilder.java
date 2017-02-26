@@ -25,7 +25,7 @@ public class AgreementQueryBuilder {
 			boolean isAppendAndClause = false;
 
 			if (agreementsModel.getAgreementId() != null) {
-				selectQuery.append(" agreement.id=" + getIdQuery(agreementsModel.getAgreementId()));
+				selectQuery.append(" agreement.id in (" + getIdQuery(agreementsModel.getAgreementId()));
 				isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, selectQuery);
 			}
 
@@ -124,11 +124,14 @@ public class AgreementQueryBuilder {
 	}
 
 	private static String getIdQuery(List<Long> idList) {
-		StringBuilder query = new StringBuilder("" + idList.get(0));
-		for (int i = 1; i < idList.size(); i++) {
-			query.append("," + idList.get(i));
+		StringBuilder query = null;
+		if (idList.size() >= 1) {
+			query = new StringBuilder(idList.get(0).toString());
+			for (int i = 1; i < idList.size(); i++) {
+				query.append("," + idList.get(i));
+			}
 		}
-		return query.toString();
+		return query.append(")").toString();
 	}
 	
 	public static String findRentIncrementTypeQuery() {

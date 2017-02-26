@@ -15,6 +15,10 @@ CREATE TABLE eglams_rentincrementtype
   fromdate timestamp without time zone NOT NULL, 
   todate timestamp without time zone NOT NULL, 
   percentage decimal (5,2) NOT NULL, 
+  created_by character varying(64),
+  last_modified_by character varying(64),
+  created_date timestamp wihtout time zone,
+  last_modified_date timestamp without time zone,
   CONSTRAINT pk_eglams_rentincrementtype PRIMARY KEY (id)
 );
 
@@ -50,6 +54,10 @@ CREATE TABLE eglams_agreement
   tender_date timestamp without time zone,
   tender_number character varying(64),
   trade_license_number character varying(64),
+  created_by character varying(64),
+  last_modified_by character varying(64),
+  created_date timestamp wihtout time zone,
+  last_modified_date timestamp without time zone,	
   allottee bigint NOT NULL,
   asset bigint NOT NULL,
   rent_increment_method bigint NOT NULL,

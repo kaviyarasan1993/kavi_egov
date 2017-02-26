@@ -2,8 +2,6 @@ package org.egov.lams.web.controller;
 
 import java.util.Date;
 import java.util.List;
-
-import org.apache.log4j.Logger;
 import org.egov.lams.model.Asset;
 import org.egov.lams.model.AssetCategory;
 import org.egov.lams.model.AssetCategoryResponse;
