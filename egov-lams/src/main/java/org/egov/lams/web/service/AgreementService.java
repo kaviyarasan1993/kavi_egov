@@ -42,7 +42,8 @@ public class AgreementService {
 				&& fetchAgreementsModel.getAgreementNumber() == null && fetchAgreementsModel.getStatus() == null
 				&& (fetchAgreementsModel.getFromDate() == null && fetchAgreementsModel.getToDate() == null)
 				&& fetchAgreementsModel.getTenderNumber() == null && fetchAgreementsModel.getTinNumber() == null
-				&& fetchAgreementsModel.getTradelicenseNumber() == null);
+				&& fetchAgreementsModel.getTradelicenseNumber() == null && fetchAgreementsModel.getAsset() == null
+				&& fetchAgreementsModel.getAllottee() == null);
 
 		boolean isAllotteeNull = (fetchAgreementsModel.getAllotteeName() == null
 				&& fetchAgreementsModel.getMobilenumber() == null);

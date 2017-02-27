@@ -4,7 +4,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.egov.lams.model.SearchAgreementsModel;
-import org.egov.lams.web.controller.AgreementController;
 
 public class AgreementQueryBuilder {
 
@@ -14,67 +13,66 @@ public class AgreementQueryBuilder {
 	public static String agreementQueryBuilder(SearchAgreementsModel agreementsModel,
 			@SuppressWarnings("rawtypes") List preparedStatementValues) {
 
-		StringBuilder selectQuery = new StringBuilder("select * from eglams_agreement agreement");
+		StringBuilder selectQuery = new StringBuilder("SELECT * FROM EGLAMS_AGREEMENT AGREEMENT");
 
 		if (!(agreementsModel.getAgreementId() == null && agreementsModel.getAgreementNumber() == null
 				&& (agreementsModel.getFromDate() == null && agreementsModel.getToDate() == null)
 				&& agreementsModel.getStatus() == null && agreementsModel.getTenderNumber() == null
-				&& agreementsModel.getTinNumber() == null && agreementsModel.getTradelicenseNumber() == null))
+				&& agreementsModel.getTinNumber() == null && agreementsModel.getTradelicenseNumber() == null
+				&& agreementsModel.getAllottee() == null && agreementsModel.getAsset() == null))
 		{
-			selectQuery.append(" where");
+			selectQuery.append(" WHERE");
 			boolean isAppendAndClause = false;
 
 			if (agreementsModel.getAgreementId() != null) {
-				selectQuery.append(" agreement.id in (" + getIdQuery(agreementsModel.getAgreementId()));
+				selectQuery.append(" AGREEMENT.ID IN (" + getIdQuery(agreementsModel.getAgreementId()));
 				isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, selectQuery);
 			}
 
 			if (agreementsModel.getAgreementNumber() != null) {
 				isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, selectQuery);
-				selectQuery.append(" agreement.agreement_no=?");
+				selectQuery.append(" AGREEMENT.AGREEMENT_NO=?");
 				preparedStatementValues.add(agreementsModel.getAgreementNumber());
 			}
 
 			if (agreementsModel.getStatus() != null) {
 				isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, selectQuery);
-				selectQuery.append(" agreement.status=?");
+				selectQuery.append(" AGREEMENT.STATUS=?");
 				preparedStatementValues.add(agreementsModel.getStatus().toString());
 			}
 
 			if (agreementsModel.getTenantId() != null) {
 				isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, selectQuery);
-				selectQuery.append(" agreement.tenant_id=?");
+				selectQuery.append(" AGREEMENT.TENANT_ID=?");
 				preparedStatementValues.add(agreementsModel.getTenantId());
 			}
 
 			if (agreementsModel.getTenderNumber() != null) {
 				isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, selectQuery);
-				selectQuery.append(" agreement.tender_number=?");
+				selectQuery.append(" AGREEMENT.TENDER_NUMBER=?");
 				preparedStatementValues.add(agreementsModel.getTenderNumber());
 			}
 
 			if (agreementsModel.getTinNumber() != null) {
 				isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, selectQuery);
-				selectQuery.append(" agreement.tin_number=?");
+				selectQuery.append(" AGREEMENT.TIN_NUMBER=?");
 				preparedStatementValues.add(agreementsModel.getTinNumber());
 			}
 
 			if (agreementsModel.getTradelicenseNumber() != null) {
 				isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, selectQuery);
-				selectQuery.append(" agreement.Trade_License_number=?");
+				selectQuery.append(" AGREEMENT.TRADE_LICENSE_NUMBER=?");
 				preparedStatementValues.add(agreementsModel.getTradelicenseNumber());
 			}
 
 			if (agreementsModel.getAsset() != null) {
 				isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, selectQuery);
-				selectQuery.append(" agreement.asset=?");
-				preparedStatementValues.add(agreementsModel.getAsset());
+				selectQuery.append(" AGREEMENT.ASSET IN (" + getIdQuery(agreementsModel.getAsset()));
 			}
 
 			if (agreementsModel.getAllottee() != null) {
 				isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, selectQuery);
-				selectQuery.append(" agreement.allottee=?");
-				preparedStatementValues.add(agreementsModel.getAllottee());
+				selectQuery.append(" AGREEMENT.ALLOTTEE IN (" + getIdQuery(agreementsModel.getAllottee()));
 			}
 
 			if (agreementsModel.getFromDate() != null) {
@@ -83,10 +81,10 @@ public class AgreementQueryBuilder {
 					if (agreementsModel.getToDate().compareTo(agreementsModel.getFromDate()) < 0)
 						throw new RuntimeException("ToDate cannot be lesser than fromdate");
 					isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, selectQuery);
-					selectQuery.append(" agreement.agreement_date>=?");
+					selectQuery.append(" AGREEMENT.AGREEMENT_DATE>=?");
 					preparedStatementValues.add(agreementsModel.getFromDate());
 					addAndClauseIfRequired(isAppendAndClause, selectQuery);
-					selectQuery.append(" agreement.agreement_date<=?");
+					selectQuery.append(" AGREEMENT.AGREEMENT_DATE<=?");
 					preparedStatementValues.add(agreementsModel.getToDate());
 				}
 			}
@@ -98,7 +96,7 @@ public class AgreementQueryBuilder {
 		 * default offset value has to be set
 		 */
 
-		selectQuery.append(" ORDER BY agreement.id");
+		selectQuery.append(" ORDER BY AGREEMENT.ID");
 		selectQuery.append(" LIMIT ?");
 		if (agreementsModel.getSize() != null)
 			preparedStatementValues.add(Integer.parseInt(agreementsModel.getSize()));
@@ -118,7 +116,7 @@ public class AgreementQueryBuilder {
 	private static boolean addAndClauseIfRequired(boolean appendAndClauseFlag, StringBuilder queryString) {
 
 		if (appendAndClauseFlag) {
-			queryString.append(" and");
+			queryString.append(" AND");
 		}
 		return true;
 	}
@@ -135,7 +133,7 @@ public class AgreementQueryBuilder {
 	}
 	
 	public static String findRentIncrementTypeQuery() {
-		String query = "SELECT * FROM eglams_rentincrementtype rent where rent.id=?";
+		String query = "SELECT * FROM EGLAMS_RENTINCREMENTTYPE RENT WHERE RENT.ID=?";
 		return query;
 	}
 }
