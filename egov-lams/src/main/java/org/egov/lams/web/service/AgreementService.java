@@ -9,7 +9,6 @@ import org.egov.lams.model.SearchAgreementsModel;
 import org.egov.lams.producers.AgreementProducer;
 import org.egov.lams.repository.AgreementRepository;
 import org.egov.lams.repository.rowmapper.RentIncrementRowMapper;
-import org.egov.lams.web.controller.AgreementController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
