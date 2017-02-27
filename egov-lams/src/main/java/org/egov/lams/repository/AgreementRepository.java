@@ -14,7 +14,6 @@ import org.egov.lams.model.Asset;
 import org.egov.lams.model.SearchAgreementsModel;
 import org.egov.lams.model.wrapper.AssetResponse;
 import org.egov.lams.repository.rowmapper.AgreementRowMapper;
-import org.egov.lams.web.controller.AgreementController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
