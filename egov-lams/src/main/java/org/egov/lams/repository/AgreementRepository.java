@@ -25,7 +25,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Repository
 public class AgreementRepository {
-	public static final Logger logger = LoggerFactory.getLogger(AgreementController.class);
+	public static final Logger logger = LoggerFactory.getLogger(AgreementRepository.class);
 
 	@Autowired
 	PropertiesManager propertiesManager;

@@ -8,7 +8,7 @@ import org.egov.lams.web.controller.AgreementController;
 
 public class AgreementQueryBuilder {
 
-	public static final Logger logger = LoggerFactory.getLogger(AgreementController.class);
+	public static final Logger logger = LoggerFactory.getLogger(AgreementQueryBuilder.class);
 
 	@SuppressWarnings("unchecked")
 	public static String agreementQueryBuilder(SearchAgreementsModel agreementsModel,

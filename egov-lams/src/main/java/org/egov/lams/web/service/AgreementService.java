@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class AgreementService {
-	public static final Logger logger = LoggerFactory.getLogger(AgreementController.class);
+	public static final Logger logger = LoggerFactory.getLogger(AgreementService.class);
 
 	@Autowired
 	private AgreementRepository agreementRepository;
