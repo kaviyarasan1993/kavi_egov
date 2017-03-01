@@ -3,16 +3,14 @@ package org.egov.lams.web.controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.egov.lams.exception.ErrorResponse;
 import org.egov.lams.model.Agreement;
 import org.egov.lams.model.ResponseInfo;
-import org.egov.lams.model.SearchAgreementsModel;
+import org.egov.lams.model.AgreementCriteria;
 import org.egov.lams.model.wrapper.AgreementRequest;
 import org.egov.lams.model.wrapper.AgreementResponse;
-import org.egov.lams.web.service.AgreementService;
+import org.egov.lams.service.AgreementService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,24 +35,27 @@ public class AgreementController {
 
 	@GetMapping
 	@ResponseBody
-	public ResponseEntity<?> getAgreements(@ModelAttribute @Valid SearchAgreementsModel searchAgreementsModel,BindingResult bindingResult) {
+	public ResponseEntity<?> search(@ModelAttribute @Valid AgreementCriteria agreementCriteria, 
+			BindingResult bindingResult) {
 
 		if(bindingResult.hasErrors()){
 			ErrorResponse errorResponse=populateErrors(bindingResult);
 			return new ResponseEntity<ErrorResponse>(errorResponse, HttpStatus.BAD_REQUEST);
 		}
-		LOGGER.info("AgreementController:getAgreements():searchAgreementsModel:" + searchAgreementsModel);
-		AgreementResponse agreementResponse = null;
-		List<Agreement> agreements = null;
+		LOGGER.info("AgreementController:getAgreements():searchAgreementsModel:" + agreementCriteria);
 		
-			agreements = agreementService.searchAgreement(searchAgreementsModel);
-			agreementResponse = new AgreementResponse();
-			agreementResponse.setAgreement(agreements);
-			agreementResponse.setResposneInfo(
-					new ResponseInfo("Get Agreement", "ver", new Date(), "GET", "did", "key", "msgId", "rqstID"));
-		return new ResponseEntity<AgreementResponse>(agreementResponse, HttpStatus.OK);
+		List<Agreement> agreements = agreementService.searchAgreement(agreementCriteria);
+		return getSuccessResponse(agreements);			
 	}
 	
+	private ResponseEntity<?> getSuccessResponse(List<Agreement> agreements) {
+		AgreementResponse agreementResponse = new AgreementResponse();
+		agreementResponse.setAgreement(agreements);
+		agreementResponse.setResposneInfo(
+				new ResponseInfo("Get Agreement", "ver", new Date(), "GET", "did", "key", "msgId", "rqstID"));
+		return new ResponseEntity<AgreementResponse>(agreementResponse, HttpStatus.OK);
+	}
+
 	@PostMapping("/_Post_Create_Agreement")
 	@ResponseBody
 	public ResponseEntity<?> create(@RequestBody @Valid AgreementRequest agreementRequest,BindingResult errors){

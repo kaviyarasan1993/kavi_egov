@@ -2,6 +2,9 @@ package org.egov.lams.model.wrapper;
 
 import org.egov.lams.model.Agreement;
 import org.egov.lams.model.RequestInfo;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +18,9 @@ import lombok.ToString;
 @ToString
 public class AgreementRequest {
 
+	@JsonProperty("RequestInfo")
 	private RequestInfo requestInfo;
+	
+	@JsonProperty("Agreement")
 	private Agreement agreement;
-
 }

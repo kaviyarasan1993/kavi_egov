@@ -1,5 +1,7 @@
 package org.egov.lams.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,13 +18,8 @@ public class Asset {
 	private Long id;
 	private Long category;
 	private String name;
-	private String code;
-	private Long locality;
-	private String street;
-	private String zone;
-	private Long ward;
-	private String block;
-	private Long electionward;
 	private Long doorNo;
-	
+	private String code;
+	@JsonProperty("locationDetails")
+	private Location locality;
 }

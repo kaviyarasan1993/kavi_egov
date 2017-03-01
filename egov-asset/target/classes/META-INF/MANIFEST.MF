@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
-Implementation-Title: egov-asset
+Implementation-Title: assets
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: toshiba
 Implementation-Vendor-Id: org.egov
 Build-Jdk: 1.8.0_121
-Implementation-URL: http://projects.spring.io/spring-boot/egov-asset/
+Implementation-URL: http://projects.spring.io/spring-boot/assets/
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
 

@@ -7,7 +7,7 @@ import org.egov.lams.model.RentIncrementType;
 import org.egov.lams.model.enums.NatureOfAllotmentEnum;
 import org.egov.lams.model.enums.PaymentCycleEnum;
 import org.egov.lams.model.enums.StatusEnum;
-import org.egov.lams.web.service.GetRentIncrementService;
+import org.egov.lams.service.GetRentIncrementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

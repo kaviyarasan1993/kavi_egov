@@ -52,6 +52,7 @@ public class AgreementRowMapper implements RowMapper<Agreement> {
 		agreement.setSolvencyCertificateDate(rs.getTimestamp("solvency_certificate_date"));
 		agreement.setSolvencyCertificateNo(rs.getString("solvency_certificate_no"));
 		agreement.setTradelicenseNumber(rs.getString("trade_license_number"));
+		//agreement.setRentIncrementMethod(rs.getLong("rent_increment_method"));
 
 		Allottee allottee = new Allottee();
 		allottee.setId(rs.getLong("allottee"));

@@ -3,16 +3,17 @@ package org.egov.lams.repository;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
-import org.egov.lams.builder.AgreementQueryBuilder;
-import org.egov.lams.builder.AgreementsBuilder;
-import org.egov.lams.builder.AllotteeBuilder;
-import org.egov.lams.builder.AssetBuilder;
+
 import org.egov.lams.config.PropertiesManager;
 import org.egov.lams.model.Agreement;
 import org.egov.lams.model.Allottee;
 import org.egov.lams.model.Asset;
-import org.egov.lams.model.SearchAgreementsModel;
+import org.egov.lams.model.AgreementCriteria;
 import org.egov.lams.model.wrapper.AssetResponse;
+import org.egov.lams.repository.builder.AgreementQueryBuilder;
+import org.egov.lams.repository.builder.AgreementHelper;
+import org.egov.lams.repository.builder.AllotteeHelper;
+import org.egov.lams.repository.builder.AssetHelper;
 import org.egov.lams.repository.rowmapper.AgreementRowMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,63 +35,78 @@ public class AgreementRepository {
 
 	@Autowired
 	RestTemplate restTemplate;
+	
+	@Autowired
+	AssetHelper assetHelper;
 
-	private AllotteeBuilder allotteeBuilder = new AllotteeBuilder();
+	@Autowired
+	AllotteeHelper allotteeHelper;
+	
+	@Autowired
+	AgreementHelper agreementHelper;
 
-	private AssetBuilder assetBuilder = new AssetBuilder();
-
-	public List<Agreement> findAgreementsByAllotee(SearchAgreementsModel fetchAgreementsModel) {
-		logger.info("AgreementController SearchAgreementService AgreementRepository : inside findAgreementsByAllotee");
+	/**
+	 * Allottee criteria is on name or mobile number which is expected to return 1 or 2 records.
+	 * With this, we make the agreementQuery. so, the result set also is like 1 or 2 records.
+	 * Then, we get all the assets for given asset criteria in a list and then
+	 * filter agreement results based on the asset. 
+	 */
+	public List<Agreement> findByAllotee(AgreementCriteria agreementCriteria) {
 		List<Object> preparedStatementValues = new ArrayList<Object>();
 		List<Agreement> agreements = null;
-		List<Asset> assets = null;
-		List<Allottee> allottees = null;
-
-		allottees = getAllottees(AllotteeBuilder.getAllotteeUrl(fetchAgreementsModel));
-		fetchAgreementsModel.setAllottee(allotteeBuilder.getAllotteeIdList(allottees));
-		String queryStr = AgreementQueryBuilder.agreementQueryBuilder(fetchAgreementsModel, preparedStatementValues);
-		try{
+		
+		List<Allottee> allottees = getAllottees(agreementCriteria);
+		agreementCriteria.setAllottee(allotteeHelper.getAllotteeIdList(allottees));
+		String queryStr = AgreementQueryBuilder.agreementQueryBuilder(agreementCriteria, preparedStatementValues);
+		try {
 			agreements = jdbcTemplate.query(queryStr, preparedStatementValues.toArray(), new AgreementRowMapper());
-		}catch (DataAccessException e) {
+		} catch (DataAccessException e) {
+			// FIXME log exception here
+			// FIXME see if it can be better than RunTimeException rethrown
 			throw new RuntimeException(e.getMessage());
 		}
-		if(agreements.isEmpty()) throw new RuntimeException("The criteria provided did not match any agreements");
-		fetchAgreementsModel.setAsset(assetBuilder.getAssetIdListByAgreements(agreements));
-		assets = getAssets(AssetBuilder.getAssetUrl(fetchAgreementsModel));
-		agreements = AgreementsBuilder.mapAgreements(agreements, allottees, assets);
+		if (agreements.isEmpty()) 
+			return agreements; // empty agreement list is returned
+			//throw new RuntimeException("The criteria provided did not match any agreements");
+		agreementCriteria.setAsset(assetHelper.getAssetIdListByAgreements(agreements));
+		
+		List<Asset> assets = getAssets(agreementCriteria);
+		agreements = agreementHelper.filterAndEnrichAgreements(agreements, allottees, assets);
 		
 		return agreements;
 	}
 
-	public List<Agreement> findAgreementsByAsset(SearchAgreementsModel fetchAgreementsModel) {
-		logger.info("AgreementController SearchAgreementService AgreementRepository : inside findAgreementsByAsset");
+	public List<Agreement> findByAsset(AgreementCriteria agreementCriteria) {
+		logger.info("AgreementController SearchAgreementService AgreementRepository : inside findByAsset");
 		List<Object> preparedStatementValues = new ArrayList<Object>();
 		List<Agreement> agreements = null;
-		List<Asset> assets = null;
-		List<Allottee> allottees = null;
-
-		assets = getAssets(AssetBuilder.getAssetUrl(fetchAgreementsModel));
-		fetchAgreementsModel.setAsset(assetBuilder.getAssetIdList(assets));
-		String queryStr = AgreementQueryBuilder.agreementQueryBuilder(fetchAgreementsModel, preparedStatementValues);
+		
+		List<Asset> assets = getAssets(agreementCriteria);
+		if (assets.size() > 1000) // FIXME
+			throw new RuntimeException("Asset criteria is too big");
+		agreementCriteria.setAsset(assetHelper.getAssetIdList(assets));
+		String queryStr = AgreementQueryBuilder.agreementQueryBuilder(agreementCriteria, preparedStatementValues);
 		try{
 			agreements = jdbcTemplate.query(queryStr, preparedStatementValues.toArray(), new AgreementRowMapper());
 		}catch (DataAccessException e) {
+			// FIXME log exception
 			throw new RuntimeException(e.getMessage());
 		}
-		if(agreements.isEmpty()) throw new RuntimeException("The criteria provided did not match any agreements");
-		fetchAgreementsModel.setAllottee(allotteeBuilder.getAllotteeIdListByAgreements(agreements));
-		allottees = getAllottees(AllotteeBuilder.getAllotteeUrl(fetchAgreementsModel));
-		agreements = AgreementsBuilder.mapAgreements(agreements, allottees, assets);
+		if(agreements.isEmpty()) 
+			return agreements;
+		agreementCriteria.setAllottee(allotteeHelper.getAllotteeIdListByAgreements(agreements));
+		List<Allottee> allottees = getAllottees(agreementCriteria);
+		agreements = agreementHelper.filterAndEnrichAgreements(agreements, allottees, assets);
 
 		return agreements;
 	}
 
-	public List<Agreement> findAgreementsByAgreement(SearchAgreementsModel fetchAgreementsModel) {
-		logger.info("AgreementController SearchAgreementService AgreementRepository : inside findAgreementsByAgreement");
+	public List<Agreement> findByAgreement(AgreementCriteria fetchAgreementsModel) {
+		logger.info("AgreementController SearchAgreementService AgreementRepository : inside findByAgreement");
 		List<Object> preparedStatementValues = new ArrayList<Object>();
 		List<Agreement> agreements = null;
-		List<Asset> assets = null;
-		List<Allottee> allottees = null;
+		
+		
 
 		String queryStr = AgreementQueryBuilder.agreementQueryBuilder(fetchAgreementsModel, preparedStatementValues);
 		try{
@@ -99,44 +115,40 @@ public class AgreementRepository {
 			throw new RuntimeException(e.getMessage());
 		}
 		if(agreements.isEmpty()) throw new RuntimeException("The criteria provided did not match any agreements");
-		fetchAgreementsModel.setAsset(assetBuilder.getAssetIdListByAgreements(agreements));
-		fetchAgreementsModel.setAllottee(allotteeBuilder.getAllotteeIdListByAgreements(agreements));
-		assets = getAssets(AssetBuilder.getAssetUrl(fetchAgreementsModel));
-		allottees = getAllottees(AllotteeBuilder.getAllotteeUrl(fetchAgreementsModel));
-		agreements = AgreementsBuilder.mapAgreements(agreements, allottees, assets);
+		fetchAgreementsModel.setAsset(assetHelper.getAssetIdListByAgreements(agreements));
+		fetchAgreementsModel.setAllottee(allotteeHelper.getAllotteeIdListByAgreements(agreements));
+		List<Asset> assets = getAssets(fetchAgreementsModel);
+		List<Allottee> allottees = getAllottees(fetchAgreementsModel);
+		agreements = agreementHelper.filterAndEnrichAgreements(agreements, allottees, assets);
 		
 		return agreements;
 	}
 
-	public List<Agreement> findAgreementsByAgreementAndAllotee(SearchAgreementsModel fetchAgreementsModel) {
-		logger.info("AgreementController SearchAgreementService AgreementRepository : inside findAgreementsByAgreementAndAllotee");
+	public List<Agreement> findByAgreementAndAllotee(AgreementCriteria agreementCriteria) {
+		logger.info("AgreementController SearchAgreementService AgreementRepository : inside findByAgreementAndAllotee");
 		List<Object> preparedStatementValues = new ArrayList<Object>();
 		List<Agreement> agreements = null;
-		List<Asset> assets = null;
-		List<Allottee> allottees = null;
 
-		String queryStr = AgreementQueryBuilder.agreementQueryBuilder(fetchAgreementsModel, preparedStatementValues);
+		String queryStr = AgreementQueryBuilder.agreementQueryBuilder(agreementCriteria, preparedStatementValues);
 		try{
 			agreements = jdbcTemplate.query(queryStr, preparedStatementValues.toArray(), new AgreementRowMapper());
 		}catch (DataAccessException e) {
 			throw new RuntimeException(e.getMessage());
 		}
 		if(agreements.isEmpty()) throw new RuntimeException("The criteria provided did not match any agreements");
-		fetchAgreementsModel.setAllottee(allotteeBuilder.getAllotteeIdListByAgreements(agreements));
-		allottees = getAllottees(AllotteeBuilder.getAllotteeUrl(fetchAgreementsModel));
-		fetchAgreementsModel.setAsset(assetBuilder.getAssetIdListByAgreements(agreements));
-		assets = getAssets(AssetBuilder.getAssetUrl(fetchAgreementsModel));
-		agreements = AgreementsBuilder.mapAgreements(agreements, allottees, assets);
+		agreementCriteria.setAllottee(allotteeHelper.getAllotteeIdListByAgreements(agreements));
+		List<Allottee> allottees = getAllottees(agreementCriteria);
+		agreementCriteria.setAsset(assetHelper.getAssetIdListByAgreements(agreements));
+		List<Asset> assets  = getAssets(agreementCriteria);
+		agreements = agreementHelper.filterAndEnrichAgreements(agreements, allottees, assets);
 		
 		return agreements;
 	}
 
-	public List<Agreement> findAgreementsByAgreementAndAsset(SearchAgreementsModel fetchAgreementsModel) {
-		logger.info("AgreementController SearchAgreementService AgreementRepository : inside findAgreementsByAgreementAndAsset");
+	public List<Agreement> findByAgreementAndAsset(AgreementCriteria fetchAgreementsModel) {
+		logger.info("AgreementController SearchAgreementService AgreementRepository : inside findByAgreementAndAsset");
 		List<Object> preparedStatementValues = new ArrayList<Object>();
 		List<Agreement> agreements = null;
-		List<Asset> assets = null;
-		List<Allottee> allottees = null;
 		
 		String queryStr = AgreementQueryBuilder.agreementQueryBuilder(fetchAgreementsModel, preparedStatementValues);
 		try{
@@ -145,12 +157,11 @@ public class AgreementRepository {
 			throw new RuntimeException(e.getMessage());
 		}
 		if(agreements.isEmpty()) throw new RuntimeException("The criteria provided did not match any agreements");
-		fetchAgreementsModel.setAsset(assetBuilder.getAssetIdListByAgreements(agreements));
-		assets = getAssets(AssetBuilder.getAssetUrl(fetchAgreementsModel));
-		agreements = AgreementsBuilder.mapAgreements(agreements, allottees, assets);
-		fetchAgreementsModel.setAllottee(allotteeBuilder.getAllotteeIdListByAgreements(agreements));
-		allottees = getAllottees(AllotteeBuilder.getAllotteeUrl(fetchAgreementsModel));
-		agreements = AgreementsBuilder.mapAgreements(agreements, allottees, assets);
+		fetchAgreementsModel.setAsset(assetHelper.getAssetIdListByAgreements(agreements));
+		List<Asset> assets  = getAssets(fetchAgreementsModel);
+		fetchAgreementsModel.setAllottee(allotteeHelper.getAllotteeIdListByAgreements(agreements));
+		List<Allottee> allottees = getAllottees(fetchAgreementsModel);
+		agreements = agreementHelper.filterAndEnrichAgreements(agreements, allottees, assets);
 		
 		return agreements;
 	}
@@ -158,34 +169,35 @@ public class AgreementRepository {
 	/*
 	 * method to return a list of Allottee objects by making an API call to Allottee API 
 	 */
-	public List<Allottee> getAllottees(String string) {
+	public List<Allottee> getAllottees(AgreementCriteria agreementCriteria) {
+		//String queryString = allotteeBuilder.getAllotteeUrl(agreementCriteria);
 		logger.info("AgreementController SearchAgreementService AgreementRepository : inside Allottee API caller");
-		/* URI url = null;
-		 restTemplate.getForObject(url, Allottee.class);
-		try {
-			url = new URI(propertiesManager.getAssetServiceHostName() + "?" + string);
-			allotteeResponse = restTemplate.getForObject(url, AllotteeResponse.class);
-		} catch (Exception e) {
-			throw new RuntimeException("check if entered asset API url is correct or the asset service is running");
-		}
-		if (allotteeResponse.getAllottee() == null || allotteeResponse.getAllottee().size()<=0)
-			throw new RuntimeException("No assets found for given criteria");
-*/
-		return null;
-	}
+		Allottee allottee = new Allottee();
+		allottee.setId(45l);
+		allottee.setAadhaarNo("1235509945");
+		allottee.setContactNo(9990002224l);
+		allottee.setAddress("home");
+		allottee.setName("ghanshyam");
+		allottee.setPanNo("axy93jwbd");
+		allottee.setEmailId("xyz.riflexions.com");
+		List<Allottee> allottees = new ArrayList<>();
+		allottees.add(allottee);
 		
+		return allottees;
+	}
 	/*
 	 * method to return a list of Asset objects by making an API call to Asset API 
 	 */
-	public List<Asset> getAssets(String string) {
-		logger.info("AgreementController SearchAgreementService AgreementRepository : inside Asset API caller");
+	public List<Asset> getAssets(AgreementCriteria agreementCriteria) {
+		String queryString = assetHelper.getAssetUrl(agreementCriteria);
 		URI url = null;
 		AssetResponse AssetResponse = null;
 		try {
-			url = new URI(propertiesManager.getAssetServiceHostName() + "?" + string);
+			url = new URI(propertiesManager.getAssetServiceHostName() + "?" + queryString);
 			logger.info(url.toString());
 			AssetResponse = restTemplate.getForObject(url, AssetResponse.class);
 		} catch (Exception e) {
+			// FIXME log error to getstacktrace
 			throw new RuntimeException("check if entered asset API url is correct or the asset service is running");
 		}
 		System.err.println(AssetResponse);
