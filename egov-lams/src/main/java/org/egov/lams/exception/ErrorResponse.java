@@ -2,6 +2,7 @@ package org.egov.lams.exception;
 
 
 import org.egov.lams.model.ResponseInfo;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -2,10 +2,11 @@ package org.egov.lams.repository.helper;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 import org.egov.lams.model.Agreement;
+import org.egov.lams.model.AgreementCriteria;
 import org.egov.lams.model.Allottee;
 import org.springframework.stereotype.Component;
-import org.egov.lams.model.AgreementCriteria;
 @Component
 public class AllotteeHelper {
 

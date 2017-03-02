@@ -6,9 +6,9 @@ import java.util.List;
 
 import org.egov.lams.config.PropertiesManager;
 import org.egov.lams.model.Agreement;
+import org.egov.lams.model.AgreementCriteria;
 import org.egov.lams.model.Allottee;
 import org.egov.lams.model.Asset;
-import org.egov.lams.model.AgreementCriteria;
 import org.egov.lams.model.wrapper.AssetResponse;
 import org.egov.lams.repository.builder.AgreementQueryBuilder;
 import org.egov.lams.repository.helper.AgreementHelper;

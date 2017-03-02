@@ -42,8 +42,6 @@ package org.egov.asset.repository.rowmapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
-
 import org.egov.asset.model.Asset;
 import org.egov.asset.model.AssetCategory;
 import org.egov.asset.model.Department;

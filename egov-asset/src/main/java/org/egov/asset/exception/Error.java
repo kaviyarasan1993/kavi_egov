@@ -42,9 +42,6 @@ package org.egov.asset.exception;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import javax.validation.constraints.NotNull;
-
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -3,8 +3,8 @@ package org.egov.lams.service;
 import java.util.List;
 
 import org.egov.lams.model.Agreement;
-import org.egov.lams.model.RentIncrementType;
 import org.egov.lams.model.AgreementCriteria;
+import org.egov.lams.model.RentIncrementType;
 import org.egov.lams.producers.AgreementProducer;
 import org.egov.lams.repository.AgreementRepository;
 import org.egov.lams.repository.builder.AgreementQueryBuilder;

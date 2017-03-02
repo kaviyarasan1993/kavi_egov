@@ -6,13 +6,11 @@ import java.util.List;
 import org.egov.lams.model.enums.StatusEnum;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AccessLevel;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import lombok.ToString;
 
 @Setter

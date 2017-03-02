@@ -3,11 +3,14 @@ package org.egov.lams.web.controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import javax.validation.Valid;
+
+import org.egov.lams.exception.Error;
 import org.egov.lams.exception.ErrorResponse;
 import org.egov.lams.model.Agreement;
-import org.egov.lams.model.ResponseInfo;
 import org.egov.lams.model.AgreementCriteria;
+import org.egov.lams.model.ResponseInfo;
 import org.egov.lams.model.wrapper.AgreementRequest;
 import org.egov.lams.model.wrapper.AgreementResponse;
 import org.egov.lams.service.AgreementService;
@@ -24,7 +27,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.egov.lams.exception.Error;
 
 @RestController
 public class AgreementController {
@@ -79,8 +81,8 @@ public class AgreementController {
 	private ErrorResponse populateErrors(BindingResult errors) {
 		ErrorResponse errRes = new ErrorResponse();
 
-		ResponseInfo responseInfo = new ResponseInfo();
-		/*responseInfo.setStatus(HttpStatus.BAD_REQUEST.toString());
+		/*ResponseInfo responseInfo = new ResponseInfo();
+		responseInfo.setStatus(HttpStatus.BAD_REQUEST.toString());
 		responseInfo.setApi_id("");
 		errRes.setResponseInfo(responseInfo);*/
 		Error error = new Error();

@@ -1,9 +1,10 @@
 package org.egov.lams.repository.builder;
 
 import java.util.List;
+
+import org.egov.lams.model.AgreementCriteria;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.egov.lams.model.AgreementCriteria;
 
 public class AgreementQueryBuilder {
 

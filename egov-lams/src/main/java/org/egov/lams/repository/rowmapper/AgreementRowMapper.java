@@ -2,6 +2,7 @@ package org.egov.lams.repository.rowmapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import org.egov.lams.model.Agreement;
 import org.egov.lams.model.Allottee;
 import org.egov.lams.model.Asset;
