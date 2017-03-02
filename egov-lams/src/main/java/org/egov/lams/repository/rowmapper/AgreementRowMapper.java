@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import org.egov.lams.model.Agreement;
 import org.egov.lams.model.Allottee;
 import org.egov.lams.model.Asset;
+import org.egov.lams.model.RentIncrementType;
 import org.egov.lams.model.enums.NatureOfAllotmentEnum;
 import org.egov.lams.model.enums.PaymentCycleEnum;
 import org.egov.lams.model.enums.StatusEnum;
@@ -52,7 +53,11 @@ public class AgreementRowMapper implements RowMapper<Agreement> {
 		agreement.setSolvencyCertificateDate(rs.getTimestamp("solvency_certificate_date"));
 		agreement.setSolvencyCertificateNo(rs.getString("solvency_certificate_no"));
 		agreement.setTradelicenseNumber(rs.getString("trade_license_number"));
-		//agreement.setRentIncrementMethod(rs.getLong("rent_increment_method"));
+		
+		
+		RentIncrementType rentIncrementType=new RentIncrementType();
+		rentIncrementType.setId(rs.getLong("rent_increment_method"));
+		agreement.setRentIncrementMethod(rentIncrementType);
 
 		Allottee allottee = new Allottee();
 		allottee.setId(rs.getLong("allottee"));
