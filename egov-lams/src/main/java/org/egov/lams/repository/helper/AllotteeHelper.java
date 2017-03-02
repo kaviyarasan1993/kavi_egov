@@ -1,4 +1,4 @@
-package org.egov.lams.repository.builder;
+package org.egov.lams.repository.helper;
 
 import java.util.List;
 import java.util.stream.Collectors;
