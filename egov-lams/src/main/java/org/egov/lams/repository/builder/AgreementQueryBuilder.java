@@ -76,9 +76,8 @@ public class AgreementQueryBuilder {
 				selectQuery.append(" AGREEMENT.ALLOTTEE IN (" + getIdQuery(agreementsModel.getAllottee()));
 			}
 
-			if (agreementsModel.getFromDate() != null) {
+			if (agreementsModel.getFromDate() != null && agreementsModel.getToDate() != null) {
 
-				if (agreementsModel.getToDate() != null) {
 					if (agreementsModel.getToDate().compareTo(agreementsModel.getFromDate()) < 0)
 						throw new RuntimeException("ToDate cannot be lesser than fromdate");
 					isAppendAndClause = addAndClauseIfRequired(isAppendAndClause, selectQuery);
@@ -87,16 +86,15 @@ public class AgreementQueryBuilder {
 					addAndClauseIfRequired(isAppendAndClause, selectQuery);
 					selectQuery.append(" AGREEMENT.AGREEMENT_DATE<=?");
 					preparedStatementValues.add(agreementsModel.getToDate());
-				}
 			}
-
 		}
 
 		/*
 		 * put default date value of one year span, considering current date as toDate
 		 * default offset value has to be set
 		 */
-
+		
+		// TODO add date for one year span 
 		selectQuery.append(" ORDER BY AGREEMENT.ID");
 		selectQuery.append(" LIMIT ?");
 		if (agreementsModel.getSize() != null)

@@ -44,8 +44,8 @@ public class AgreementService {
 				&& agreementCriteria.getTradelicenseNumber() == null && agreementCriteria.getAsset() == null
 				&& agreementCriteria.getAllottee() == null);
 
-		boolean isAllotteeNull = (agreementCriteria.getAllotteeName() == null
-				&& agreementCriteria.getMobilenumber() == null);
+		boolean isAllotteeNull = (/*agreementCriteria.getAllotteeName() == null &&*/
+				 agreementCriteria.getMobilenumber() == null);
 
 		boolean isAssetNull = (agreementCriteria.getAssetCategory() == null
 				&& agreementCriteria.getShoppingComplexNo() == null && agreementCriteria.getAssetCode() == null

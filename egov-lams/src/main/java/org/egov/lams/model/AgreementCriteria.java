@@ -40,13 +40,10 @@ public class AgreementCriteria {
 	 private Long revenueWard;
 	 private Long electionWard;
 	 private Long doorno;
-	 private String allotteeName;
+	// private String allotteeName;
 	 private Long mobilenumber;
 	 private String offSet;
 	 private String size;
-	
-	/* @Setter(onMethod=@__(@JsonIgnore))
-	 @JsonIgnore*/
 	 private List<Long> asset;
 	 private List<Long> allottee;
 }
