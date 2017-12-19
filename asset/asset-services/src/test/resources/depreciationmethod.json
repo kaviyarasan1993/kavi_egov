@@ -1,0 +1,13 @@
+{
+    "ResponseInfo": {
+        "apiId": null,
+        "ver": null,
+        "ts": null,
+        "resMsgId": null,
+        "msgId": null,
+        "status": null
+    },
+    "DepreciationMethod": {
+        "STRAIGHT_LINE_METHOD": "STRAIGHT_LINE_METHOD"
+    }
+}

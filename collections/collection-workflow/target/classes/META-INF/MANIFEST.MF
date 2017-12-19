@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: collection-workflow
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: user
+Implementation-Vendor-Id: collection-workflow
+Build-Jdk: 1.8.0_151
+Implementation-URL: http://projects.spring.io/spring-boot/collection-w
+ orkflow/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

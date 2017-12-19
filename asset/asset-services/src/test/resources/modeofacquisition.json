@@ -1,0 +1,17 @@
+{
+    "ResponseInfo": {
+        "apiId": null,
+        "ver": null,
+        "ts": null,
+        "resMsgId": null,
+        "msgId": null,
+        "status": null
+    },
+    "ModeOfAcquisition": {
+        "CONSTRUCTION": "CONSTRUCTION",
+        "ACQUIRED": "ACQUIRED",
+        "DONATION": "DONATION",
+        "TENDER": "TENDER",
+        "PURCHASE": "PURCHASE"
+    }
+}

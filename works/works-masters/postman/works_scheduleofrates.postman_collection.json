@@ -1,0 +1,113 @@
+{
+	"info": {
+		"name": "WMS-Masters-SOR",
+		"_postman_id": "1d86f374-be1c-cda4-dc43-f6a3213d1971",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create SOR",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"RequestInfo\": {\n        \"apiId\": \"emp\",\n        \"ver\": \"1.0\",\n        \"ts\": \"10032017\",\n        \"action\": \"create\",\n        \"did\": \"1\",\n        \"key\": \"abcdkey\",\n        \"msgId\": \"20170310130900\",\n        \"requesterId\": \"rajesh\",\n        \"authToken\": \"66d3aa78-bfd3-4698-bc56-3d5ce2c8cbd5\",\n        \"userInfo\":{\n          \"tenantId\":\"default\",\n          \"userName\":\"ramki\"\n        }\n    },\n    \"scheduleOfRates\":[{\n      \"tenantId\":\"default\",\n      \"code\":\"SOR10\",\n      \"description\":\"Second SOR for road\",\n      \"scheduleCategory\":{\n      \t\"code\":\"EXV - FAKE\"\n      },\n      \"uom\":{\n      \t\"code\":\"TON\"\n      },\n      \"sorRates\":[{\n        \"tenantId\":\"default\",\n        \"fromDate\":\"1491004800000\",\n        \"toDate\":\"1522540799000\",\n        \"rate\":673.67,\n    \"auditDetails\": {\n          \"createdBy\": \"egovernments\",  \n          \"lastModifiedBy\": \"egovernments\",\n          \"createdTime\": 1509758255000,\n          \"lastModifiedTime\": 1509758255000\n      }\n      }],\n      \"marketRates\":[{\n        \"tenantId\":\"default\",\n        \"fromDate\":\"1491004800000\",\n        \"toDate\":\"1522540799000\",\n        \"rate\":893.67,\n    \"auditDetails\": {\n          \"createdBy\": \"egovernments\",  \n          \"lastModifiedBy\": \"egovernments\",\n          \"createdTime\": 1509758255000,\n          \"lastModifiedTime\": 1509758255000\n      }\n      }],\n    \"auditDetails\": {\n          \"createdBy\": \"egovernments\",\n          \"lastModifiedBy\": \"egovernments\",\n          \"createdTime\": 1509758255000,\n          \"lastModifiedTime\": 1509758255000\n      }\n        \n    }]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8280/works-masters/v1/scheduleofrates/_create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8280",
+					"path": [
+						"works-masters",
+						"v1",
+						"scheduleofrates",
+						"_create"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "search SOR",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"RequestInfo\": {\n        \"apiId\": \"emp\",\n        \"ver\": \"1.0\",\n        \"ts\": \"10032017\",\n        \"action\": \"create\",\n        \"did\": \"1\",\n        \"key\": \"abcdkey\",\n        \"msgId\": \"20170310130900\",\n        \"requesterId\": \"rajesh\",\n        \"authToken\": \"5afab401-54bc-4d6e-aafc-d03f49f71474\"\n    }\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:8280/works-masters/v1/scheduleofrates/_search?tenantId=default",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8280",
+					"path": [
+						"works-masters",
+						"v1",
+						"scheduleofrates",
+						"_search"
+					],
+					"query": [
+						{
+							"key": "tenantId",
+							"value": "default",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "update SOR",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"RequestInfo\": {\n        \"apiId\": \"emp\",\n        \"ver\": \"1.0\",\n        \"ts\": \"10032017\",\n        \"action\": \"create\",\n        \"did\": \"1\",\n        \"key\": \"abcdkey\",\n        \"msgId\": \"20170310130900\",\n        \"requesterId\": \"rajesh\",\n        \"authToken\": \"9472ea04-685e-4311-ac9c-44ebca8f6abf\",\n        \"userInfo\":{\n          \"tenantId\":\"default\",\n          \"userName\":\"ramki\"\n        }\n    },\n\t\"scheduleOfRates\": [\n        {\n            \"id\": \"2bd44c2eefc546fdaeaa0b3576f38979\",\n            \"tenantId\": \"default\",\n            \"code\": \"SOR10\",\n            \"description\": \"Second SOR for canol\",\n            \"scheduleCategory\": {\n                \"id\": null,\n                \"tenantId\": null,\n                \"name\": null,\n                \"code\": \"EXV - FAKE\"\n            },\n            \"uom\": {\n                \"id\": null,\n                \"code\": \"TON\",\n                \"description\": null,\n                \"category\": null,\n                \"active\": true,\n                \"coversionFactor\": null,\n                \"baseuom\": false,\n                \"createdBy\": null,\n                \"createdDate\": null,\n                \"lastModifiedBy\": null,\n                \"lastModifiedDate\": null\n            },\n            \"sorRates\": [\n                {\n                    \"id\": \"f5f66522a7de4e87931a25f483d1f85f\",\n                    \"tenantId\": \"default\",\n                    \"scheduleOfRate\": \"2bd44c2eefc546fdaeaa0b3576f38979\",\n                    \"fromDate\": 1491004800000,\n                    \"toDate\": 1522540799000,\n                    \"rate\": 673.67,\n                    \"deleted\": false,\n                    \"auditDetails\": null\n                }\n            ],\n            \"marketRates\": [\n                {\n                    \"id\": \"70fdedc126ae41fbbabb5f199ebf1cc4\",\n                    \"tenantId\": \"default\",\n                    \"scheduleOfRate\": \"2bd44c2eefc546fdaeaa0b3576f38979\",\n                    \"fromDate\": 1491004800000,\n                    \"toDate\": 1522540799000,\n                    \"rate\": 893.67,\n                    \"deleted\": false,\n                    \"auditDetails\": null\n                }\n            ],\n            \"deleted\": false,\n            \"auditDetails\": null\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8280/works-masters/v1/scheduleofrates/_update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8280",
+					"path": [
+						"works-masters",
+						"v1",
+						"scheduleofrates",
+						"_update"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,85 @@
+{
+    "_all": {
+        "enabled": true
+    },
+    "properties": {
+        "tenantId" : {
+           "type": "keyword"
+        },
+        "receiptNumber": {
+            "type": "keyword"
+        },
+        "receiptDate": {
+             "type": "date",
+             "format": "date_optional_time"
+        },
+       "createdDate": {
+           "type": "date",
+          "format": "date_optional_time"
+         },
+        "serviceType": {
+            "type": "keyword"
+        },
+        "serviceCategory": {
+           "type": "keyword"
+        },
+        "paymentMode": {
+            "type": "keyword"
+        },
+        "totalReceiptAmount": {
+            "type": "double"
+        },
+        "channel": {
+            "type": "keyword"
+        },
+        "paymentGateway": {
+            "type": "keyword"
+        },
+        "billNumber": {
+            "type": "keyword"
+        },
+        "consumerNumber": {
+            "type": "keyword"
+        },
+        "id": {
+            "type": "long"
+        },
+        "status": {
+            "type": "keyword"
+        },
+        "consumerName" : {
+            "type": "keyword"
+        },
+        "receiptCreatedBy" : {
+            "type": "keyword"
+        },
+        "consumerType" : {
+            "type": "keyword"
+        },
+        "cityName" : {
+            "type": "keyword"
+        },
+        "cityCode" : {
+            "type": "keyword"
+        },
+        "cityGrade" : {
+            "type": "keyword"
+        },
+        "districtName" : {
+            "type": "keyword"
+        },
+        "regionName" : {
+            "type": "keyword"
+        },
+        "billDescription" : {
+            "type": "keyword"
+        },
+        "transactionId" : {
+           "type": "keyword"
+        },
+        "manualReceiptNumber" : {
+          "type": "keyword"
+        }
+       }
+   }
+ 

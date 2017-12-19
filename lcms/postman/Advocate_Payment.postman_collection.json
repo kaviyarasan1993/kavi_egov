@@ -1,0 +1,125 @@
+{
+	"id": "a57e8941-76f2-6fbb-33bf-ae57930b1b7a",
+	"name": "Advocate_Payment",
+	"description": "",
+	"order": [
+		"464a2e9f-7f12-4b73-ed7e-9e51cca57eb3",
+		"ecf3afe1-9561-bf93-7a1a-08965e9b1993",
+		"4c6d14ae-bf8e-e576-1058-9d779cf98719"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1509953505497,
+	"owner": "2600522",
+	"public": false,
+	"hasRequests": true,
+	"requests": [
+		{
+			"id": "464a2e9f-7f12-4b73-ed7e-9e51cca57eb3",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:9090/lcms-services/legalcase/advocatepayment/_create",
+			"queryParams": [],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1509965375504,
+			"name": "Advocate_payment",
+			"description": "",
+			"collectionId": "a57e8941-76f2-6fbb-33bf-ae57930b1b7a",
+			"responses": [],
+			"rawModeData": "{\r\n\t\"advocatePayments\": [{\r\n\t\t\"advocateCharges\": [{\r\n\t\t\t\"amount\": \"5000\",\r\n\t\t\t\"charge\": \"CF\",\r\n\t\t\t\"caseNo\": \"default2017000078\"\r\n\t\t}],\r\n\t\t\"advocate\": {\r\n\t\t\t\"name\": \"default000012\",\r\n\t\t\t\"bankName\": \"ICICI\",\r\n\t\t\t\"pan\": \"AXZPR1623Z\",\r\n\t\t\t\"bankBranch\": \"Hyderabad\",\r\n\t\t\t\"bankAccountNo\": \"12345671234\"\r\n\t\t},\r\n\t\t\"caseType\":{\r\n\t\t\"code\":\t\"AAF\"\r\n\t\t},\r\n\t\t\"invoiceDoucment\":{\r\n\t\t\t\"documentName\":\"addharcard\",\r\n\t\t\t\"fileStoreId\":\"uyhjkiujhyjghtyhgtfgt\"\r\n\t\t},\r\n\t\t\"demandDate\": 1510252200000,\r\n\t\t\"caseStatus\":{\"code\":\"RUNNING\"\r\n\t\t},\r\n\t\t\"amountClaimed\": \"10000\",\r\n\t\t\"year\":\"2014\",\r\n\t\t\"amountRecived\": \"4000\",\r\n\t\t\"voucherNo\": \"121\",\r\n\t\t\"modeOfPayment\": \"Cheque\",\r\n\t\t\"resolutionDate\":98909876787,\r\n\t\t\"instrumentNumber\": 1510252200000,\r\n\t\t\"instrumentDate\": 1510252200000,\r\n\t\t\"tenantId\": \"default\",\r\n\t\t\"caseNo\":\"defauly2356\",\r\n\t\t\"isPartialPayment\":false,\r\n\t\t\"allowance\":7890987867890,\r\n\t\t\"resolutionNo\":\"flo56787\",\r\n\t\t\"resolutionRemarks\":\"shujkmkliu\",\r\n\t\t\"resolution\":\"8909878\",\r\n\t\t\"voucherDate\":8789980987,\r\n\t\t\"stateId\":\"890980\"\r\n\t}],\r\n\t\"RequestInfo\": {\r\n\t\t\"apiId\": \"org.egov.pt\",\r\n\t\t\"ver\": \"1.0\",\r\n\t\t\"ts\": 1509463501285,\r\n\t\t\"action\": \"asd\",\r\n\t\t\"did\": \"4354648646\",\r\n\t\t\"key\": \"xyz\",\r\n\t\t\"msgId\": \"654654\",\r\n\t\t\"requesterId\": \"61\",\r\n\t\t\"authToken\": \"0a7b6053-3428-4c63-b914-f201681a3dfc\"\r\n\t}\r\n}"
+		},
+		{
+			"id": "4c6d14ae-bf8e-e576-1058-9d779cf98719",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:9090/lcms-services/legalcase/advocatepayment/_search?tenantId=default&code=default000005,default000006",
+			"queryParams": [
+				{
+					"key": "tenantId",
+					"value": "default",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "code",
+					"value": "default000005,default000006",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": "",
+			"method": "POST",
+			"collectionId": "a57e8941-76f2-6fbb-33bf-ae57930b1b7a",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Advocate_Payment_Search",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1509953761653,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\r\n\r\n\t\"RequestInfo\": {\r\n\t\t\"apiId\": \"org.egov.pt\",\r\n\t\t\"ver\": \"1.0\",\r\n\t\t\"ts\": 1509463501285,\r\n\t\t\"action\": \"asd\",\r\n\t\t\"did\": \"4354648646\",\r\n\t\t\"key\": \"xyz\",\r\n\t\t\"msgId\": \"654654\",\r\n\t\t\"requesterId\": \"61\",\r\n\t\t\"authToken\": \"f4b2ad3e-ce68-497e-9252-7fb4549ea16d\"\r\n\t}\r\n}",
+			"collection_id": "a57e8941-76f2-6fbb-33bf-ae57930b1b7a"
+		},
+		{
+			"id": "ecf3afe1-9561-bf93-7a1a-08965e9b1993",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:9090/lcms-services/legalcase/advocatepayment/_update",
+			"queryParams": [],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1509965472718,
+			"name": "Advocate_payment_update",
+			"description": "",
+			"collectionId": "a57e8941-76f2-6fbb-33bf-ae57930b1b7a",
+			"responses": [],
+			"rawModeData": "{\r\n\"advocatePayments\": [\r\n         {\r\n            \"code\": \"default000012\",\r\n            \"advocate\": {\r\n                \"name\": \"default000012\",\r\n                \"code\": null,\r\n                \"organizationName\": null,\r\n                \"isIndividual\": null,\r\n                \"title\": null,\r\n                \"firstName\": null,\r\n                \"secondName\": null,\r\n                \"lastName\": null,\r\n                \"address\": null,\r\n                \"contactNo\": null,\r\n                \"dateOfEmpanelment\": null,\r\n                \"standingCommitteeDecisionDate\": null,\r\n                \"empanelmentFromDate\": null,\r\n                \"aadhar\": null,\r\n                \"gender\": null,\r\n                \"age\": null,\r\n                \"dob\": null,\r\n                \"mobileNumber\": null,\r\n                \"emailId\": null,\r\n                \"pan\": \"AXZPR1623Z\",\r\n                \"vatTinNo\": null,\r\n                \"newsPaperAdvertismentDate\": null,\r\n                \"empanelmentToDate\": null,\r\n                \"bankName\": \"ICICI\",\r\n                \"bankBranch\": \"Hyderabad\",\r\n                \"bankAccountNo\": \"12345671234\",\r\n                \"isfcCode\": null,\r\n                \"micr\": null,\r\n                \"isActive\": null,\r\n                \"isTerminate\": null,\r\n                \"inActiveDate\": null,\r\n                \"terminationDate\": null,\r\n                \"reasonOfTermination\": null,\r\n                \"tenantId\": null,\r\n                \"auditDetails\": null\r\n            },\r\n            \"demandDate\": 1510252200000,\r\n            \"year\": \"2015\",\r\n            \"caseType\": {\r\n                \"name\": null,\r\n                \"code\": \"AAF\",\r\n                \"side\": null,\r\n                \"active\": null,\r\n                \"tenantId\": null\r\n            },\r\n            \"caseNo\": \"defauly2356\",\r\n            \"caseStatus\": {\r\n                \"name\": null,\r\n                \"code\": \"RUNNING\",\r\n                \"active\": null,\r\n                \"tenantId\": null\r\n            },\r\n            \"amountClaimed\": 10000,\r\n            \"amountRecived\": 4000,\r\n            \"allowance\": 7890987867890,\r\n            \"isPartialPayment\": false,\r\n            \"invoiceDoucment\": {\r\n                \"id\": null,\r\n                \"documentName\": \"addharcard\",\r\n                \"fileStoreId\": \"uyhjkiujhyjghtyhgtfgt\",\r\n                \"auditDetails\": null\r\n            },\r\n            \"tenantId\": \"default\",\r\n            \"workFlowDetails\": null,\r\n            \"auditDetails\": null,\r\n            \"resolutionDate\": 98909876787,\r\n            \"resolutionNo\": \"flo56787\",\r\n            \"resolution\": \"8909878\",\r\n            \"resolutionRemarks\": \"shujkmkliu\",\r\n            \"advocateCharges\": [\r\n                {\r\n                    \"charge\": \"CF\",\r\n                    \"caseNo\": \"default2017000078\",\r\n                    \"amount\": 5000\r\n                }\r\n            ],\r\n            \"modeOfPayment\": \"Cheque\",\r\n            \"instrumentNumber\": \"1510252200000\",\r\n            \"instrumentDate\": 1510252200000,\r\n            \"stateId\": \"890980\",\r\n            \"voucherNo\": \"121\",\r\n            \"voucherDate\": 8789980987\r\n        }\r\n    ],\r\n\t\"RequestInfo\": {\r\n\t\t\"apiId\": \"org.egov.pt\",\r\n\t\t\"ver\": \"1.0\",\r\n\t\t\"ts\": 1509463501285,\r\n\t\t\"action\": \"asd\",\r\n\t\t\"did\": \"4354648646\",\r\n\t\t\"key\": \"xyz\",\r\n\t\t\"msgId\": \"654654\",\r\n\t\t\"requesterId\": \"61\",\r\n\t\t\"authToken\": \"b976abbc-4fc4-4d54-8500-da277fbff259\"\r\n\t}\r\n}"
+		}
+	]
+}

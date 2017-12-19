@@ -1,0 +1,17 @@
+{
+  "responseInfo": {
+    "resMsgId": "placeholder",
+    "status": "200",
+    "apiId": null,
+    "ver": null,
+    "key": null,
+    "tenantId": null
+  },
+  "accountCodePurpose": {
+    "id": 1,
+    "name": "accountCodePurposeU",
+    "createdDate": null,
+    "lastModifiedDate": null,
+    "tenantId": "default"
+  }
+}

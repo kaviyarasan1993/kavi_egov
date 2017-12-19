@@ -1,0 +1,6 @@
+Dear {{Owner name}}, 
+
+Title Transfer for your Property number {{Property Number}} is accepted and application is under process. 
+
+Thanks, 
+Chief Officer {{Corporation/Municipality/Nagara Panchayat name}}

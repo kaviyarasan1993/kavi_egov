@@ -1,0 +1,14 @@
+{
+    "responseInfo": {
+    },
+    "depreciations": [
+        {
+            "tenantId": "kiran",
+            "code": "praa",
+            "auditDetails": {
+                "createdBy": null,
+                "lastModifiedBy": null
+            }
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+Dear {{Owner name}}, 
+
+Your Title Transfer for Property with Property No {{Property Number}} is being rejected and the reason for rejection is {{Rejection Comment}}, Please get in touch with ULB official to raise a new Title Transfer for Property application with proper information/documents.
+
+Thanks, 
+Chief Officer 
+{{Corporation/Municipality/Nagara Panchayat name}}

@@ -1,0 +1,1308 @@
+swagger: '2.0'
+# eGSP YAML Template Version: 1.0 
+# This is a version number for the YAML template. This must not be changed.
+
+info:
+  version: 1.0.0
+  title: eGov Works Management System.
+  description: |
+    Definations for works masters and common objects
+  contact:
+    name: eGovernments Foundation
+    email : contacts@egovernments.org
+schemes:
+  - https
+basePath: '/'
+x-common-path: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml'
+
+paths: {}
+       
+definitions:        
+  WorkProgress:
+    type: string
+    enum:
+      - BEFORE
+      - DURING
+      - AFTER
+
+  CollectionMode:
+    type: string
+    enum:
+      - CASH
+      - CHEQUE
+      - DD
+      - Fixed Deposit Receipt
+      - Bank Guarantee
+      
+  ExpenditureType:
+    type: string
+    enum:
+      - CAPITAL
+      - REVENUE
+      - OTHERS
+      
+  AbstractEstimateStatus:
+    type: string
+    enum:
+      - NEW
+      - CREATED
+      - ADMIN_SANCTIONED
+      - REJECTED
+      - CANCELLED
+      - APPROVED
+      - RESUBMITTED
+      - CHECKED
+      - FINANCIAL_SANCTIONED
+      
+  DetailedEstimateStatus:
+    type: string
+    enum:
+      - NEW
+      - CREATED
+      - REJECTED
+      - RESUBMITTED
+      - CANCELLED
+      - APPROVED
+      - CHECKED
+      - TECHNICAL_SANCTIONED
+  
+  LOAStatus:
+    type: string
+    enum:
+      - CREATED
+      - REJECTED
+      - APPROVED
+      - CANCELLED
+      - RESUBMITTED
+      - CHECKED
+      
+  WorkOrderStatus:
+    type: string
+    enum:
+      - CREATED
+      - REJECTED
+      - APPROVED
+      - CANCELLED
+      - RESUBMITTED
+      - CHECKED
+      
+  ContractorAdvanceStatus:
+    type: string
+    enum:
+      - NEW
+      - CREATED
+      - CHECKED
+      - APPROVED
+      - REJECTED
+      - RESUBMITTED
+      - CANCELLED
+      
+  MeasurementBookStatus:
+    type: string
+    enum:
+      - NEW
+      - CREATED
+      - CHECKED
+      - APPROVED
+      - REJECTED
+      - RESUBMITTED
+      - CANCELLED
+      
+  ContractorBillStatus:
+    type: string
+    enum:
+      - NEW
+      - CREATED
+      - CHECKED
+      - APPROVED
+      - REJECTED
+      - RESUBMITTED
+      - CANCELLED
+      
+  MilestoneStatus:
+    type: string
+    enum:
+      - APPROVED
+      - CANCELLED
+      
+  ProjectCodeStatus:
+    type: string
+    enum:
+      - CREATED
+      - CLOSED
+      
+  TrackMilestoneStatus:
+    type: string
+    enum:
+      - APPROVED
+      - CANCELLED
+      
+  WorkCategory:
+    type: string
+    enum:
+      - NON_SLUM
+      - NOTIFIED_SLUM
+      - NON_NOTIFIED_SLUM
+      
+  Beneficiary:
+    type: string
+    enum:
+      - SC
+      - ST
+      - BC
+      - MINORITY
+      - WOMEN_CHILDREN_WELFARE
+      - GENERAL
+      
+  DetailedEstimateOfflineStatus:
+    type: string
+    enum:
+      - NOTICEINVITINGTENDERRELEASED
+      - TENDER_DOCUMENT_RELEASED
+      - TENDER_OPENED
+      - TECHNICAL_EVALUATION_DONE
+      - COMMERCIAL_EVALUATION_DONE
+      - L1_TENDER_FINALIZED
+  
+  LOAOfflineStatuses:
+    type: string
+    enum:
+      - ACCEPTANCE_LETTER_ISSUED
+      - ACCEPTANCE_LETTER_ACKNOWLEDGED
+      - AGREEMENT_ORDER_SIGNED
+
+  WorkOrderOfflineStatus:
+    type: string
+    enum:
+      - WORK_ORDER_ACKNOWLEDGED
+      - SITE_HANDED_OVER
+      - WORK_COMMENCED
+      
+  RevisionType:
+    type: string
+    enum:
+      - NON_TENDERED_ITEM
+      - LUMP_SUM_ITEM
+      - ADDITIONAL_QUANTITY
+      - REDUCED_QUANTITY
+
+  DocumentType:
+    type: string
+    enum:
+      - ESTIMATE_PHOTOGRAPHS
+      - DOCUMENTS
+      - NOTICE
+        
+  ContractorExemption:
+    type: string
+    enum:
+      - INCOME_TAX
+      - EARNEST_MONEY_DEPOSIT
+      - VAT
+      
+  ContractorStatus:
+    type: string
+    enum:
+      - ACTIVE
+      - INACTIVE
+      - BLACK_LISTED
+      - DEBARRED
+
+  EstimateSanctionType:
+    type: string
+    enum:
+      - FINANCIAL_SANCTION
+      - ADMINISTRATIVE_SANCTION
+      - TECHNICAL_SANCTION
+
+  TrackMilestoneActivityStatus:
+    type: string
+    enum:
+      - NOT_YET_STARTED
+      - IN_PROGRESS
+      - COMPLETED
+
+      
+##### MASTERS #######
+      
+  ScheduleCategory:
+    type: object
+    description: An Object which holds Schedule Category Master Data 
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Schedule Category
+      tenantId:
+        type: string
+        description: Tenant id of the Schedule Category
+        maxLength: 128
+        minLength: 2
+      name:
+        type: string
+        description: Unique name of the Schedule Category
+        pattern: '[a-zA-Z0-9\s\.,]+'
+        maxLength: 100
+        minLength: 1
+      code:
+        type: string
+        description: Unique code of the Schedule Category
+        pattern: '[a-zA-Z0-9-\\]+'
+        maxLength: 100
+        minLength: 1
+    required:
+      - tenantId
+      - name
+      - code
+    
+  ScheduleOfRate:
+    type: object
+    description: An Object which holds Schedule Of Rate Master Data. The combination of SOR code and Schedule Category is unique for given tenant.
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Schedule Of Rate
+      tenantId:
+        type: string
+        description: Tenant id of the Schedule Of Rate
+        maxLength: 128
+        minLength: 2
+      code:
+        type: string
+        description: Unique code of the Schedule Of Rate
+        pattern: '[a-zA-Z0-9-\\]+'
+        maxLength: 100
+        minLength: 1
+      description:
+        type: string
+        description: Description of the Schedule Of Rate
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        maxLength: 4000
+        minLength: 1
+      scheduleCategory:
+        $ref: '#/definitions/ScheduleCategory'
+        description: Schedule Category of the SOR. unique reference from 'ScheduleCategory'. Code is ref. here.
+        format: singleValueList
+      uom:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/egov-common-masters/contracts/v1-0-0.yml#/definitions/UOM"
+        description: Unit Of Measurement of the SOR. unique reference from 'UOM'. Code is ref. here.
+        format: singleValueList
+      sorRates:
+        type: array
+        description: Array of Rate Details.
+        items:
+          $ref: '#/definitions/SORRate'
+        minimum: 1
+        maximum: 50
+      marketRates:
+        type: array
+        description: Array of Market Rate Details..
+        items:
+          $ref: '#/definitions/MarketRate'
+        maximum: 50
+      deleted:
+        type: boolean
+        description: Boolean value to identify whether the object is deleted or not from UI.
+        default: false
+      auditDetails:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+    required:
+      - tenantId
+      - code
+      - description
+      - scheduleCategory
+      - uom
+      - sorRates
+
+  SORRate:
+    type: object
+    description: An Object that holds SOR Rate Details for the given Schedule Of Rate. No Overlapping of rates expected for the same period.
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Rate Detail
+      tenantId:
+        type: string
+        description: Tenant id of the Rate Detail
+        maxLength: 128
+        minLength: 2
+      scheduleOfRate:
+        type: string
+        description: unique reference from 'ScheduleOfRate'. Primary key is ref. here.
+      fromDate:
+        type: integer
+        format: int64
+        x-displayformat: 'dd/MM/yyyy'
+        description: Epoch time of From Date for the SOR Rate Detail.
+      toDate:
+        type: integer
+        format: int64
+        x-displayformat: 'dd/MM/yyyy'
+        description: Epoch time of To date for the SOR Rate Details.
+      rate:
+        type: number
+        format: BigDecimal
+        description: SOR Rate which is applicable for given date range
+      deleted:
+        type: boolean
+        description: Boolean value to identify whether the object is deleted or not from UI.
+        default: false
+      isMigrated:
+        type: boolean
+        description: Boolean value to identify whether the object is migrated (loaded to system via data entry, excel upload or back end) from older system or created newly in new system.
+        default: false
+      auditDetails:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+    required:
+      - tenantId
+      - rate
+      - fromDate
+
+  MarketRate:
+    type: object
+    description: An Object that hold Market Rate Details for a given SOR
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Market Rate Details
+      tenantId:
+        type: string
+        description: Tenant id of the Market Rate Details
+        maxLength: 128
+        minLength: 2
+      scheduleOfRate:
+        type: string
+        description: unique reference from 'ScheduleOfRate'. Primary key is ref. here.
+      fromDate:
+        type: integer
+        format: int64
+        x-displayformat: 'dd/MM/yyyy'
+        description: Epoch time of From Date for the Market Rate Detail.
+      toDate:
+        type: integer
+        format: int64
+        x-displayformat: 'dd/MM/yyyy'
+        description: Epoch time of To date for the Market Rate Details.
+      rate:
+        type: number
+        format: BigDecimal
+        description: Market Rate which is applicable for given date range
+      deleted:
+        type: boolean
+        description: Boolean value to identify whether the object is deleted or not from UI.
+        default: false
+      auditDetails:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+    required:
+      - tenantId
+      - fromDate
+      - rate
+
+  ContractorClass:
+    type: object
+    description: An Object that holds Contractor Class details
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Contractor Class.
+      tenantId:
+        type: string
+        description: Tenant id of the Contractor Class.
+        maxLength: 128
+        minLength: 2
+      class:
+        type: string
+        description: Class of the Contractor
+        #pattern: '[0-9a-zA-Z\s\.-()]'
+        maxLength: 100
+        minLength: 1
+      description:
+        type: string
+        description: Description of the Contractor Class
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        maxLength: 1024
+        minLength: 1
+      minAmount:
+        type: number
+        format: BigDecimal
+        description: Minimum Amount of the Contractor Class.
+        maxLength: 20
+        minLength: 1
+      maxAmount:
+        type: number
+        format: BigDecimal
+        description: Maximum Amount of the Contractor Class.
+        maxLength: 20
+        minLength: 1
+    required:
+      - tenantId
+      - class
+      - description
+      - minAmount
+      - maxAmount
+    
+  Contractor:
+    type: object
+    description: An Object that holds the Contractor Agency/Firm Information
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Contractor.
+      tenantId:
+        type: string
+        description: Tenant id of the Contractor Agency/Firm.
+        maxLength: 128
+        minLength: 2
+      name:
+        type: string
+        description: Name of the Contractor Agency/Firm.
+        pattern: '[a-zA-Z0-9\s\.,]+'
+        maxLength: 100
+        minLength: 1
+      localName:
+        type: string
+        description: Name of the Contractor Agency/Firm in Local Language.
+        maxLength: 100
+      code:
+        type: string
+        description: Code of the Contractor Agency/Firm.
+        pattern: '[a-zA-Z0-9-\\]+'
+        maxLength: 100
+        minLength: 1
+      correspondenceAddress:
+        type: string
+        description: Correspondence Address of the Contractor Agency/Firm.
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        maxLength: 512
+        minLength: 1
+      paymentAddress:
+        type: string
+        description: Payment Address of the Contractor.
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        maxLength: 512
+      contactPerson:
+        type: string
+        description: Contact Person of the Contractor Agency/Firm.
+        maxLength: 100
+      email:
+        type: string
+        format: email
+        description: Email of the Contractor Agency/Firm.
+        pattern: '^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$'
+        maxLength: 100
+      narration:
+        type: string
+        description: Narration of the Contractor Agency/Firm.
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        maxLength: 1024
+      mobileNumber:
+        type: number
+        format: mobileNumber
+        description: Mobile Number of the Contractor Agency/Firm
+        pattern: "[0-9]"
+        maxLength: 10
+        exclusiveMaximum: true
+      panNumber:
+        type: string
+        format: pan
+        description: PAN Number of the Contractor Agency/Firm
+        maxLength: 10
+        pattern: '[A-Z]{5}[0-9]{4}[A-Z]{1}'
+        exclusiveMaximum: true
+      tinNumber:
+        type: string
+        description: TIN Number of the Contractor Agency/Firm
+        maxLength: 12
+      bank:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/financials/contracts/egf-master/v1-0-0.yml#/definitions/Bank"
+        description: Bank of the Contractor Agency/Firm. If Financial integration is true at state/ULB level configuation then bank is mandatory else its optional.
+        format: singleValueList
+      bankAccountNumber:
+        type: number
+        description: Bank Account Number of the Contractor Agency/Firm. If Financial integration is true at state/ULB level configuation then bank account number is mandatory else its optional.
+        maxLength: 20
+        pattern: "[0-9]"
+      pwdApprovalCode:
+        type: string
+        pattern: '[a-zA-Z0-9-\\]+'
+        description: PWD Approval Code of the Contractor Agency/Firm
+        maxLength: 20
+      exemptedFrom:
+        $ref: '#/definitions/ContractorExemption'
+        description: Excemption allowed for of the Contractor Agency/Firm
+        format: singleValueList
+      pwdApprovalValidTill:
+        type: integer
+        format: int64
+        x-displayformat: 'dd/MM/yyyy'
+        description: PWD Approval Valid Till date of Contractor Agency/Firm
+      epfRegistrationNumber:
+        type: string
+        description: EPF Registration Number of the Contractor,Only Number value with decimal should be accepted
+        pattern: '[a-zA-Z0-9-\\]+'
+        maxLength: 50
+      accountCode:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/financials/contracts/egf-master/v1-0-0.yml#/definitions/ChartOfAccount'
+        description: Chart of Account Code of the Contractor from Financials. If Financial integration is true at state/ULB level configuation then accountCode is mandatory else its optional.
+        maxLength: 100
+        format: autoComplete
+      ifscCode:
+        type: number
+        description: IFSC Code of the Bank Account for the Contractor Agency/Firm. If Financial integration is true at state/ULB level configuation then ifscCode is mandatory else its optional.
+        pattern: '[a-zA-Z0-9]+'
+        maxLength: 20
+      contractorClass:
+        $ref: '#/definitions/ContractorClass'
+        description: Contractor Class for which Contractor Agency/Firm belongs to
+        format: singleValueList
+      pmc:
+        type: boolean
+        description: The boolean value to indicate whether the contractor Agency/Firm is PMC(Project Management Consultant). The default value is false.
+        default: false
+      status:
+        type: string
+        description: Status of the Contractor      
+        format: singleValueList
+      auditDetails:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails" 
+    required:
+      - tenantId
+      - name
+      - code
+      - correspondenceAddress
+      - mobileNumber
+      - contractorClass
+      - status
+      
+  MilestoneTemplate:
+    type: object
+    description: An Object that holds Templates defined for Milestone based on Type of Works and Sub Type of work
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Milestone Template
+      tenantId:
+        type: string
+        description: Tenant id of the Milestone Template
+        maxLength: 128
+        minLength: 2
+      name:
+        type: string
+        description: Name of the Milestone Template
+        pattern: '[a-zA-Z0-9\s\.,]+'
+        maxLength: 100
+        minLength: 1
+      code:
+        type: string
+        description: Code of the Milestone Template
+        pattern: '[a-zA-Z0-9-\\]+'
+        maxLength: 100
+        minLength: 1
+      active:
+        type: boolean
+        description: If status of Type Of Work is TRUE then the Milestone Template is active else it is in-active. The default is active.
+      description:
+        type: string
+        description: Description of the Milestone Template
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        maxLength: 1024
+      typeOfWork:
+        $ref: '#/definitions/TypeOfWork'
+        description: Type of work for which this Milestone template is belongs to. Unique reference from 'TypeOfWork'.Code is ref. here.
+        maxLength: 100
+        format: singleValueList
+      subTypeOfWork:
+        $ref: '#/definitions/TypeOfWork'
+        description: Sub Type of work for which this Milestone template is belongs to. Unique reference from 'TypeOfWork'.Code is ref. here.
+        maxLength: 100
+        format: singleValueList
+      milestoneTemplateActivities:
+        type: array
+        description: Array of Milestone Template Activities
+        minItems: 1
+        items:
+          $ref: '#/definitions/MilestoneTemplateActivities'
+      auditDetails:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+      deleted:
+        type: boolean
+        description: Boolean value to identify whether the object is deleted or not from UI.
+        default: false
+    required:
+      - tenantId
+      - name
+      - code
+      - active
+      - typeOfWork
+      - milestoneTemplateActivities
+    
+  MilestoneTemplateActivities:
+    type: object
+    description: An Object that holds Activities for a given Milestone template
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Milestone Template Activitie
+      tenantId:
+        type: string
+        description: Tenant id of the Milestone Template Activitie
+        maxLength: 128
+        minLength: 2
+      milestoneTemplate:
+        type: string
+        description: The milestone template of the Template activity. Unique reference from 'MilestoneTemplate'. Primary key is ref. here.
+      stageOrderNumber:
+        type: number
+        pattern: "[0-9]"
+        description: Stage Order Number for the Milestone Template Activitie
+      stageDescription:
+        type: string
+        description: Description for the Milestone Template Activitie
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        maxLength: 1024
+        minLength: 1
+      percentage:
+        type: number
+        format: double
+        pattern: "[0-9.]"
+        description: Percentage to be applied for the given Milestone Template Activitie
+      auditDetails:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+      deleted:
+        type: boolean
+        description: Boolean value to identify whether the object is deleted or not from UI.
+        default: false
+    required:
+      - stageOrderNumber
+      - stageDescription
+      - tenantId
+      - percentage
+    
+  TypeOfWork:
+    type: object
+    description: An Object that holds Type of Work and Sub Type of work master data. The sub type of work will have parent type of work reference.
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Type Of Work
+      tenantId:
+        type: string
+        description: Tenant id of the Type Of Work
+        maxLength: 128
+        minLength: 2
+      name:
+        type: string
+        pattern: '[a-zA-Z0-9\s\.,]+'
+        description: Name of the Type Of Work
+        maxLength: 100
+        minLength: 1
+      code:
+        type: string
+        description: Unique code of the Type Of Work
+        pattern: '[a-zA-Z0-9-\\]+'
+        maxLength: 100
+        minLength: 1
+      description:
+        type: string
+        description: Description of the Type Of Work
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        maxLength: 1024
+      active:
+        type: boolean
+        description: If status of Type Of Work is TRUE then the type of work is active else it is in-active. The default is active.
+     # parent:
+     #   $ref: '#/definitions/TypeOfWork'
+      parent:
+        type: string
+        description: Parent Type Of Work of the Sub type of work.
+    required:
+      - tenantId
+      - name
+      - code
+      - active
+
+  EstimateTemplate:
+    type: object
+    description: An Object that holds Templates defined for Estimate based on Type of Works and Sub Type of work
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Estimate Template
+      tenantId:
+        type: string
+        description: Tenant id of the Estimate Template
+        maxLength: 128
+        minLength: 2
+      name:
+        type: string
+        description: Name of the Estimate Template
+        pattern: '[a-zA-Z0-9\s\.,]+'
+        maxLength: 100
+        minLength: 1
+      code:
+        type: string
+        description: Code of the Estimate Template
+        pattern: '[a-zA-Z0-9-\\]+'
+        maxLength: 100
+        minLength: 1
+      active:
+        type: boolean
+        description: If status of Estimate Template is TRUE then the Estimate Template is active else it is in-active. The default is active.
+      description:
+        type: string
+        description: Description of the Estimate Template
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        maxLength: 1024
+        minLength: 1
+      typeOfWork:
+        $ref: '#/definitions/TypeOfWork'
+        description: Type of work for which this Estimate template is belongs to. Unique reference from 'TypeOfWork'.Code is ref. here.
+        maxLength: 100
+        format: singleValueList
+      subTypeOfWork:
+        $ref: '#/definitions/TypeOfWork'
+        description: Sub Type of work for which this Estimate template is belongs to. Unique reference from 'TypeOfWork'.Code is ref. here.
+        format: singleValueList
+      estimateTemplateActivities:
+        type: array
+        description: Array of Estimate Template Activities
+        items:
+          $ref: '#/definitions/EstimateTemplateActivities'
+      deleted:
+        type: boolean
+        description: Boolean value to identify whether the object is deleted or not from UI.
+        default: false
+      auditDetails:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+      
+    required:
+      - tenantId
+      - name
+      - code
+      - active
+      - typeOfWork
+      - estimateTemplateActivities
+    
+  EstimateTemplateActivities:
+    type: object
+    description: An Object that holds Activities for a given Estimate template. Either SOR or NON SOR is mandatory.
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Estimate Template Activitie
+      tenantId:
+        type: string
+        description: Tenant id of the Estimate Template Activitie
+        maxLength: 128
+        minLength: 2
+      estimateTemplate:
+        type: string
+        description: The estimate template of the Template activity. Unique reference from 'EstimateTemplate'. Primary key is ref. here.
+      scheduleOfRate:
+        $ref: "#/definitions/ScheduleOfRate"
+        description: The Schedue of Rate of the Template activity. Unique reference from 'ScheduleOfRate'. Primary key is ref. here.
+      uom:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/egov-common-masters/contracts/v1-0-0.yml#/definitions/UOM"
+        description: UOM for the Estimate Template Activity. Unique reference from 'UOM'. Code is ref. here.
+        format: singleValueList
+      nonSOR:
+        $ref: '#/definitions/NonSOR'
+        description: The Non SOR of the Template activity
+      deleted:
+        type: boolean
+        description: Boolean value to identify whether the object is deleted or not from UI.
+        default: false
+      auditDetails:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+    required:
+      - tenantId
+      - uom
+    
+  NonSOR:
+    type: object
+    description: An Object that holds NON SOR details for a given Estimate template. 
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Non SOR
+      tenantId:
+        type: string
+        description: Tenant id of the Non SOR
+        maxLength: 128
+        minLength: 2
+      description:
+        type: string
+        description: Description of the Non SOR
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        maxLength: 1024
+        minLength: 1
+      uom:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/egov-common-masters/contracts/v1-0-0.yml#/definitions/UOM"
+        description: UOM for the Non SOR. Unique reference from 'UOM'. Code is ref. here.
+        format: singleValueList
+      deleted:
+        type: boolean
+        description: Boolean value to identify whether the object is deleted or not from UI.
+        default: false
+    required:
+      - tenantId
+      - description
+      - uom
+    
+  Overhead:
+    type: object
+    description: An Object that holds Overhead master data. 
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Overhead
+      tenantId:
+        type: string
+        description: Tenant id of the Overhead
+        maxLength: 128
+        minLength: 2
+      name:
+        type: string
+        description: Name of the Overhead
+        pattern: '[a-zA-Z0-9\s\.,]+'
+        maxLength: 100
+        minLength: 1
+      code:
+        type: string
+        description: Name of the Overhead
+        pattern: '[a-zA-Z0-9-\\]+'
+        maxLength: 100
+        minLength: 1
+      accountCode:
+        type: string
+        description: Account code list should be fetch from Chart of accounts master of Finance Module
+        maxLength: 100
+        format: singleValueList
+      description:
+        type: string
+        description: Description of the Overhead
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        maxLength: 1024
+      overheadRate:
+        type: array
+        description: Array of Overhead Rate Details
+        items:
+          $ref: '#/definitions/OverheadRate'
+
+    required:
+      - tenantId
+      - name
+      - code
+      - overheadRate
+      - accountCode
+
+  OverheadRate:
+    type: object
+    description: An Object that holds Overhead Rates for a given Overhead
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Overhead Rate
+      tenantId:
+        type: string
+        description: Tenant id of the Overhead Rate
+        maxLength: 128
+        minLength: 2
+      overhead:
+        $ref: '#/definitions/Overhead'
+      startDate:
+        type: integer
+        format: int64
+        x-displayformat: 'dd/MM/yyyy'
+        description: Epoch time of the Start date of Overhead Rates
+      endDate:
+        type: integer
+        format: int64
+        x-displayformat: 'dd/MM/yyyy'
+        description: Epoch time of the end date of Overhead Rates
+      lumpsumAmount:
+        type: number
+        format: BigDecimal
+        description: Lumpsum Amount to be applied for the given overhead. Either of the Lumpsum Amount or Percentage is mandatory
+      percentage:
+        type: number
+        format: double
+        pattern: "[0-9]"
+        description: Percentage to be applied for the given overhead. Either of the Lumpsum Amount or Percentage is mandatory
+    required:
+      - overhead
+      - startDate
+      - tenantId
+      - endDate
+    
+  Remarks:
+    type: object
+    description: An Object that holds Remarks Master data
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Remarks Master
+      tenantId:
+        type: string
+        description: Tenant id of the Remarks Master
+        maxLength: 128
+        minLength: 2
+      typeOfDocument:
+        type: string
+        description: Type Of Document of the Remarks Master
+        maxLength: 100
+        minLength: 1
+      remarksType:
+        type: string
+        description: Remarks Type of the Remarks Master
+        maxLength: 100
+        minLength: 1
+      remarksDetails:
+        type: array
+        minItems: 1
+        description: Array of Remarks Details
+        items:
+          $ref: '#/definitions/RemarksDetail'
+
+    required:
+      - tenantId
+      - typeOfDocument
+      - remarksType
+      - remarksDetails
+    
+  RemarksDetail:
+    type: object
+    description: An Object that holds Remarks Details for a given Remarks Master
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Remarks Detail
+      tenantId:
+        type: string
+        description: Tenant id of the Remarks Detail
+        maxLength: 128
+        minLength: 2
+      remarks:
+        $ref: '#/definitions/Remarks'
+      remarksDescription:
+        type: string
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        description: Detailed description for given remarks master
+        maxLength: 1024
+      editable:
+        type: boolean
+        description: True By default
+
+      auditDetails:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+    required:
+      - remarks
+      - remarksDescription
+      - tenantId
+      - editable
+    
+  NatureOfWork:
+    type: object
+    description: An Object that holds Nature of work master details
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Nature Of Work
+      tenantId:
+        type: string
+        description: Tenant id of the Nature Of Work
+        maxLength: 128
+        minLength: 2
+      name:
+        type: string
+        description: Name of the Nature Of Work
+        pattern: '[a-zA-Z0-9\s\.,]+'
+        maxLength: 100
+        minLength: 1
+      code:
+        type: string
+        description: Code of the Nature Of Work
+        pattern: '[a-zA-Z0-9-\\]+'
+        maxLength: 100
+        minLength: 1
+      expenditureType:
+        $ref: '#/definitions/ExpenditureType'
+        description: Expenditure type Enum for the nature of work
+
+    required:
+      - tenantId
+      - name
+      - code
+      - expenditureType
+      
+  ReferenceType:
+    type: object
+    description: An Object that holds for Reference Type
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Reference Type
+      tenantId:
+        type: string
+        description: Tenant id of the Reference Type
+        maxLength: 128
+        minLength: 2
+      name:
+        type: string
+        description: Name of the Reference Type
+        pattern: '[a-zA-Z0-9\s\.,]+'
+        maxLength: 100
+        minLength: 1
+      code:
+        type: string
+        description: Code of the Reference Type
+        pattern: '[a-zA-Z0-9-\\]+'
+        maxLength: 100
+        minLength: 1
+
+    required:
+      - tenantId
+      - name
+      - code
+
+  WorkFlowDetails:
+    type: object
+    description: An Object to hold the Application workflow details for a given Abstract Estimate
+    properties:
+      type:
+        type: string
+        description: Workflow type to be processed for an application the Abstract Estimate
+      businessKey:
+        type: string
+        description: Businesskey of the workflow processing application
+      department:
+        type: string
+        description: Department of the workflow processing authority
+      designation:
+        type: string
+        description: Designation of the workflow processing authority
+        maxLength: 1024
+        minLength: 3
+      assignee:
+        type: integer
+        format: int64
+        description: Assignee id
+      action:
+        type: string
+        description: Action to be taken for processing workflow
+      status:
+        type: string
+        description: Status of the application
+      comments:
+        type: string
+        description: Comments given by the workflow processing person
+      senderName:
+        type: string
+        description: Name of the workflow processing person
+      details:
+        type: string
+        description: Details about the workflow process
+      stateId:
+        type: string
+        description: State id of the workflow
+        
+  DocumentDetail:
+    type: object
+    description: An Object that hold Document Details (Uploaded files/documents) for all the objects
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Document Detail
+      objectId:
+        type: string
+        pattern: '[a-zA-Z0-9-\\]+'
+        description: Object id of the Document for which documents are attached.
+      objectType:
+        type: string
+        pattern: '[a-zA-Z0-9\s\.,]+'
+        description: Object type of the document for which documents are attached.
+        maxLength: 100
+        minLength: 1
+      fileStore:
+        type: string
+        description: Filestore reference of the document which is attached 
+        maxLength: 256
+        minLength: 1
+      documentType:
+        $ref: '#/definitions/DocumentType' 
+        description: DocumentType Enum for the Document details
+      tenantId:
+        type: string
+        description: Tenant Id of the Document detail
+        maxLength: 128
+        minLength: 2
+      latitude:
+        type: integer
+        format: double
+        description: Latitude of the photograph taken
+      longitude:
+        type: integer
+        format: double
+        description: Longitude of the photograph taken
+      description:
+        type: string
+        description: Description of the photograph
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        maxLength: 1024
+      dateOfCapture:
+        type: integer
+        format: int64
+        description: Epoch time of when photo has captured
+      workProgress:
+        $ref: '#/definitions/WorkProgress'
+        description: WorkProgress Enum for Photos captured
+      deleted:
+        type: boolean
+        description: Boolean value to identify whether the object is deleted or not from UI.
+        default: false
+      auditDetails:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+    required:
+      - fileStore
+      - tenantId
+      - objectId
+      - objectType
+      
+  AppConfiguration:
+      type: object
+      description: this is model class for inserting app config data
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Unique Identifier of the App Configuration
+        tenantId:
+          type: string
+          description: tenant id of the App Configuration
+          maxLength: 128
+          minLength: 2
+        keyName:
+          type: string
+          description: name of the key
+          maxLength: 256
+          minLength: 1
+        description:
+          type: string
+          maxLength: 256
+          minLength: 1
+          description: description about the key
+        values:
+          description: array of values corresponding to key
+          type: array
+          items: 
+            type: string
+        effectiveFrom:
+          type: string
+          format: date
+        
+        auditDetails:
+          $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+      required:
+      - tenantId
+      - keyName
+      - effectiveFrom
+      - values
+
+  EstimateSanctionAuthority:
+    type: object
+    description: An Object that holds Sanction Authority details for Estimate
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Estimate Sanction Authority
+      tenantId:
+        type: string
+        description: Tenant id of the Estimate Sanction Authority
+        maxLength: 128
+        minLength: 2
+      name:
+        type: string
+        description: Name of the Estimate Sanction Authority
+        pattern: '[a-zA-Z0-9\s\.,]+'
+        maxLength: 100
+        minLength: 1
+
+    required:
+      - tenantId
+      - name
+
+  AssetPresentCondition:
+    type: object
+    description: An Object that holds Present condition of the asset
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Present condition of the asset
+      tenantId:
+        type: string
+        description: Tenant id of the Present condition of the asset
+        maxLength: 128
+        minLength: 2
+      name:
+        type: string
+        description: Present condition of the asset
+        pattern: '[a-zA-Z0-9\s\.,]+'
+        maxLength: 256
+        minLength: 1
+
+    required:
+      - tenantId
+      - name
+
+  LandAssetPresentCondition:
+    type: object
+    description: An Object that holds Present condition of the Land asset
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Present condition of the Land asset
+      tenantId:
+        type: string
+        description: Tenant id of the Present condition of the Land asset
+        maxLength: 128
+        minLength: 2
+      name:
+        type: string
+        description: Present condition of the Land asset
+        pattern: '[a-zA-Z0-9\s\.,]+'
+        maxLength: 256
+        minLength: 1
+
+    required:
+      - tenantId
+      - name
+
+parameters:
+##########################################################
+#Parameter name must start with small case followed by camel case.
+##########################################################
+  pageSize:
+    name: pageSize
+    in: query
+    description: Number of records returned.
+    type: integer
+    minimum: 0
+    exclusiveMinimum: true
+    maximum: 100
+    exclusiveMaximum: false
+    multipleOf: 10
+    default: 20
+  pageNumber:
+    name: pageNumber
+    in: query
+    description: Page number
+    type: integer
+    default: 1
+  sortProperty:
+    name: sortBy
+    in: query
+    description: This takes any field from the Object seperated by comma and asc,desc keywords. example name asc,code desc or name,code or name,code desc
+    type: string
+    default: id
+
+
+

@@ -1,0 +1,63 @@
+{
+    "_all": {
+        "enabled": true
+    },
+    "properties": {
+        "id": {
+            "type": "keyword"
+        },
+        "name": {
+            "type": "keyword"
+        },
+        "glcode": {
+            "type": "keyword"
+        },
+        "accountCodePurpose": {
+            "type": "object"
+        },
+        "description": {
+            "type": "keyword"
+        },
+        "isActiveForPosting": {
+            "type": "boolean"
+        },
+        "parentId": {
+            "type": "object"
+        },
+	"type": {
+            "type": "keyword"
+        },
+        "classification": {
+            "type": "long"
+        },
+        "functionRequired": {
+            "type": "boolean"
+        },
+        "budgetCheckRequired": {
+            "type": "boolean"
+        },
+        "majorCode": {
+            "type": "keyword"
+        },
+        "isSubledger": {
+            "type": "boolean"
+        },
+        "createdBy": {
+            "type": "object"
+        },
+        "lastModifiedBy": {
+            "type": "object"
+        },
+        "createdDate": {
+            "type": "date",
+            "format": "date_optional_time"
+        },
+        "lastModifiedDate": {
+            "type": "date",
+            "format": "date_optional_time"
+        },
+        "tenantId": {
+            "type": "keyword"
+        }
+    }
+}

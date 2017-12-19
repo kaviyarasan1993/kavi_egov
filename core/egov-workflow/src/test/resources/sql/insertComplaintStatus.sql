@@ -1,0 +1,9 @@
+INSERT INTO service_status (id, name, version,tenantid,code) VALUES (nextval('SEQ_SERVICE_STATUS'), 'REGISTERED', 0,'default','REGISTERED');
+INSERT INTO service_status (id, name, version,tenantid,code) VALUES (nextval('SEQ_SERVICE_STATUS'), 'FORWARDED', 0,'default','FORWARDED');
+INSERT INTO service_status (id, name, version,tenantid,code) VALUES (nextval('SEQ_SERVICE_STATUS'), 'PROCESSING', 0,'default','PROCESSING');
+INSERT INTO service_status (id, name, version,tenantid,code) VALUES (nextval('SEQ_SERVICE_STATUS'), 'COMPLETED', 0,'default','COMPLETED');
+INSERT INTO service_status (id, name, version,tenantid,code) VALUES (nextval('SEQ_SERVICE_STATUS'), 'REJECTED', 0,'default','REJECTED');
+INSERT INTO service_status (id, name, version,tenantid,code) VALUES (nextval('SEQ_SERVICE_STATUS'), 'NOTCOMPLETED', 0,'default','NOTCOMPLETED');
+INSERT INTO service_status (id, name, version,tenantid,code) VALUES (nextval('SEQ_SERVICE_STATUS'), 'WITHDRAWN', 0,'default','WITHDRAWN');
+INSERT INTO service_status (id, name, version,tenantid,code) VALUES (nextval('SEQ_SERVICE_STATUS'), 'CLOSED', 0,'default','CLOSED');
+INSERT INTO service_status (id, name, version,tenantid,code) VALUES (nextval('SEQ_SERVICE_STATUS'), 'REOPENED', 0,'default','REOPENED');

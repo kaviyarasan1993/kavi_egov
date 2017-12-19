@@ -1,0 +1,41 @@
+{  
+   "RequestInfo":{  
+         "apiId":"emp",
+         "ver":"1.0",
+         "ts":120,
+         "action":"create",
+         "did":"1",
+         "key":"abcdkey",
+         "msgId":"20170310130900",
+         "requesterId":"rajesh",
+         "authToken":"d0058c65-7c55-445e-89b3-7f5b0cfdc12b"
+      },
+      "feeMatrices": [
+   {		
+   			"tenantId": "default",
+            "applicationType": "NEW",
+            "category": "flammables",
+            "businessNature": "PERMANENT",
+            "subCategory": "crackers",
+	        "financialYear": "2",
+	        "feeType" : "LICENSE",
+            "feeMatrixDetails": [{
+            	"tenantId" : "default",
+            	"uomFrom": 0,
+            	"uomTo": 10,
+            	"amount": 100.00
+            },
+            {
+            	"tenantId" : "default",
+            	"uomFrom": 10,
+            	"amount": 200.00
+            }],
+            "auditDetails": {
+                "createdBy": null,
+                "lastModifiedBy": null,
+                "createdTime": 1501229900093,
+                "lastModifiedTime": 1501229900093
+            }
+        }
+        ]
+}

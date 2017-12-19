@@ -1,0 +1,2014 @@
+swagger: '2.0'
+# eGSP YAML Template Version: 1.0 
+# This is a version number for the YAML template. This must not be changed.
+
+info:
+  version: 1.0.0
+  ######################################################
+  # All API's are POST. _create,_search,_update for post,get and put. RequestInfo will be part of body. For multiple records we can pass multiple value with comman seperated values*.
+  # All _search will be synchronous and all _create and _update will be asynchronous*.
+  # RequestInfo and ResponseInfo object should be reffered from Common*.
+  # In _search API, tenantId should be passed in query param. In _create/_update, tenantId should be passed in the model.
+  # Readonly means that even if these fields are passed in the request, it will be ignored in create/update and will not be added/updated in the entities. The readonly fields might be passed to the _search API's to make use of fields for the search Query API. while calling _search API's even mandatory fields might not be available, it is mandatory only in the _create API's*.
+  # All errors will be returned with HTTP error code 400 with customized error code and messages. Consumer of the API need to handle 400 with customized error code and message.
+  # Definition must start with Upper case followed by camel case.
+  # Every model will have tenantId. Validate tenantId on create.
+  # Parameter name must start with small case followed by camel case.
+  # Path must be in small case.
+  ######################################################
+  
+  title: eGov Works Management System - Estimate.
+  description: |
+    APIs for Works Management module. This module handles creation of Abstract Estimate, Detailed Estimate, Revision Estimate, Estimate Appropriation, Estimate Photographs.
+  contact:
+    name: eGovernments Foundation
+    email : contacts@egovernments.org
+schemes:
+  - https
+basePath: '/works-estimate/v1'
+x-api-id: 'org.egov.works.estimate'
+x-common-path: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml'
+x-ui-info:
+  $ref: https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-estimate/works-estimate-ui-info.yml
+paths:
+  /abstractestimates/_search:
+    post:
+      summary: Get the list of Abstract Estimate(s) defined in the system.
+      description: |
+          Search and get Abstract Estimate(s) based on defined search criteria.
+          Currently search parameters are only allowed as HTTP query params.
+          
+          In case multiple parameters are passed Abstract Estimate(s) will be searched as an AND combination of all the parameters.
+          
+          Maximum result size is restricted based on the maxlength of Abstract Estimate as defined in AbstractEstimateResponse model.
+          
+          Search results will be sorted by the sortProperty Provided in the parameters
+      parameters:
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/parameters/requestInfo"
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/parameters/tenantId"
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/parameters/pageSize"
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/parameters/pageNumber"
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/parameters/sortProperty"
+        - name: adminSanctionNumbers
+          in: query
+          type: array
+          items:
+            type: string
+          format: autoComplete
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of Admin Sanction Numbers of Abstract Estimates
+        - name: ids
+          in: query
+          type: array
+          items:
+            type: string
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of Ids of Abstract Estimate to get the Abstract Estimates
+        - name: departments
+          in: query
+          type: array
+          items:
+            type: string
+          format: multiValueList
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of the Departments for which Abstract Estimate belongs to
+        - name: fundCodes
+          in: query
+          type: array
+          items:
+            type: string
+          format: multiValueList
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of the Funds for which Abstract Estimate belongs to
+        - name: functionCodes
+          in: query
+          type: array
+          items:
+            type: string
+          format: multiValueList
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of the Functions for which Abstract Estimate belongs to
+        - name: budgetHeadCodes
+          in: query
+          type: array
+          items:
+            type: string
+          format: multiValueList
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of the Budget Heads for which Abstract Estimate belongs to
+        - name: adminSanctionFromDate
+          in: query
+          type: integer
+          format: int64
+          x-displayformat: 'dd/MM/yyyy'
+          required: false
+          description: Epoch time from when the Abstract Estimate is Admin Sanctioned
+        - name: adminSanctionToDate
+          in: query
+          type: integer
+          format: int64
+          x-displayformat: 'dd/MM/yyyy'
+          required: false
+          description: Epoch time till the Abstract Estimate is Admin Sanctioned
+        - name: spillOverFlag
+          in: query
+          type: boolean
+          required: false
+          description: Boolean value to identify whether the Abstract Estimate is Spill over or not 
+        - name: createdBy
+          in: query
+          type: string
+          format: singleValueList
+          required: false
+          description: The User who created the Abstract Estimate
+        - name: abstractEstimateNumbers
+          in: query
+          type: array
+          items:
+            type: string
+          format: autoComplete
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of abstract estimate numbers of the Abstract Estimate 
+        - name: workIdentificationNumbers
+          in: query
+          type: array
+          items:
+            type: string
+          format: autoComplete
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of Work Identification Numbers assigned to Abstract Estimate
+        - name: statuses
+          in: query
+          type: array
+          items:
+            type: string
+          format: multiValueList
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of the Abstract Estimate Status
+        - name: nameOfWork
+          in: query
+          type: string
+          required: false
+          description: Name of the work of Abstract Estimate from Work Details
+      responses:
+        200:
+          description: Abstract Estimate(s) Retrieved Successfully
+          schema:
+            $ref: "#/definitions/AbstractEstimateResponse"
+        '400':
+          description: Invalid input.
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes'
+      tags:
+       - Abstract Estimate
+       
+  /abstractestimates/_create:
+    post:
+      summary: Create new Abstract Estimate(s).
+      description: |
+          To create new Abstract Estimate in the system. API supports bulk creation with max limit as defined in the Abstract Estimate Request. Please note that either whole batch succeeds or fails, there's no partial batch success. To create one Abstract Estimate, please pass array with one Abstract Estimate object.
+          
+          This API is used for creating Spillover (Ongoing works) and as well as new Abstract Estimates. All the flags like spillover, detailed estimate created, work order created and bills created flags will be allowed to select only in case of Spillover abstract estimate.
+          
+          The abstract estimate number and work identification numbers will be user entered in case of spillover work and auto generated in case of new work.
+          
+          Basic two steps workflow will be there for spillover Abstract Estimate and new Abstract Estimates will have multiple level workflow. The spillover Abstract Estimate can be created on approved status or with workflow based on configuration. The spillover work will have budget check which is required if Financial integration flag is turned on. Budget check not required If Financial integration flag is turned off.
+          
+          Asset details are mandatory if the Nature of work is 'Repairs or Addition'. If the Nature of work is 'New' then the Land details (Land and Estate module integration
+          ) are mandatory based on the field value 'Land asset required'.
+          
+          There will be financial sanction during the workflow before Admin sanction. The financial details such as fund, function, budgethead, scheme, sub scheme, is fund available and fund sanction authority details will be captured during this stage. Whether budget appropriation required/not required during this stage is based on configuration.
+          
+          The final approver who does Administrative sanction will enter the Administrative sanction no. and Council sanction no./date in case of new Abstract Estimates. These details along with admin sanction date and authority will be captured during the initial create screen itself for spillover works.
+          
+      parameters:
+        - name: AbstractEstimateRequest
+          in: body
+          description: Details of new AbstractEstimate(s) + RequestInfo meta data.
+          required: true
+          schema:
+            $ref: '#/definitions/AbstractEstimateRequest'
+      
+      responses:
+      ####################################################
+      # All errors will be returned with HTTP error code 400 with customized error code and messages. Consumer of the API need to handle 400 with customized error code and message
+      ###################################################
+        200:
+          description: Abstract Estimate(s) created successfully
+          schema:
+            $ref: '#/definitions/AbstractEstimateResponse'
+        400:
+          description: Abstract Estimate(s) creation failed
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes'
+      tags:
+        - Abstract Estimate
+        
+  /abstractestimates/_update:
+    post:
+      summary: Update existing Abstract Estimate(s).
+      description: |
+          To update existing Abstract Estimate in the system. API supports bulk updation with max limit as defined in the Abstract Estimate Request. Please note that either whole batch succeeds or fails, there's no partial batch success. To update one Abstract Estimate, please pass array with one Abstract Estimate object.
+          
+          Only the creator can edit all the fields when the Abstract Estimate in creator inbox(in Rejected status) or in drafts. Update during workflow will have all the fields readonly except few fields which are allowed to modify during each stage of workflow including Workflow Details. The status and workflow state will be updated during each stage of workflow approval.
+          
+          There will be financial sanction during the workflow before Admin sanction. The financial details such as fund, function, budgethead, scheme, sub scheme, is fund available and fund sanction authority details will be captured during this stage. Whether budget appropriation required/not required during this stage is based on configuration.
+          
+          Abstract Estimate date is not allowed to modify during workflow or during rejection except in drafts.  Abstract Estimate number not allowed to modify for normal estimate.
+          
+          The final approver who does Administrative sanction will enter the Administrative sanction no. and Council sanction no./date in case of new Abstract Estimates. These details along with admin sanction date and authority will be captured during the initial create screen itself for spillover works.
+          
+      parameters:
+        - name: AbstractEstimateRequest
+          in: body
+          description: Details of AbstractEstimate(s) + RequestInfo meta data.
+          required: true
+          schema:
+            $ref: '#/definitions/AbstractEstimateRequest'
+      
+      responses:
+      ####################################################
+      # All errors will be returned with HTTP error code 400 with customized error code and messages. Consumer of the API need to handle 400 with customized error code and message
+      ###################################################
+        200:
+          description: Abstract Estimate(s) updated successfully
+          schema:
+            $ref: '#/definitions/AbstractEstimateResponse'
+        400:
+          description: Abstract Estimate(s) updation failed
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes'
+      tags:
+        - Abstract Estimate
+        
+  /projectcodes/_search:
+    post:
+      summary: Get the list of Project Code(s) defined in the system.
+      description: |
+          Search and get Project Code(s) based on defined search criteria.
+          Currently search parameters are only allowed as HTTP query params.
+          
+          In case multiple parameters are passed Project Code(s) will be searched as an AND combination of all the parameters.
+          
+          Maximum result size is restricted based on the maxlength of Project Code as defined in ProjectCodeResponse model.
+          
+          Search results will be sorted by the sortProperty Provided in the parameters
+      parameters:
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/parameters/requestInfo"
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/parameters/tenantId"
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/parameters/pageSize"
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/parameters/pageNumber"
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/parameters/sortProperty"
+        - name: ids
+          in: query
+          type: array
+          items:
+            type: string
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of Ids of Abstract Estimate to get the Project Code
+        - name: codes
+          in: query
+          type: array
+          items:
+            type: string
+          format: autoComplete
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of Project Codes
+        - name: detailedEstimateNumbers
+          in: query
+          type: array
+          items:
+            type: string
+          format: autoComplete
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of Estimate Numbers
+        - name: abstractEstimateNumbers
+          in: query
+          type: array
+          items:
+            type: string
+          format: autoComplete
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of Work Identification Numbers
+        - name: statuses
+          in: query
+          type: array
+          items:
+            type: string
+          format: multiValueList
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of the Project Code Status
+        - name: active
+          in: query
+          type: boolean
+          description: If the value is True then get only active project codes. If boolean value is false then get inactive project codes.
+          default: true
+      responses:
+        200:
+          description: Project Code(s) Retrieved Successfully
+          schema:
+            $ref: "#/definitions/ProjectCodeResponse"
+        '400':
+          description: Invalid input.
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes'
+      tags:
+       - Project Code
+       
+  /projectcodes/_create:
+    post:
+      summary: Create new Project Code(s).
+      description: |
+          To create new Project Code in the system. API supports bulk creation with max limit as defined in the Project Code Request. Please note that either whole batch succeeds or fails, there's no partial batch success. To create one Project Code, please pass array with one Project Code object.
+          
+          There is no screen to create Project codes. The Project code is sometime called Work Identification number. The project code will be created either during Admin sanction of Abstract Estimate or Detailed Estimate. 
+          
+      parameters:
+        - name: ProjectCodeRequest
+          in: body
+          description: Details of new Project Code(s) + RequestInfo meta data.
+          required: true
+          schema:
+            $ref: '#/definitions/ProjectCodeRequest'
+      
+      responses:
+      ####################################################
+      # All errors will be returned with HTTP error code 400 with customized error code and messages. Consumer of the API need to handle 400 with customized error code and message
+      ###################################################
+        200:
+          description: Project Code(s) created successfully
+          schema:
+            $ref: '#/definitions/ProjectCodeResponse'
+        400:
+          description: Project Code(s) creation failed
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes'
+      tags:
+        - Project Code
+        
+  /projectcodes/_update:
+    post:
+      summary: Update existing Project Code(s).
+      description: |
+          To update existing Project Code in the system. API supports bulk updation with max limit as defined in the Project Code Request. Please note that either whole batch succeeds or fails, there's no partial batch success. To update one Project Code, please pass array with one Project Code object.
+          
+      parameters:
+        - name: ProjectCodeRequest
+          in: body
+          description: Details of Project Code(s) + RequestInfo meta data.
+          required: true
+          schema:
+            $ref: '#/definitions/ProjectCodeRequest'
+      
+      responses:
+      ####################################################
+      # All errors will be returned with HTTP error code 400 with customized error code and messages. Consumer of the API need to handle 400 with customized error code and message
+      ###################################################
+        200:
+          description: Project Code(s) updated successfully
+          schema:
+            $ref: '#/definitions/ProjectCodeResponse'
+        400:
+          description: Project Code(s) updation failed
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes'
+      tags:
+        - Project Code
+        
+  /detailedestimates/_search:
+    post:
+      summary: Get the list of Detailed Estimate(s) defined in the system.
+      description: |
+          Search and get Detailed Estimate(s) based on defined search criteria.
+          Currently search parameters are only allowed as HTTP query params.
+          
+          In case multiple parameters are passed Detailed Estimate(s) will be searched as an AND combination of all the parameters.
+          
+          Maximum result size is restricted based on the maxlength of Detailed Estimate as defined in DetailedEstimateResponse model.
+          
+          Search results will be sorted by the sortProperty Provided in the parameters
+      parameters:
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/parameters/requestInfo"
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/parameters/tenantId"
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/parameters/pageSize"
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/parameters/pageNumber"
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/parameters/sortProperty"
+        - name: detailedEstimateNumbers
+          in: query
+          type: array
+          items:
+            type: string
+          format: autoComplete
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of Detailed Estimate Numbers to get the Detailed Estimates
+        - name: ids
+          in: query
+          type: array
+          items:
+            type: string
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of Ids of Detailed Estimate to get the Detailed Estimates
+        - name: fromDate
+          in: query
+          type: integer
+          format: int64
+          x-displayformat: 'dd/MM/yyyy'
+          required: false
+          description: Epoch time from when the Detailed Estimate created
+        - name: toDate
+          in: query
+          type: integer
+          format: int64
+          x-displayformat: 'dd/MM/yyyy'
+          required: false
+          description: Epoch time till when the Detailed Estimate created
+        - name: departments
+          in: query
+          type: array
+          items:
+            type: string
+          format: multiValueList
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of the Department code for which Detailed Estimate belongs to
+        - name: typeOfWork
+          in: query
+          type: string
+          format: multiValueList
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of the Type of work codes for which Detailed Estimate belongs to
+        - name: subTypeOfWork
+          in: query
+          type: string
+          format: multiValueList
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of the Sub Type of work codes for which Detailed Estimate belongs to
+        - name: statuses
+          in: query
+          type: array
+          items:
+            type: string
+          format: multiValueList
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of the Detailed Estimate Status
+        - name: workIdentificationNumbers
+          in: query
+          type: array
+          items:
+            type: string
+          format: autoComplete
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma Separated List of Work Identification Numbers of the Detailed Estimate
+        - name: abstractEstimateNumbers
+          in: query
+          type: array
+          items:
+            type: string
+          format: autoComplete
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of Abstract Estimate Numbers for which Detailed Estimate belongs to
+        - name: fromAmount
+          in: query
+          required: false
+          description: Estimate Amount of the Detailed Estimate
+          type: number
+          format: double
+        - name: toAmount
+          in: query
+          required: false
+          description: Estimate Amount of the Detailed Estimate
+          type: number
+          format: double
+        - name: nameOfWork
+          in: query
+          type: string
+          required: false
+          description: Name of the work of Detailed Estimate
+        - name: wards
+          in: query
+          type: array
+          items:
+            type: string
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          format: autoComplete
+          description: Comma separated list of Ward codes for which Detailed Estimate belongs to
+        - name: spillOverFlag
+          in: query
+          type: boolean
+          required: false
+          description: Boolean value of the Detailed Estimate whether its Spillover or not
+        - name: createdBy
+          in: query
+          type: string
+          format: singleValueList
+          required: false
+          description: The User who created the Detailed Estimate
+        - name: currentOwner
+          in: query
+          type: string
+          format: singleValueList
+          required: false
+          description: The User who owns(work flow user) the Detailed Estimate
+      responses:
+        200:
+          description: Detailed Estimate(s) Retrieved Successfully
+          schema:
+            $ref: "#/definitions/DetailedEstimateResponse"
+        '400':
+          description: Invalid input.
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes'
+      tags:
+       - Detailed Estimate
+       
+  /detailedestimates/_create:
+    post:
+      summary: Create new Detailed Estimate(s).
+      description: |
+          To create new Detailed Estimate in the system. API supports bulk creation with max limit as defined in the Detailed Estimate Request. Please note that either whole batch succeeds or fails, there's no partial batch success. To create one Detailed Estimate, please pass array with one Detailed Estimate object.
+          
+          Detailed Estimate will be created for Approved Abstract Estimate or Detailed estimate itself can be created without Asbtract Estimate. This is one of the reason we are keeping most of the attributes in Detailed Estimate also which are there in Asbtract Estimate. The values for these attributes are auto populated from Abstract Estimate if the Detailed estimate is created for Abstract Estimate. All these values which are populated from Abstract Estimate should be readonly mode and user not allowed to modify these values.
+          
+          Basic two steps workflow will be there for spillover Detailed Estimate and new Detailed Estimates will have multiple level workflow. The spillover Detailed Estimate can be created on approved status or with workflow based on configuration. Technical Sanction will be part of the workflow for Normal detailed Estimate. Save as drafts required for Detailed Estimate. 
+          
+          Atleast one item is Schedule A(SOR or NON SOR) is mandatory before submitting the Detailed Estimate. Detailed Measurements needs to be captured for Detailed Estimate at each activity(SOR/Non SOR) level. It is not mandatory to capture Detailed measurements for each activity. If Detailed Measurements are captured then the Quantity at activity level will be defaulted from the computed value from measurements and not allowed to edit.
+          
+          Capturing of Location along with Latitude and Longitude from GIS Map needs to be mandated based on the configuration value.  
+          
+          If Asset already linked during Abstract Estimate creation then its auto populated from Abstract Estimate. Whether allowed to modify the asset linked in Abstract Estimate during Detailed Estimate creation is configration driven. Whether Asset linking mandatory or not also is based on configuration. The default value will be false.
+          
+          The Overheads and Estimate deductions selection is optional in Detailed Estimate. If its selected then the Total Estimate cost is inclusive of Overheads. The amount from Estimate deduction is not included in Total Estimate value.
+          
+          The sum of SOR and NON SOR value will be the total Work Value. Whether the Service Tax/VAT needs to be captured or not at activity level is based on configuration.
+          
+      parameters:
+        - name: DetailedEstimateRequest
+          in: body
+          description: Details of the new Detailed Estimate(s) + RequestInfo meta data.
+          required: true
+          schema:
+            $ref: '#/definitions/DetailedEstimateRequest'
+      
+      responses:
+      ####################################################
+      # All errors will be returned with HTTP error code 400 with customized error code and messages. Consumer of the API need to handle 400 with customized error code and message
+      ###################################################
+        200:
+          description: Detailed Estimate(s) created successfully
+          schema:
+            $ref: '#/definitions/DetailedEstimateResponse'
+        400:
+          description: Detailed Estimate(s) creation failed
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes'
+      tags:
+        - Detailed Estimate 
+        
+  /detailedestimates/_update:
+    post:
+      summary: Update existing Detailed Estimate(s).
+      description: |
+          To update existing Detailed Estimate in the system. API supports bulk updation with max limit as defined in the Detailed Estimate Request. Please note that either whole batch succeeds or fails, there's no partial batch success. To update one Detailed Estimate, please pass array with one Detailed Estimate object.
+          
+           Only the creator can edit all the fields when the Detailed Estimate in creator inbox(in Rejected status) or in drafts. Update during workflow will have all the fields readonly except few fields which are allowed to modify during each stage of workflow including Workflow Details. The status and workflow state will be updated during each stage of workflow approval.
+          
+      parameters:
+        - name: DetailedEstimateRequest
+          in: body
+          description: Details of Detailed Estimate(s) + RequestInfo meta data.
+          required: true
+          schema:
+            $ref: '#/definitions/DetailedEstimateRequest'
+      
+      responses:
+      ####################################################
+      # All errors will be returned with HTTP error code 400 with customized error code and messages. Consumer of the API need to handle 400 with customized error code and message
+      ###################################################
+        200:
+          description: Detailed Estimate(s) updated successfully
+          schema:
+            $ref: '#/definitions/DetailedEstimateResponse'
+        400:
+          description: Detailed Estimate(s) updation failed
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes'
+      tags:
+        - Detailed Estimate
+        
+  /revisionestimates/_search:
+    post:
+      summary: Get the list of Revision Estimate(s) defined in the system.
+      description: |
+          Search and get Revision Estimate(s) based on defined search criteria.
+          Currently search parameters are only allowed as HTTP query params.
+          
+          In case multiple parameters are passed Revision Estimate(s) will be searched as an AND combination of all the parameters.
+          
+          Maximum result size is restricted based on the maxlength of Revision Estimate as defined in RevisionEstimateResponse model.
+          
+          Search results will be sorted by the sortProperty Provided in the parameters
+      parameters:
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/parameters/requestInfo"
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/parameters/tenantId"
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/parameters/pageSize"
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/parameters/pageNumber"
+        - $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/parameters/sortProperty"
+        - name: revisionEstimateNumbers
+          in: query
+          type: array
+          items:
+            type: string
+          format: autoComplete
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of Revision Estimate Numbers to get the Revision Estimates
+        - name: ids
+          in: query
+          type: array
+          items:
+            type: string
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of Ids of Revision Estimate to get the Revision Estimates
+        - name: detailedEstimateNumbers
+          in: query
+          type: array
+          items:
+            type: string
+          format: autoComplete
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of Detailed Estimate Numbers to get the Revision Estimates
+        - name: fromDate
+          in: query
+          type: integer
+          format: int64
+          x-displayformat: 'dd/MM/yyyy'
+          required: false
+          description: Epoch time from when the Revision Estimate created
+        - name: toDate
+          in: query
+          type: integer
+          format: int64
+          x-displayformat: 'dd/MM/yyyy'
+          required: false
+          description: Epoch time till when the Revision Estimate created
+        - name: statuses
+          in: query
+          type: array
+          items:
+            type: string
+          format: multiValueList
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Comma separated list of Status of the Revision Estimate
+        - name: createdBy
+          in: query
+          type: array
+          items:
+            type: string
+          format: singleValueList
+          maxItems: 50
+          required: false
+          allowEmptyValue: true
+          description: Unique user name of the User who created the Revision Estimate
+      responses:
+        200:
+          description: Revision Estimate(s) Retrieved Successfully
+          schema:
+            $ref: "#/definitions/RevisionEstimateResponse"
+        '400':
+          description: Invalid input.
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes'
+      tags:
+       - Revision Estimate
+       
+  /revisionestimates/_create:
+    post:
+      summary: Create new Revision Estimate(s).
+      description: |
+          To create new Revision Estimate in the system. API supports bulk creation with max limit as defined in the Revision Estimate Request. Please note that either whole batch succeeds or fails, there's no partial batch success. To create one Revision Estimate, please pass array with one Revision Estimate object. 
+          
+          Revision Estimate will be created for Detailed Estimate for which there exists a approved Letter of Acceptance/Work Order and Final Bill is not yet created for the same. Revision Estimate extends Detailed Estimate i.e., Revesion estimate is a sub set for Detailed Estimate. There can be multiple Revision Estimates for single Detailed Estimate. 
+          
+          Revision Estimate can either have Non Tendered Items(SOR Items which are not part of Original Estimate) or Lumpsum Items(NON SOR Items) or Change in Quantity of existing items(Additional or Reduced Quantity) or any of these combinations. Any of activity is mandatory to Submit Revision Estimate.
+          
+          Workflow might be there for Revision Estimate or it can be created in approved status based on configuration. Budget Appropriation for Revision Estimate should be mandated based on the configuration.
+          
+          Detailed Measurements needs to be captured for Revision Estimate which is similar to Detaield Estimate.
+          
+      parameters:
+        - name: RevisionEstimateRequest
+          in: body
+          description: Details of the new Revision Estimate(s) + RequestInfo meta data.
+          required: true
+          schema:
+            $ref: '#/definitions/RevisionEstimateRequest'
+      
+      responses:
+      ####################################################
+      # All errors will be returned with HTTP error code 400 with customized error code and messages. Consumer of the API need to handle 400 with customized error code and message
+      ###################################################
+        200:
+          description: Revision Estimate(s) created successfully
+          schema:
+            $ref: '#/definitions/RevisionEstimateResponse'
+        400:
+          description: Revision Estimate(s) creation failed
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes'
+      tags:
+        - Revision Estimate 
+        
+  /revisionestimates/_update:
+    post:
+      summary: Update existing Revision Estimate(s).
+      description: |
+          To update existing Revision Estimate in the system. API supports bulk updation with max limit as defined in the Revision Estimate Request. Please note that either whole batch succeeds or fails, there's no partial batch success. To update one Revision Estimate, please pass array with one Revision Estimate object.
+          
+          Only the creator can edit all the fields when the Revision Estimate is in creator inbox(in Rejected status) or in drafts. Update during workflow will have all the fields readonly except few fields which are allowed to modify during each stage of workflow including Workflow Details. The status and workflow state will be updated during each stage of workflow approval.
+          
+      parameters:
+        - name: RevisionEstimateRequest
+          in: body
+          description: Details of Revision Estimate(s) + RequestInfo meta data.
+          required: true
+          schema:
+            $ref: '#/definitions/RevisionEstimateRequest'
+      
+      responses:
+      ####################################################
+      # All errors will be returned with HTTP error code 400 with customized error code and messages. Consumer of the API need to handle 400 with customized error code and message
+      ###################################################
+        200:
+          description: Revision Estimate(s) updated successfully
+          schema:
+            $ref: '#/definitions/RevisionEstimateResponse'
+        400:
+          description: Revision Estimate(s) updation failed
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes'
+      tags:
+        - Revision Estimate
+       
+definitions:
+########################################################
+#RequestInfo and ResponseInfo object should be reffered from Common.
+#Definition must start with Upper case followed by camel case.
+#Every model will have tenantId
+########################################################
+
+  AbstractEstimateRequest:
+      description: Contract class to send response. Array of AbstractEstimate items are used in case of search results, also multiple  AbstractEstimate item is used for create and update
+      properties:
+        RequestInfo:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/RequestInfo'
+        abstractEstimates:
+          description: Used for create and update only
+          type: array
+          minimum: 1
+          maximum: 100
+          items:
+            $ref: '#/definitions/AbstractEstimate'
+
+  AbstractEstimateResponse:
+      description: Contract class to send response. Array of AbstractEstimate items are used in case of search results, also multiple  AbstractEstimate item is used for create and update
+      properties:
+        ResponseInfo:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ResponseInfo'
+        abstractEstimates:
+          description: Used for search result and create only
+          type: array
+          maximum: 500
+          items:
+            $ref: '#/definitions/AbstractEstimate'
+    
+  AbstractEstimate:
+    type: object
+    description: AN Object which holds the basic data for AbstractEstimate
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Abstract Estimate
+      tenantId:
+        type: string
+        description: Tenant id of the Abstract Estimate
+        maxLength: 128
+        minLength: 2
+      dateOfProposal:
+        type: integer
+        format: int64
+        x-displayformat: 'dd/MM/yyyy'
+        description: Epoch time of the Date of Proposal. Default the current date for new estimates and do not allow to modify. This field is user entered for spillover works. Allowed to edit during rejected status or drafts for Spillover Estimates. Future date is not allowed to enter.
+      abstractEstimateNumber:
+        type: string
+        pattern: '[a-zA-Z0-9-/]+'
+        description: Unique number for the Abstract Estimate. If the work is spillover then the Abstract Estimate number is user entered. Otherwise it is auto generated. This field is allowed to edit during rejected status or drafts for Spillover Estimates.
+        maxLength: 50
+      subject:
+        type: string
+        description: Subject of Abstract Estimate
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        maxLength: 256
+        minLength: 1
+      referenceType:
+        type: string
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/ReferenceType'
+        description: Reference Type of the Abstract Estimate
+        format: singleValueList
+      referenceNumber:
+        type: string
+        description: Letter Reference Number of the Abstract Estimate
+        pattern: '[a-zA-Z0-9-/]+'
+        maxLength: 100
+        minLength: 1
+      description:
+        type: string
+        description : description for the Abstract Estimate
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        maxLength: 1024
+        minLength: 1
+      department:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/egov-common-masters/contracts/v1-0-0.yml#/definitions/Department'
+        description: Department for which Abstract Estimate belongs to
+        format: singleValueList
+      status:       
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/AbstractEstimateStatus'
+        description: Status of the Abstract Estimate
+      beneficiary:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/Beneficiary'
+        format: singleValueList
+        description: The Beneficiary of this work
+      modeOfAllotment:
+        $ref: '#/definitions/ModeOfAllotment'
+        format: singleValueList
+        description: The Recommended Mode of Allotment of the work
+      typeOfWork:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/TypeOfWork'
+        format: singleValueList
+        description: The Type of work for which this Abstract Estimate belongs to
+      subTypeOfWork:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/TypeOfWork'
+        format: singleValueList
+        description: The Sub Type of work for which this Abstract Estimate belongs to
+      natureOfWork: 
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/NatureOfWork'
+        format: singleValueList
+        description: The Nature of work for which this Abstract Estimate belongs to
+      ward:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/egov-location/contracts/v1-0-0.yml#/definitions/Boundary'
+        description: The Admin Ward for which this Abstract Estimate belongs to
+        format: singleValueList
+      locality: 
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/egov-location/contracts/v1-0-0.yml#/definitions/Boundary'
+        description: The Locality in which the Abstract Estimate belongs to
+        format: singleValueList
+      workCategory:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/WorkCategory'
+        description: The Work Category of the Abstract Estimate
+        format: singleValueList
+      councilResolutionNumber:
+        type: string
+        pattern: '[a-zA-Z0-9-/]+'
+        description: Council resolution number of the Abstract Estimate
+      councilResolutionDate:
+        type: integer
+        format: int64
+        x-displayformat: 'dd/MM/yyyy'
+        description: Epoch time of the council resolution date
+      spillOverFlag:  
+        type: boolean
+        description: Boolean value if spill over or not. Required only if Abstract Estimate is Spill Over. 
+        default: false
+      detailedEstimateCreated:
+        type: boolean
+        description: Boolean value if the detailed estimate created or not. Required only if Abstract Estimate is Spill Over.
+        default: false
+      workOrderCreated:
+        type: boolean
+        description: Boolean value if work order created or not, Required only if Abstract Estimate is Spill Over.
+        default: false
+      billsCreated: 
+        type: boolean
+        description: Boolean value if bills created or not. Required only if Abstract Estimate is Spill Over. The grossAmountBilled field needs to be shown in Works detail tab if  the billsCreated flag is true for Abstract Estimate.
+        default: false
+      cancellationReason:
+        type: string
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        description: Reason for cancellation of the Abstract Estimate, Required only while cancelling Abstract Estimate
+        maxLength: 100
+      cancellationRemarks:
+        type: string
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        description: Remarks for cancellation of the Abstract Estimate, Required only while cancelling Abstract Estimate
+        maxLength: 512
+      adminSanctionNumber:
+        type: string
+        pattern: '[a-zA-Z0-9-/]+'
+        description: Unique number of admin sanction for the Abstract Estimate
+        maxLength: 50
+        minLength: 1
+      adminSanctionDate:
+        type: integer
+        format: int64
+        description:  Epoch time of when the admin santion done. Future date is not allowed to enter in this field. Admin sanction date should be on or after the Date of Proposal.
+      adminSanctionBy:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/egov-user/contracts/v1-0-0.yml#/definitions/User'
+        description: User who admin sanctioned
+      financialSanctionNumber: 
+        type: string
+        pattern: '[a-zA-Z0-9-/]+'
+        description: Financial sanction number of the Abstract Estimate
+        maxLength: 50   
+      financialSanctionDate: 
+        type: integer
+        format: int64
+        x-displayformat: 'dd/MM/yyyy'
+        description: Epoch time of when Financial sanctioned. Future date is not allowed to enter in this field. 
+      financialSanctionBy:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/egov-user/contracts/v1-0-0.yml#/definitions/User'
+        description: The user who Financial sanctioned the Abstract Estimate
+      workFlowDetails:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/WorkFlowDetails'
+      stateId:
+        type: string
+        description: State id of the workflow
+      implementationPeriod:
+        type: integer
+        description: Approximate period of implementation of the work
+        maxLength: 5
+      fund:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/financials/contracts/egf-master/v1-0-0.yml#/definitions/Fund'
+        description: Fund of the Abstract Estimate. This data comes from financials.
+        format: singleValueList
+      function:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/financials/contracts/egf-master/v1-0-0.yml#/definitions/Function'
+        description: Function of the Abstract Estimate. This data comes from financials.
+        format: singleValueList
+      budgetGroup:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/financials/contracts/egf-master/v1-0-0.yml#/definitions/BudgetGroup'
+        description: Budget head of the Abstract Estimate. This data comes from financials.
+        format: singleValueList
+      accountCode:
+        type: string
+        description: Account code of the Abstract Estimate. This data comes from financials. This field is required only if Financial Integration required flag is turned on and it should be mandatory.
+        format: singleValueList
+      scheme:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/financials/contracts/egf-master/v1-0-0.yml#/definitions/Scheme'
+        description: Scheme of the Abstract Estimate. This data comes from financials.
+        format: singleValueList
+      subScheme:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/financials/contracts/egf-master/v1-0-0.yml#/definitions/SubScheme'
+        description: Sub scheme of the Abstract Estimate. This data comes from financials.
+        format: singleValueList
+      fundAvailable:
+        type: boolean
+        description: Boolean value to capture whether the fund available to execute this work. True if Fund available. False if fund not available.
+        default: false
+      fundSanctioningAuthority:
+        type: string
+        pattern: '[a-zA-Z0-9\s\.,]+'
+        description: The sanctioning Authority for fund to carry out the work
+        maxLength: 100
+      pmcRequired:
+        type: boolean
+        description: Boolean vlaue to capture whether the PMC need to appoint or not. True if PMC needs to be appointed. Otherwise the value will be false. The valid values are 'Yes' and 'No'.
+        format: singleValueList
+        default: false
+      pmcType:
+        type: string
+        description: If PMC required is yes then to capture PMC is from Panel or New Appointment.
+        format: singleValueList
+        maxLength: 100
+      pmcName:
+        type: string
+        description: Name of the PMC for PMC type Panel. The PMC(Project Management Consultant) data will fetch from Contractor master based on the boolean flag pmc=true. This field is not required if pmcType is 'New Appointment'.
+        format: singleValueList
+        maxLength: 100
+      workProposedAsPerDP:
+        type: boolean
+        description: Work proposed as per DP. The valid values are 'Yes' and 'No'.
+        format: singleValueList
+        default: false
+      dpRemarks:
+        type: string
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        description: DP Remarks
+        maxLength: 512
+      landAssetRequired:
+        type: boolean
+        description: Boolean value to capture whether the Land Asset required. True if Land Asset required. False if the Land Asset value is not required. The values should be shown in UI are 'Yes' and 'No'. This field needs to be shown if Nature of work is 'New'.
+        format: singleValueList
+        default: false
+      noOfLands:
+        type: integer
+        description: No of Lands. This field needs to be shown if Nature of work is 'New'. If landAssetRequired=Yes then this field is mandatory.
+        maxLength: 10
+      otherAssetSpecificationRemarks:
+        type: string
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        description:  Other Specifications Remarks. This field needs to be shown if Nature of work is 'New'.
+        maxLength: 1024
+      deleted:
+        type: boolean
+        description: Boolean value to identify whether the object is deleted or not from UI.
+        default: false
+      auditDetails:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+      abstractEstimateDetails:
+        type: array
+        description: Array of Abstract Estimate Details
+        minItems: 1
+        items:
+          $ref: '#/definitions/AbstractEstimateDetails'
+      sanctionDetails:
+        type: array
+        description: Array of Abstract Estimate Sanction Details
+        items:
+          $ref: '#/definitions/AbstractEstimateSanctionDetail'
+      assetDetails:
+        type: array
+        description: Array of Asset/Land details
+        items:
+          $ref: '#/definitions/AbstractEstimateAssetDetail'
+      documentDetails:
+        type: array
+        description: Array of document details
+        items:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/DocumentDetail'
+    required:
+      - tenantId
+      - dateOfProposal
+      - department
+      - subject
+      - referenceType
+      - referenceNumber
+      - description
+      - natureOfWork
+      - typeOfWork
+      - subTypeOfWork
+      - beneficiary
+      - workCategory
+      - modeOfAllotment
+      - ward
+      - locality
+      - workProposedAsPerDP
+      - dpRemarks
+      - abstractEstimateDetails
+  
+  AbstractEstimateDetails:
+    type: object
+    description: An Object that hold Abstract Estimate Detail for a given Abstract Estimate
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Abstract Estimate Detail
+      tenantId:
+        type: string
+        description: Tenant id of the Abstract Estimate Details
+        maxLength: 128
+        minLength: 2
+      abstractEstimate:
+        type: string
+        description: Reference to Abstract Estimate Object 
+      nameOfWork:
+        type: string
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        description: Name Of Work of the Abstract Estimate
+        maxLength: 1024
+        minLength: 1
+      estimateAmount:
+        type: number
+        format: BigDecimal
+        description: Estimate amount for the Abstract Estimate
+        maxLength: 20
+        minLength: 1
+      grossAmountBilled:
+        type: number
+        format: double
+        description: Gross Billed amount of the Abstract Estimate Details. This attribute is required only if billsCreated flag is true for Abstract Estimate.
+        maxLength: 20
+      projectCode:
+        $ref: '#/definitions/ProjectCode'
+        description: Project code object refernce for the Abstract Estimate. If the work is spillover then the project code/Work Identification number is user entered. Otherwise it is auto generated at the time of Admin Sanction.
+      abstractEstimateAppropriations:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-services/v1-0-0.yml#/definitions/EstimateAppropriation'
+        description: This object holds Budget Appropriation details for the Abstract Estimate. Appropriation required or not is based on whether the Financial Integration is required or not.
+      documentDetails:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/DocumentDetail'
+        description: This object holds Budget any documents attached while creating Abstract Estimate or any documents generated from the system or any photographs captured for the Abstract Estimate.
+      deleted:
+          type: boolean
+          description: Boolean value to identify whether the object is deleted or not from UI.
+          default: false
+      auditDetails:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+    required:
+      - nameOfWork
+      - estimateAmount
+      - tenantId
+      
+  AbstractEstimateAssetDetail:
+    type: object
+    description: An Object that holds Asset/Land Details of Abstract Estimate 
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Asset/Land Details of Abstract Estimate 
+      tenantId:
+        type: string
+        description: Tenant id of the Asset/Land Details of Abstract Estimate 
+        maxLength: 128
+        minLength: 2
+      abstractEstimate:
+        type: string
+        description: Reference to Sanction Asset/Land of Abstract Estimate Object 
+      asset:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/Asset-MAHA/contracts/v1-0-0-mh.yml#/definitions/Asset'
+        description: Asset for which the Abstract Estimate is created. This field is required and to be shown if Nature of work is 'Repairs or Addition'.
+        format: singleValueList
+      assetCondition:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/AssetPresentCondition'
+        description: Present condition of the asset. This field is required and to be shown if Nature of work is 'Repairs or Addition'
+        format: singleValueList
+      assetRemarks:
+        type: string
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        description: Remarks of the asset. This field is required and to be shown if Nature of work is 'Repairs or Addition'
+        maxLength: 1024
+      landAsset:
+        type: string
+        pattern: '[a-zA-Z0-9-\\]+'
+        description: Land Asset ID. If Is Land Asset required=Yes then this field is mandatory. This field needs to be shown if Nature of work is 'New'.
+        format: singleValueList
+      landAssetCondition:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/LandAssetPresentCondition'
+        description: Present condition of the asset. If Is Land Asset required=Yes then this field is mandatory. This field needs to be shown if Nature of work is 'New'.
+        format: singleValueList
+      constructionArea:
+          type: number
+          format: double
+          maxLength: 12
+          description: Construction area. If Is Land Asset required=Yes then this field is mandatory. This field needs to be shown if Nature of work is 'New'.
+      deleted:
+          type: boolean
+          description: Boolean value to identify whether the object is deleted or not from UI.
+          default: false
+      auditDetails:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+    required:
+      - abstractEstimate
+      - tenantId
+      
+  AbstractEstimateSanctionDetail:
+    type: object
+    description: An Object that holds Sanction Details of Abstract Estimate 
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Sanction Details of Abstract Estimate 
+      tenantId:
+        type: string
+        description: Tenant id of the Sanction Details of Abstract Estimate 
+        maxLength: 128
+        minLength: 2
+      abstractEstimate:
+        type: string
+        description: Reference to Sanction Details of Abstract Estimate Object 
+      sanctionType:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/EstimateSanctionType'
+        description: Reference to Estimate Sanction Type enum 
+        format: singleValueList
+      sanctionAuthority:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/EstimateSanctionAuthority'
+        description: Reference to Estimate Sanction Authority object 
+        format: singleValueList
+      deleted:
+          type: boolean
+          description: Boolean value to identify whether the object is deleted or not from UI.
+          default: false
+    required:
+      - abstractEstimate
+      - tenantId
+      - sanctionType
+      - sanctionAuthority
+      
+  DetailedEstimateRequest:
+      description: Contract class to send response. Array of Detailed Estimate items are used in case of search results, also multiple  Detailed Estimate item is used for create and update
+      properties:
+        RequestInfo:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/RequestInfo'
+        detailedEstimates:
+          description: Used for create and update only
+          type: array
+          minimum: 1
+          maximum: 100
+          items:
+            $ref: '#/definitions/DetailedEstimate'
+
+  DetailedEstimateResponse:
+      description: Contract class to send response. Array of Detailed Estimate items are used in case of search results, also multiple  Detailed Estimate item is used for create and update
+      properties:
+        ResponseInfo:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ResponseInfo'
+        detailedEstimates:
+          description: Used for search result and create only
+          type: array
+          maximum: 500
+          items:
+            $ref: '#/definitions/DetailedEstimate'
+            
+  DetailedEstimate:
+    type: object
+    description: An Object holds the basic data for a Detailed Estimate
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Detailed Estimate
+      tenantId:
+        type: string
+        description: Tenant id of the Detailed Estimate
+        maxLength: 128
+        minLength: 2
+      estimateNumber:
+        type: string
+        pattern: '[a-zA-Z0-9-/]+'
+        description: Unique number for the Detailed Estimate. If the detailed estimate is spillover then the Detailed Estimate number is user entered. Otherwise it is auto generated. This field is allowed to edit during rejected status or drafts for Spillover detailed estimates.
+        maxLength: 50
+      estimateDate:
+        type: integer
+        format: int64
+        x-displayformat: 'dd/MM/yyyy'
+        description: Epoch time of the Detailed Estimate Created. Default the current date for new detailed estimates and do not allow to modify. This field is user entered for spillover detailed estimates. Allowed to edit during rejected status or drafts for Spillover Estimates. Future date is not allowed to enter in this field. Detailed Estimate date should be on or after the Admin Sanction date of Abstract Estimate. If the date is modified after the activities(Schedule A) are added from drafts - then reset the activities(Schedule A) with a warning message.
+      nameOfWork:
+        type: string
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        description: name of the work of Detailed Estimate Details
+        maxLength: 1024
+        minLength: 1
+      description:
+        type: string
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        description : description for the Detailed Estimate
+        maxLength: 1024
+        minLength: 1
+      department:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/egov-common-masters/contracts/v1-0-0.yml#/definitions/Department'
+        format: singleValueList
+        description: Department for which Detailed Estimate belongs to
+      adminSanctionNumber:
+        type: string
+        pattern: '[a-zA-Z0-9-/]+'
+        maxLength: 50
+        description: Unique number after admin sanction for the Detailed Estimate
+      adminSanctionDate:
+        type: integer
+        format: int64
+        x-displayformat: 'dd/MM/yyyy'
+        description:  Epoch time of when the admin santion is done. Admin Sanctioned date should be on or after the Detailed Estimate date.
+      adminSanctionBy:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/egov-user/contracts/v1-0-0.yml#/definitions/User'
+        description: User who admin sanctioned Detailed Estimate
+      status:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/DetailedEstimateStatus'
+        description: Status of the Detailed Estimate
+      workValue:
+        type: number
+        format: BigDecimal
+        description: Work value(Sum of SOR and NON SOR) of the Detailed Estimate
+        maxLength: 20
+      estimateValue:
+        type: number
+        format: BigDecimal
+        description: Estimate value (Sum of Schedule A and Schedule B) of the Detailed Estimate which excludes Estimate deductions.
+        maxLength: 20
+      projectCode:
+        $ref: '#/definitions/ProjectCode'
+        description: Project Code of the Detailed Estimate
+      parent:
+        type: string
+        description:  Parent Detailed Estimate Reference. This represents the Parent Estimate reference for the Revision Estimate.
+      copiedFrom:
+        type: string
+        description: Reference of the Detailed Estimate for teh Copy Estimate
+      approvedDate:
+        type: integer
+        format: int64
+        x-displayformat: 'dd/MM/yyyy'
+        description: Epoch time of when Detailed Estimate created
+      approvedBy:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/egov-user/contracts/v1-0-0.yml#/definitions/User'
+        description: User who approved the Detailed Estimate
+      copiedEstimate:
+        type: boolean
+        description: Boolean value to identify whether the Detailed Estimate is copied from another estimate.
+        default: false
+      beneficiary:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/Beneficiary'
+        format: singleValueList
+        description: The Beneficiary of this work
+      modeOfAllotment:
+        $ref: '#/definitions/ModeOfAllotment'
+        format: singleValueList
+        description: The Recommended Mode of Allotment of the work
+      worksType:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/TypeOfWork'
+        format: singleValueList
+        description: The Type of work for which this Detailed Estimate belongs to
+      worksSubtype:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/TypeOfWork'
+        format: singleValueList
+        description: The Sub Type of work for which this Detailed Estimate belongs to
+      natureOfWork: 
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/NatureOfWork'
+        format: singleValueList
+        description: The Nature of work for which this Detailed Estimate belongs to
+      ward:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/egov-location/contracts/v1-0-0.yml#/definitions/Boundary'
+        format: singleValueList
+        description: Ward of the Detailed Estimate
+      location:
+        type: string
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        maxLength: 512
+        description: Location of the Detailed Estimate where the work is executed
+      latitude:
+        type: number
+        format: double
+        description: Latitude of the location
+      longitude:
+        type: number
+        format: double
+        description: Longitude of the location
+      workCategory:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/WorkCategory'
+        description: The Work Category of the Detailed Estimate
+        format: singleValueList
+      locality:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/egov-location/contracts/v1-0-0.yml#/definitions/Boundary'
+        description: The Locality in which the Detailed Estimate belongs to
+        format: singleValueList
+      councilResolutionNumber:
+        type: string
+        pattern: '[a-zA-Z0-9-\\]+'
+        description: Council resolution number of the Detailed Estimate
+        maxLength: 50
+      councilResolutionDate:
+        type: integer
+        format: int64
+        description: Epoch time of the council resolution date. The future date is now allowed.
+        x-displayformat: 'dd/MM/yyyy'
+      workOrderCreated:
+        type: boolean
+        description: Boolean value to identify whether the work order created or not for spillover data.
+        default: false
+      billsCreated: 
+        type: boolean
+        description: Boolean value to identify whether the bills created or not for spillover data. The grossAmountBilled field needs to be shown if the billsCreated flag is true.
+        default: false
+      spillOverFlag:  
+        type: boolean
+        description: Boolean value to identify whether the Detailed Estimate is spillover or not.
+        default: false
+      grossAmountBilled:  
+        type: number
+        format: BigDecimal
+        description: Gross Amount Billed if billsCreated flag is true. This attribute is required only if billsCreated flag is true.
+      cancellationReason:
+        type: string
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        maxLength: 100
+        description: Reason for cancellation of the Detailed Estimate, Required only while cancelling Detailed Estimate
+      cancellationRemarks:
+        type: string
+        pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+        description: Remarks for cancellation of the Detailed Estimate, Required only while cancelling Detailed Estimate
+        maxLength: 512
+      totalIncludingRE:
+        type: number
+        format: BigDecimal
+        description: Total Estimate Amount including Revision Estimates
+      abstractEstimateDetail:
+        $ref: '#/definitions/AbstractEstimateDetails'
+      estimateActivities:
+        type: array
+        description: Array of Estimate Activities
+        items:
+          $ref: '#/definitions/EstimateActivity'
+      multiYearEstimates:
+        type: array
+        description: Multiyear Estimate list for the Abstract Estimate
+        items:
+          $ref: '#/definitions/MultiYearEstimate'
+      estimateTechnicalSanctions:
+        type: array
+        description: Technical Sanction list for the Abstract Estimate
+        items:
+          $ref: '#/definitions/EstimateTechnicalSanction'
+      detailedEstimateDeductions:
+        type: array
+        description: Detailed Estimate Deduction list for the Abstract Estimate
+        items:
+          $ref: '#/definitions/DetailedEstimateDeduction'
+      documentDetails:
+        type: array
+        description: Array of document details
+        items:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/DocumentDetail'
+      assets:
+        type: array
+        description: Asset Referencs for the Detailed Estimate
+        items:
+          $ref: '#/definitions/AssetsForEstimate'
+      estimateOverheads:
+        type: array
+        description: Array of Detaields Estimate Overhead Values
+        items:
+          $ref: '#/definitions/EstimateOverhead'
+      workFlowDetails:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/WorkFlowDetails'
+      stateId:
+        type: string
+        description: State id of the workflow
+      fund:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/financials/contracts/egf-master/v1-0-0.yml#/definitions/Fund'
+        format: singleValueList
+        description: Fund of the Detailed Estimate
+      function:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/financials/contracts/egf-master/v1-0-0.yml#/definitions/Function'
+        format: singleValueList
+        description: Function of the Detailed Estimate
+      functionary:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/financials/contracts/egf-master/v1-0-0.yml#/definitions/Functionary'
+        format: singleValueList
+        description: Functionary of the Detailed Estimate
+      scheme:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/financials/contracts/egf-master/v1-0-0.yml#/definitions/Scheme'
+        format: singleValueList
+        description: Scheme of the Detailed Estimate
+      subScheme:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/financials/contracts/egf-master/v1-0-0.yml#/definitions/SubScheme'
+        format: singleValueList
+        description: Sub Scheme of the Detailed Estimate
+      budgetGroup:
+        $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/financials/contracts/egf-master/v1-0-0.yml#/definitions/BudgetGroup'
+        format: singleValueList
+        description: Budget Group of the Detailed Estimate
+      deleted:
+          type: boolean
+          description: Boolean value to identify whether the object is deleted or not from UI.
+          default: false
+      auditDetails:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+    required:
+      - tenantId
+      - estimateDate
+      - description
+      - status
+  
+  EstimateOverhead:
+      type: object
+      description: An Object holds the basic data of Estimate Overheads
+      properties:
+        id:
+          type: string
+          description: Unique Identifier of the Estimate Overheads
+        tenantId:
+          type: string
+          description: Tenant id of the Estimate Overheads
+          maxLength: 128
+          minLength: 2
+        overhead:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/Overhead'
+        amount:
+          type: number
+          format: BigDecimal
+          maxLength: 20
+          description: Overhead amount
+        detailedEstimate:
+          type: string
+          description: Reference of the Detailed Estimate for Overheads
+        deleted:
+          type: boolean
+          description: Boolean value to identify whether the object is deleted or not from UI.
+          default: false
+        auditDetails:
+          $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+      required:
+        - tenantId
+        - overhead
+        - amount
+        - detailedEstimate
+      
+  AssetsForEstimate:
+      type: object
+      description: An Object holds the basic data for Assets or Land assets for Estimate
+      properties:
+        id:
+          type: string
+          description: Unique Identifier of the Assets For Estimate
+        tenantId:
+          type: string
+          description: Tenant id of the Assets For Estimate
+          maxLength: 128
+          minLength: 2
+        asset:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/Asset-MAHA/contracts/v1-0-0-mh.yml#/definitions/Asset'
+          description: Asset for which the Detailed Estimate is created. This field is required and to be shown if Nature of work is 'Repairs or Addition'.
+          format: singleValueList
+        landAsset:
+          type: string
+          pattern: '[a-zA-Z0-9-\\]+'
+          description: Land Asset ID. This field needs to be shown if Nature of work is 'New' and landAssetRequired=true from Abstract Estimate.
+          format: singleValueList 
+        detailedEstimate:
+          type: string
+          description: Reference of the Detailed Estimate for Estimate and Assets linking
+        deleted:
+          type: boolean
+          description: Boolean value to identify whether the object is deleted or not from UI.
+          default: false
+        auditDetails:
+          $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+      required:
+        - tenantId
+        - detailedEstimate
+      
+  EstimateActivity:
+      type: object
+      description: An Object holds the basic data of Estimate Activity
+      properties:
+        id:
+          type: string
+          description: Unique Identifier of the Estimate Activity
+        tenantId:
+          type: string
+          description: Tenant id of the Estimate Activity
+          maxLength: 128
+          minLength: 2
+        scheduleOfRate:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/ScheduleOfRate'
+          description: Schedule Of Rate reference of the Estimate Activity. Either Schedule Of Rate or Non SOR is mandatory for any activity.
+        nonSor:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/NonSOR'
+          description: Schedule Of Rate reference of the Estimate Activity. Either Schedule Of Rate or Non SOR is mandatory for any activity.
+        uom:
+          $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/egov-common-masters/contracts/v1-0-0.yml#/definitions/UOM"
+          description: UOM for the Estimate Activity
+          format: singleValueList
+        unitRate:
+          type: number
+          format: BigDecimal
+          maxLength: 20
+          description: Unit Rate of the Estimate Activity
+        estimateRate:
+          type: number
+          format: BigDecimal
+          maxLength: 20
+          description: Estimate Rate of the Estimate Activity
+        quantity:
+          type: number
+          format: double
+          maxLength: 20
+          description: Quantity of the Estimate Activity
+        serviceTaxPerc:
+          type: number
+          format: double
+          maxLength: 20
+          description: Service Tax or VAT Percentage of the Estimate Activity
+        revisionType:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/RevisionType'
+          description: Revision Type for the Revision Estimate Activity
+        parent:
+          type: string
+          description: Parent Activity in case of Revision Estimate Activity (Additional/Reduced Quantity). Ref. is pk here.
+        detailedEstimate:
+          type: string
+          description: Reference of the Detailed Estimate for Estimate Activity
+        estimateMeasurementSheets:
+          type: array
+          description: Measurement sheet list for the Estimate Activity
+          items:
+            $ref: '#/definitions/EstimateMeasurementSheet'
+        deleted:
+          type: boolean
+          description: Boolean value to identify whether the object is deleted or not from UI.
+          default: false
+        auditDetails:
+          $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+      required:
+        - tenantId
+        - uom
+        - unitRate
+        - estimateRate
+        - detailedEstimate
+        - quantity
+    
+  EstimateMeasurementSheet:
+      type: object
+      description: An Object holds the basic data of Estimate Measurement Sheet
+      properties:
+        id:
+          type: string
+          description: Unique Identifier of the Estimate Measurement Sheet
+        tenantId:
+          type: string
+          description: Tenant id of the Estimate Measurement Sheet
+          maxLength: 128
+          minLength: 2
+        slNo:
+          type: integer
+          description: Sl No of the Estimate Measurement sheet
+          maxLength: 10
+          minLength: 1
+        identifier:
+          type: string
+          description: Identifier of the Estimate Measurement sheet. A-Addition, D-Deduction.
+          maxLength: 1
+        remarks:
+          type: string
+          description: remarks of the Measurement sheet
+          pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+          maxLength: 1024
+        number:
+          type: number
+          format: BigDecimal
+          description: No. of the Estimate Measurement sheet
+          maxLength: 12
+        multiplier:
+          type: number
+          format: BigDecimal
+          description: Multiplication factor for the number. If the multiplier is entered then number will be multiplied to number.
+          maxLength: 10
+        length:
+          type: number
+          format: BigDecimal
+          description: length of the Estimate Measurement sheet
+          maxLength: 12
+        width:
+          type: number
+          format: BigDecimal
+          description: Width of the Estimate Measurement sheet
+          maxLength: 12
+        depthOrHeight:
+          type: number
+          format: BigDecimal
+          description: Depth Or Height of the Estimate Measurement sheet
+          maxLength: 12
+        quantity:
+          type: number
+          format: BigDecimal
+          description: Quantity of the Estimate Measurement sheet
+          maxLength: 12
+        estimateActivity:
+          type: string
+          description: Estimate Activity reference for the Estimate Measurement sheet
+        parent:
+          type: string
+          description: Parent Estimate Measurement sheet reference for change in quantity of Revision Estimate
+        deleted:
+          type: boolean
+          description: Boolean value to identify whether the object is deleted or not from UI.
+          default: false
+        auditDetails:
+          $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+      required:
+        - tenantId
+        - quantity
+        - estimateActivity
+        
+  MultiYearEstimate:
+      type: object
+      description: An Object that holds the basic data of Multi Year Estimate
+      properties:
+        id:
+          type: string
+          description: Unique Identifier of the Multi Year Estimate
+        tenantId:
+          type: string
+          description: Tenant id of the Multi Year Estimate
+          maxLength: 128
+          minLength: 2
+        financialYear:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/financials/contracts/egf-master/v1-0-0.yml#/definitions/FinancialYear'
+          description: Financial Year of the Multi Year Estimate
+          format: singleValueList
+        detailedEstimate:
+          type: string
+          description: Reference of the Detailed Estimate for Multi Year Estimate
+        percentage:
+          type: number
+          format: double
+          maxLength: 6
+          description: Percentage for the Multi Year Estimate
+        deleted:
+          type: boolean
+          description: Boolean value to identify whether the object is deleted or not from UI.
+          default: false
+        auditDetails:
+          $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+      required:
+        - tenantId
+        - financialYear
+        - detailedEstimate
+        - percentage
+      
+  EstimateTechnicalSanction:
+      type: object
+      description: An Object that holds the basic data of Technical Sanction for Detailed Estimate
+      properties:
+        id:
+          type: string
+          description: Unique Identifier of the Estimate Technical Sanction
+        tenantId:
+          type: string
+          description: Tenant id of the Estimate Technical Sanction
+          maxLength: 128
+          minLength: 2
+        technicalSanctionNumber:
+          type: string
+          pattern: '[a-zA-Z0-9-/]+'
+          description: Technical Sanction Number of the Detailed Estimate
+          maxLength: 50
+          minLength: 1
+        detailedEstimate:
+          type: string
+          description: Reference of the Detailed Estimate for which the Technical sanction belongs to
+        technicalSanctionDate:
+          type: integer
+          format: int64
+          x-displayformat: 'dd/MM/yyyy'
+          description: Epoch time of the Technical Sanction Date. Technical Sanctioned date should be on or after the Detailed Estimate date.
+        technicalSanctionBy:
+          type: string
+          description: User who technical sanctioned Detailed Estimate
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/egov-user/contracts/v1-0-0.yml#/definitions/User'
+        deleted:
+          type: boolean
+          description: Boolean value to identify whether the object is deleted or not from UI.
+          default: false
+        auditDetails:
+          $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+      required:
+        - tenantId
+        - technicalSanctionNumber
+        - detailedEstimate
+        - technicalSanctionDate
+        - technicalSanctionBy
+      
+  DetailedEstimateDeduction:
+      type: object
+      description: An Object that holds the basic data of Detailed Estimate Deductions
+      properties:
+        id:
+          type: string
+          description: Unique Identifier of the Detailed Estimate Deduction
+        tenantId:
+          type: string
+          description: Tenant id of the Detailed Estimate Deduction
+          maxLength: 128
+          minLength: 2
+        chartOfAccounts:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/financials/contracts/egf-master/v1-0-0.yml#/definitions/ChartOfAccount'
+          description: Chart Of Accounts of the Detailed Estimate Deduction from Financials
+          format: autoComplete
+        detailedEstimate:
+          type: string
+          description: Reference of the Detailed Estimate for Multi Year Estimate
+        percentage:
+          type: number
+          format: double
+          description: Percentage for the Detailed Estimate Deduction
+          maxLength: 6
+        amount:
+          type: number
+          format: BigDecimal
+          maxLength: 12
+          minLength: 1
+          description: Amount for the Detailed Estimate Deduction
+        deleted:
+          type: boolean
+          description: Boolean value to identify whether the object is deleted or not from UI.
+          default: false
+        auditDetails:
+          $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+      required:
+        - tenantId
+        - chartOfAccounts
+        - detailedEstimate
+        - amount
+      
+  ProjectCode:
+      type: object
+      description: An Object that holds the basic data for a Project Code
+      properties:
+        id:
+          type: string
+          description: Unique Identifier of the Project Code
+        tenantId:
+          type: string
+          description: Tenant id of the Project Code
+          maxLength: 128
+          minLength: 2
+        code:
+          type: string
+          description: Code of the Project 
+          pattern: '[a-zA-Z0-9-/]+'
+          maxLength: 100
+        name:
+          type: string
+          pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+          description: Name of the Project
+          maxLength: 1024
+          minLength: 1
+        description:
+          type: string
+          pattern: "[0-9a-zA-Z_@./#&+-/!(){}\",^$%*|=;:<>?`~ ]+"
+          description: Description of the Project
+          maxLength: 1024
+        status:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/works/contracts/works-common/v1-0-0.yml#/definitions/ProjectCodeStatus'
+          description: Enum representing the list of possible values for Project code status
+        active:
+          type: boolean
+          description: The active/inactive status of the project which refresents the boolean value True/False. By default the boolean value will be True.
+          default: false
+        projectValue:
+          type: number
+          format: BigDecimal
+          maxLength: 20
+          description: The cost of the Project. This value will be updated on Project closure which will include the complete expenditure on the project.
+        completionDate:
+          type: integer
+          format: int64
+          x-displayformat: 'dd/MM/yyyy'
+          description: Epoch time for the project completion date
+        deleted:
+          type: boolean
+          description: Boolean value to identify whether the object is deleted or not from UI.
+          default: false
+        auditDetails:
+          $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+      required:
+        - tenantId
+        - name
+        - status
+        
+  ProjectCodeRequest:
+      description: Contract class to send response. Array of Project Code items are used in case of search results, also multiple Project Code item is used for create and update
+      properties:
+        RequestInfo:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/RequestInfo'
+        projectCodes:
+          description: Used for create and update only
+          type: array
+          minimum: 1
+          maximum: 100
+          items:
+            $ref: '#/definitions/ProjectCode'
+
+  ProjectCodeResponse:
+      description: Contract class to send response. Array of Project Code items are used in case of search results, also multiple Project Code item is used for create and update
+      properties:
+        ResponseInfo:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ResponseInfo'
+        projectCodes:
+          description: Used for search result and create only
+          type: array
+          maximum: 500
+          items:
+            $ref: '#/definitions/ProjectCode'
+      
+  ModeOfAllotment:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the Mode Of Allotment
+      tenantId:
+        type: string
+        description: Tenant id of the Mode Of Allotment
+        maxLength: 128
+        minLength: 2
+      name:
+        type: string
+        description: Unique name of the Mode Of Allotment
+        pattern: '[a-zA-Z0-9\s\.,]+'
+        maxLength: 100
+        minLength: 1
+      code:
+        type: string
+        description: Unique code of the Mode Of Allotment
+        pattern: '[a-zA-Z0-9-\\]+'
+        maxLength: 100
+        minLength: 1
+    required:
+      - tenantId
+      - name
+      - code
+      
+  RevisionEstimate:
+    type: object
+    description: An Object that hold Revision Estimate data
+    allOf:
+        - $ref: '#/definitions/DetailedEstimate'
+    properties:
+      id:
+        type: string
+        description: Unique Identifier of the RevisionEstimate
+      tenantId:
+        type: string
+        description: Tenant id of the Revision Estimate
+        maxLength: 128
+        minLength: 2
+      auditDetails:
+        $ref: "https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails"
+    required:
+      - tenantId
+      
+  RevisionEstimateRequest:
+      description: Contract class to send response. Array of Revision Estimate items are used in case of search results, also multiple  Revision Estimate item is used for create and update
+      properties:
+        RequestInfo:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/RequestInfo'
+        revisionEstimates:
+          description: Used for create and update only
+          type: array
+          minimum: 1
+          maximum: 100
+          items:
+            $ref: '#/definitions/RevisionEstimate'
+
+  RevisionEstimateResponse:
+      description: Contract class to send response. Array of Revision Estimate items are used in case of search results, also multiple  Revision Estimate item is used for create and update
+      properties:
+        ResponseInfo:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ResponseInfo'
+        RevisiontEstimates:
+          description: Used for search result and create only
+          type: array
+          maximum: 500
+          items:
+            $ref: '#/definitions/RevisionEstimate'
+
+tags:
+  - name: Abstract Estimate
+    description: APIs required for Abstract Estimate.
+  - name: Detailed Estimate
+    description: APIs required for Detailed Estimate.
+  - name: Revision Estimate
+    description: APIs required for Revision Estimate.
+  - name: Project Code
+    description: APIs required for Project Code.
+
+

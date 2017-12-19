@@ -1,0 +1,21 @@
+{
+  "tenantId": "default",
+  "receiptDate" : null,
+  "receiptNumber" : "test123",
+  "billingService" : "PropertyTax",
+  "paymentMode" : "Cash",
+  "totalAmount" : 1000,
+  "channel" : null,
+  "paymentGateway" : null,
+  "billNumber" : "Bill001",
+  "consumerCode" : "0001",
+  "status" : "Created",
+  "consumerName" : "Narasappa",
+  "receiptCreator" : null,
+  "consumerType" : null,
+  "cityName" : "Kurnool",
+  "districtName" : null,
+  "regionName" : null,
+  "purpose" : null
+
+}

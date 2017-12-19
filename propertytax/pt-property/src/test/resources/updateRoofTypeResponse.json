@@ -1,0 +1,20 @@
+{
+    "responseInfo": {
+       
+    },
+    "roofTypes": [
+        {
+            "tenantId": "1234",
+            "name": "Gambrel Roof Type",
+            "code": "GRTT",
+            "nameLocal": "Gambrel Roof",
+            "description": "Imported from USA",
+            "auditDetails": {
+                "createdBy": null,
+                "lastModifiedBy": null,
+                "createdTime": null,
+                "lastModifiedTime": null
+            }
+        }
+    ]
+}

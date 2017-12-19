@@ -1,0 +1,22 @@
+{
+    "responseInfo": {
+       
+    },
+    "structureClasses": [
+        {
+            "tenantId": "default",
+            "name": "kkl16",
+            "code":"1234",
+            "nameLocal": null,
+            "description": null,
+            "active": null,
+            "orderNumber": null,
+            "auditDetails": {
+                "createdBy": null,
+                "lastModifiedBy": null,
+                "createdTime": null,
+                "lastModifiedTime": null
+            }
+        }
+    ]
+}

@@ -1,0 +1,1 @@
+Create New Property application with acknowledgement no {{Acknowledgement Number}} rejected

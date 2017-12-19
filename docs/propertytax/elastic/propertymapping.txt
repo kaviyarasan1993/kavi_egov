@@ -1,0 +1,1062 @@
+PUT property/_mapping/property_type
+{
+				"properties": {
+					"active": {
+						"type": "boolean"
+					},
+					"address": {
+						"properties": {
+							"addressLine1": {
+								"type": "keyword",
+								"store": true
+							},
+							"addressLine2": {
+								"type": "keyword",
+								"store": true
+							},
+							"addressNumber": {
+								"type": "keyword",
+								"store": true
+							},
+							"auditDetails": {
+								"properties": {
+									"createdBy": {
+										"type": "keyword",
+										"store": true
+									},
+									"createdTime": {
+										"type": "long"
+									},
+									"lastModifiedBy": {
+										"type": "keyword",
+										"store": true
+									},
+									"lastModifiedTime": {
+										"type": "long"
+									}
+								}
+							},
+							"city": {
+								"type": "keyword",
+								"store": true
+							},
+							"detail": {
+								"type": "keyword",
+								"store": true
+							},
+							"id": {
+								"type": "long"
+							},
+							"landmark": {
+								"type": "keyword",
+								"store": true
+							},
+							"latitude": {
+								"type": "double"
+							},
+							"longitude": {
+								"type": "double"
+							},
+							"pincode": {
+								"type": "keyword",
+								"store": true
+							},
+							"plotNo": {
+								"type": "keyword",
+								"store": true
+							},
+							"surveyNo": {
+								"type": "keyword",
+								"store": true
+							},
+							"tenantId": {
+								"type": "keyword",
+								"store": true
+							}
+						}
+					},
+					"assessmentDate": {
+						"type": "keyword",
+						"store": true
+					},
+					"auditDetails": {
+						"properties": {
+							"createdBy": {
+								"type": "keyword",
+								"store": true
+							},
+							"createdTime": {
+								"type": "long"
+							},
+							"lastModifiedBy": {
+								"type": "keyword",
+								"store": true
+							},
+							"lastModifiedTime": {
+								"type": "long"
+							}
+						}
+					},
+					"boundary": {
+						"properties": {
+							"adminBoundary": {
+								"properties": {
+									"id": {
+										"type": "long"
+									},
+									"name": {
+										"type": "keyword",
+										"store": true
+									},
+									"code": {
+										"type": "keyword",
+										"store": true
+									}
+								}
+							},
+							"auditDetails": {
+								"properties": {
+									"createdBy": {
+										"type": "keyword",
+										"store": true
+									},
+									"createdTime": {
+										"type": "long"
+									},
+									"lastModifiedBy": {
+										"type": "keyword",
+										"store": true
+									},
+									"lastModifiedTime": {
+										"type": "long"
+									}
+								}
+							},
+							"eastBoundedBy": {
+								"type": "keyword",
+								"store": true
+							},
+							"guidanceValueBoundary": {
+								"type": "long"
+							},
+							"id": {
+								"type": "long"
+							},
+							"locationBoundary": {
+								"properties": {
+									"id": {
+										"type": "long"
+									},
+									"name": {
+										"type": "keyword",
+										"store": true
+									},
+									"code": {
+										"type": "keyword",
+										"store": true
+									}
+								}
+							},
+							"northBoundedBy": {
+								"type": "keyword",
+								"store": true
+							},
+							"revenueBoundary": {
+								"properties": {
+									"id": {
+										"type": "long"
+									},
+									"name": {
+										"type": "keyword",
+										"store": true
+									},
+									"code": {
+										"type": "keyword",
+										"store": true
+									}
+								}
+							},
+							"southBoundedBy": {
+								"type": "keyword",
+								"store": true
+							},
+							"westBoundedBy": {
+								"type": "keyword",
+								"store": true
+							}
+						}
+					},
+					"channel": {
+						"type": "keyword",
+						"store": true
+					},
+					"cityCode": {
+						"type": "keyword",
+						"store": true
+					},
+					"cityDistrictCode": {
+						"type": "keyword",
+						"store": true
+					},
+					"cityDistrictName": {
+						"type": "keyword",
+						"store": true
+					},
+					"cityGrade": {
+						"type": "keyword",
+						"store": true
+					},
+					"cityName": {
+						"type": "keyword",
+						"store": true
+					},
+					"cityRegionName": {
+						"type": "keyword",
+						"store": true
+					},
+					"creationReason": {
+						"type": "keyword",
+						"store": true
+					},
+					"demands": {
+						"properties": {
+							"id": {
+								"type": "keyword",
+								"store": true
+							},
+							"minimumAmountPayable": {
+								"type": "long"
+							}
+						}
+					},
+					"gisRefNo": {
+						"type": "keyword",
+						"store": true
+					},
+					"id": {
+						"type": "long"
+					},
+					"isAuthorised": {
+						"type": "boolean"
+					},
+					"isUnderWorkflow": {
+						"type": "boolean"
+					},
+					"occupancyDate": {
+						"type": "keyword",
+						"store": true
+					},
+					"oldUpicNumber": {
+						"type": "keyword",
+						"store": true
+					},
+					"oldestUpicNumber": {
+						"type": "keyword",
+						"store": true
+					},
+					"owners": {
+						"properties": {
+							"aadhaarNumber": {
+								"type": "keyword",
+								"store": true
+							},
+							"accountLocked": {
+								"type": "boolean"
+							},
+							"active": {
+								"type": "boolean"
+							},
+							"altContactNumber": {
+								"type": "keyword",
+								"store": true
+							},
+							"auditDetails": {
+								"properties": {
+									"createdBy": {
+										"type": "keyword",
+										"store": true
+									},
+									"createdTime": {
+										"type": "long"
+									},
+									"lastModifiedBy": {
+										"type": "keyword",
+										"store": true
+									},
+									"lastModifiedTime": {
+										"type": "long"
+									}
+								}
+							},
+							"bloodGroup": {
+								"type": "keyword",
+								"store": true
+							},
+							"correspondenceAddress": {
+								"type": "keyword",
+								"store": true
+							},
+							"correspondenceCity": {
+								"type": "keyword",
+								"store": true
+							},
+							"correspondencePincode": {
+								"type": "keyword",
+								"store": true
+							},
+							"dob": {
+								"type": "keyword",
+								"store": true
+							},
+							"emailId": {
+								"type": "keyword",
+								"store": true
+							},
+							"fatherOrHusbandName": {
+								"type": "keyword",
+								"store": true
+							},
+							"gender": {
+								"type": "keyword",
+								"store": true
+							},
+							"id": {
+								"type": "long"
+							},
+							"identificationMark": {
+								"type": "keyword",
+								"store": true
+							},
+							"isPrimaryOwner": {
+								"type": "boolean"
+							},
+							"isSecondaryOwner": {
+								"type": "boolean"
+							},
+							"locale": {
+								"type": "keyword",
+								"store": true
+							},
+							"mobileNumber": {
+								"type": "keyword",
+								"store": true
+							},
+							"name": {
+								"type": "keyword",
+								"store": true
+							},
+							"otpReference": {
+								"type": "keyword",
+								"store": true
+							},
+							"owner": {
+								"type": "long"
+							},
+							"ownerShipPercentage": {
+								"type": "double"
+							},
+							"ownerType": {
+								"type": "keyword",
+								"store": true
+							},
+							"pan": {
+								"type": "keyword",
+								"store": true
+							},
+							"password": {
+								"type": "keyword",
+								"store": true
+							},
+							"permanentAddress": {
+								"type": "keyword",
+								"store": true
+							},
+							"permanentCity": {
+								"type": "keyword",
+								"store": true
+							},
+							"permanentPincode": {
+								"type": "keyword",
+								"store": true
+							},
+							"photo": {
+								"type": "keyword",
+								"store": true
+							},
+							"pwdExpiryDate": {
+								"type": "keyword",
+								"store": true
+							},
+							"roles": {
+								"properties": {
+									"auditDetails": {
+										"properties": {
+											"createdBy": {
+												"type": "keyword",
+												"store": true
+											},
+											"createdTime": {
+												"type": "long"
+											},
+											"lastModifiedBy": {
+												"type": "keyword",
+												"store": true
+											},
+											"lastModifiedTime": {
+												"type": "long"
+											}
+										}
+									},
+									"code": {
+										"type": "keyword",
+										"store": true
+									},
+									"description": {
+										"type": "keyword",
+										"store": true
+									},
+									"id": {
+										"type": "long"
+									},
+									"name": {
+										"type": "keyword",
+										"store": true
+									},
+									"tenantId": {
+										"type": "keyword",
+										"store": true
+									}
+								}
+							},
+							"salutation": {
+								"type": "keyword",
+								"store": true
+							},
+							"signature": {
+								"type": "keyword",
+								"store": true
+							},
+							"tenantId": {
+								"type": "keyword",
+								"store": true
+							},
+							"type": {
+								"type": "keyword",
+								"store": true
+							},
+							"userName": {
+								"type": "keyword",
+								"store": true
+							}
+						}
+					},
+					"propertyDetail": {
+						"properties": {
+							"applicationNo": {
+								"type": "keyword",
+								"store": true
+							},
+							"assessmentDates": {
+								"properties": {
+									"date": {
+										"type": "keyword",
+										"store": true
+									},
+									"name": {
+										"type": "keyword",
+										"store": true
+									}
+								}
+							},
+							"auditDetails": {
+								"properties": {
+									"createdBy": {
+										"type": "keyword",
+										"store": true
+									},
+									"createdTime": {
+										"type": "long"
+									},
+									"lastModifiedBy": {
+										"type": "keyword",
+										"store": true
+									},
+									"lastModifiedTime": {
+										"type": "long"
+									}
+								}
+							},
+							"bpaDate": {
+								"type": "keyword",
+								"store": true
+							},
+							"bpaNo": {
+								"type": "keyword",
+								"store": true
+							},
+							"builderDetails": {
+								"properties": {
+									"agencyName": {
+										"type": "keyword",
+										"store": true
+									},
+									"certificateCompletionDate": {
+										"type": "keyword",
+										"store": true
+									},
+									"certificateNumber": {
+										"type": "keyword",
+										"store": true
+									},
+									"certificateReceiveDate": {
+										"type": "keyword",
+										"store": true
+									},
+									"licenseNumber": {
+										"type": "keyword",
+										"store": true
+									},
+									"licenseType": {
+										"type": "keyword",
+										"store": true
+									}
+								}
+							},
+							"category": {
+								"type": "keyword",
+								"store": true
+							},
+							"department": {
+								"properties": {
+									"code": {
+										"type": "keyword",
+										"store": true
+									},
+									"name": {
+										"type": "keyword",
+										"store": true
+									}
+								}
+							},
+							"apartment": {
+								"properties": {
+									"code": {
+										"type": "keyword",
+										"store": true
+									},
+									"name": {
+										"type": "keyword",
+										"store": true
+									}
+								}
+							},
+							"documents": {
+								"properties": {
+									"auditDetails": {
+										"properties": {
+											"createdBy": {
+												"type": "keyword",
+												"store": true
+											},
+											"createdTime": {
+												"type": "long"
+											},
+											"lastModifiedBy": {
+												"type": "keyword",
+												"store": true
+											},
+											"lastModifiedTime": {
+												"type": "long"
+											}
+										}
+									},
+									"documentType": {
+										"type": "keyword",
+										"store": true
+									},
+									"fileStore": {
+										"type": "keyword",
+										"store": true
+									},
+									"id": {
+										"type": "long"
+									}
+								}
+							},
+							"exemptionReason": {
+								"type": "keyword",
+								"store": true
+							},
+							"factors": {
+								"properties": {
+									"name": {
+										"type": "keyword",
+										"store": true
+									},
+									"value": {
+										"type": "long"
+									}
+								}
+							},
+							"floorType": {
+								"properties": {
+									"code": {
+										"type": "keyword",
+										"store": true
+									},
+									"name": {
+										"type": "keyword",
+										"store": true
+									}
+								}
+							},
+							"floors": {
+								"properties": {
+									"auditDetails": {
+										"properties": {
+											"createdBy": {
+												"type": "keyword",
+												"store": true
+											},
+											"createdTime": {
+												"type": "long"
+											},
+											"lastModifiedBy": {
+												"type": "keyword",
+												"store": true
+											},
+											"lastModifiedTime": {
+												"type": "long"
+											}
+										}
+									},
+									"floorNo": {
+										"type": "keyword",
+										"store": true
+									},
+									"id": {
+										"type": "long"
+									},
+									"units": {
+										"properties": {
+											"id": {
+												"type": "long"
+											},
+											"unitNo": {
+												"type": "keyword",
+												"store": true
+											},
+											"units": {
+												"properties": {
+													"age": {
+														"type": "keyword",
+														"store": true
+													},
+													"arv": {
+														"type": "double"
+													},
+													"assessableArea": {
+														"type": "double"
+													},
+													"auditDetails": {
+														"properties": {
+															"createdBy": {
+																"type": "keyword",
+																"store": true
+															},
+															"createdTime": {
+																"type": "long"
+															},
+															"lastModifiedBy": {
+																"type": "keyword",
+																"store": true
+															},
+															"lastModifiedTime": {
+																"type": "long"
+															}
+														}
+													},
+													"bpaBuiltupArea": {
+														"type": "double"
+													},
+													"bpaDate": {
+														"type": "keyword",
+														"store": true
+													},
+													"bpaNo": {
+														"type": "keyword",
+														"store": true
+													},
+													"buildingCost": {
+														"type": "double"
+													},
+													"builtupArea": {
+														"type": "double"
+													},
+													"carpetArea": {
+														"type": "double"
+													},
+													"constCompletionDate": {
+														"type": "keyword",
+														"store": true
+													},
+													"constructionStartDate": {
+														"type": "date",
+														"format": "strict_date_optional_time||epoch_millis"
+													},
+													"electricMeterNo": {
+														"type": "keyword",
+														"store": true
+													},
+													"exemptionArea": {
+														"type": "double"
+													},
+													"exemptionReason": {
+														"type": "keyword",
+														"store": true
+													},
+													"firmName": {
+														"type": "keyword",
+														"store": true
+													},
+													"id": {
+														"type": "long"
+													},
+													"isAuthorised": {
+														"type": "boolean"
+													},
+													"isStructured": {
+														"type": "boolean"
+													},
+													"landCost": {
+														"type": "double"
+													},
+													"length": {
+														"type": "double"
+													},
+													"manualArv": {
+														"type": "double"
+													},
+													"occupancyDate": {
+														"type": "keyword",
+														"store": true
+													},
+													"occupancyType": {
+														"properties": {
+															"code": {
+																"type": "keyword",
+																"store": true
+															},
+															"name": {
+																"type": "keyword",
+																"store": true
+															}
+														}
+													},
+													"occupierName": {
+														"type": "keyword",
+														"store": true
+													},
+													"parentId": {
+														"type": "long"
+													},
+													"rentCollected": {
+														"type": "double"
+													},
+													"rv": {
+														"type": "double"
+													},
+													"structure": {
+														"properties": {
+															"code": {
+																"type": "keyword",
+																"store": true
+															},
+															"name": {
+																"type": "keyword",
+																"store": true
+															}
+														}
+													},
+													"subUsage": {
+														"properties": {
+															"code": {
+																"type": "keyword",
+																"store": true
+															},
+															"name": {
+																"type": "keyword",
+																"store": true
+															}
+														}
+													},
+													"unitNo": {
+														"type": "keyword",
+														"store": true
+													},
+													"unitType": {
+														"type": "keyword",
+														"store": true
+													},
+													"usage": {
+														"properties": {
+															"code": {
+																"type": "keyword",
+																"store": true
+															},
+															"name": {
+																"type": "keyword",
+																"store": true
+															}
+														}
+													},
+													"waterMeterNo": {
+														"type": "keyword",
+														"store": true
+													},
+													"width": {
+														"type": "double"
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							"id": {
+								"type": "long"
+							},
+							"isExempted": {
+								"type": "boolean"
+							},
+							"isSuperStructure": {
+								"type": "boolean"
+							},
+							"isVerified": {
+								"type": "boolean"
+							},
+							"landOwner": {
+								"type": "keyword",
+								"store": true
+							},
+							"noOfFloors": {
+								"type": "long"
+							},
+							"propertyType": {
+								"properties": {
+									"code": {
+										"type": "keyword",
+										"store": true
+									},
+									"name": {
+										"type": "keyword",
+										"store": true
+									}
+								}
+							},
+							"reason": {
+								"type": "keyword",
+								"store": true
+							},
+							"regdDocDate": {
+								"type": "keyword",
+								"store": true
+							},
+							"regdDocNo": {
+								"type": "keyword",
+								"store": true
+							},
+							"roofType": {
+								"properties": {
+									"code": {
+										"type": "keyword",
+										"store": true
+									},
+									"name": {
+										"type": "keyword",
+										"store": true
+									}
+								}
+							},
+							"sitalArea": {
+								"type": "double"
+							},
+							"siteBreadth": {
+								"type": "double"
+							},
+							"siteLength": {
+								"type": "double"
+							},
+							"source": {
+								"type": "keyword",
+								"store": true
+							},
+							"stateId": {
+								"type": "keyword",
+								"store": true
+							},
+							"status": {
+								"type": "keyword",
+								"store": true
+							},
+							"subUsage": {
+								"properties": {
+									"code": {
+										"type": "keyword",
+										"store": true
+									},
+									"name": {
+										"type": "keyword",
+										"store": true
+									}
+								}
+							},
+							"taxCalculations": {
+								"type": "keyword",
+								"store": true
+							},
+							"totalBuiltupArea": {
+								"type": "double"
+							},
+							"undividedShare": {
+								"type": "double"
+							},
+							"usage": {
+								"properties": {
+									"code": {
+										"type": "keyword",
+										"store": true
+									},
+									"name": {
+										"type": "keyword",
+										"store": true
+									}
+								}
+							},
+							"verificationDate": {
+								"type": "keyword",
+								"store": true
+							},
+							"wallType": {
+								"properties": {
+									"code": {
+										"type": "keyword",
+										"store": true
+									},
+									"name": {
+										"type": "keyword",
+										"store": true
+									}
+								}
+							},
+							"woodType": {
+								"properties": {
+									"code": {
+										"type": "keyword",
+										"store": true
+									},
+									"name": {
+										"type": "keyword",
+										"store": true
+									}
+								}
+							},
+							"workFlowDetails": {
+								"properties": {
+									"action": {
+										"type": "keyword",
+										"store": true
+									},
+									"assignee": {
+										"type": "long"
+									},
+									"department": {
+										"type": "keyword",
+										"store": true
+									},
+									"designation": {
+										"type": "keyword",
+										"store": true
+									},
+									"status": {
+										"type": "keyword",
+										"store": true
+									}
+								}
+							}
+						}
+					},
+					"sequenceNo": {
+						"type": "long"
+					},
+					"tenantId": {
+						"type": "keyword",
+						"store": true
+					},
+					"upicNumber": {
+						"type": "keyword",
+						"store": true
+					},
+					"vacantLand": {
+						"properties": {
+							"auditDetails": {
+								"properties": {
+									"createdBy": {
+										"type": "keyword",
+										"store": true
+									},
+									"createdTime": {
+										"type": "long"
+									},
+									"lastModifiedBy": {
+										"type": "keyword",
+										"store": true
+									},
+									"lastModifiedTime": {
+										"type": "long"
+									}
+								}
+							},
+							"capitalValue": {
+								"type": "double"
+							},
+							"id": {
+								"type": "long"
+							},
+							"layoutApprovedAuth": {
+								"type": "keyword",
+								"store": true
+							},
+							"layoutPermissionDate": {
+								"type": "keyword",
+								"store": true
+							},
+							"layoutPermissionNo": {
+								"type": "keyword",
+								"store": true
+							},
+							"marketValue": {
+								"type": "double"
+							},
+							"nonResdPlotArea": {
+								"type": "double"
+							},
+							"pattaNumber": {
+								"type": "keyword",
+								"store": true
+							},
+							"resdPlotArea": {
+								"type": "double"
+							},
+							"surveyNumber": {
+								"type": "keyword",
+								"store": true
+							}
+						}
+					},
+					"vltUpicNumber": {
+						"type": "keyword",
+						"store": true
+					}
+				}
+}

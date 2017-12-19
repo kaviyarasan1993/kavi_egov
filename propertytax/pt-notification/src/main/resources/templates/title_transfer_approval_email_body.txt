@@ -1,0 +1,8 @@
+Dear {{Owner name}}, 
+
+Your Title Transfer for Property application is approved for Property number {{Property Number}} and Title Transfer Notice generated.
+This is computer generated email and does not need any signature and also please do not reply to this email. 
+
+Thanks,
+Chief Officer
+{{Corporation/Municipality/Nagara Panchayat name}}
