@@ -1,1 +1,0 @@
-update attribute_definition set datatype = 'integer'  where datatype = 'number' and tenantid = 'default';

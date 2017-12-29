@@ -1,6 +1,0 @@
-Dear {{Legal Clerk}},
-
-	Summon is received vid Summon Reference No. {{Reference No}} Dated {{Dated}}  for Case Registration
-	
-Sincerely,
-{{ULB Name}}

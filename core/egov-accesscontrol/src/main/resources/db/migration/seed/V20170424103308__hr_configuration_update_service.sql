@@ -1,1 +1,0 @@
-update eg_action set url='/hrconfigurations/_search' where name='HRConfigSearch';

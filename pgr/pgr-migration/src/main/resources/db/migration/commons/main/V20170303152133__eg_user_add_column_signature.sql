@@ -1,1 +1,0 @@
-ALTER TABLE eg_user add column signature character varying(36);

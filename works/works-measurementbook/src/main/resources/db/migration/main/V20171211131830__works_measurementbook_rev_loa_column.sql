@@ -1,1 +1,0 @@
-ALTER TABLE egw_measurementbook ADD COLUMN revisionloa character varying(256);

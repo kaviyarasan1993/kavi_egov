@@ -1,1 +1,0 @@
-ALTER TABLE egpgr_router ADD COLUMN active boolean NOT NULL default true;    

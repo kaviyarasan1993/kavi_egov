@@ -1,1 +1,0 @@
-Dear {{Owner}}, The application Fees of Rs. <Amount> with Receipt No {{Receipt Number}} is received for application No : {{Application Number}} for New license.

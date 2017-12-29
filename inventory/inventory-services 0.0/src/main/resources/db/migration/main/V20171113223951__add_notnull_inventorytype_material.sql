@@ -1,1 +1,0 @@
-ALTER TABLE material ALTER COLUMN inventorytype set NOT NULL;

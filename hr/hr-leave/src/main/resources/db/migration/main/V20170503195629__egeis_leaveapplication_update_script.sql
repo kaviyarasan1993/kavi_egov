@@ -1,1 +1,0 @@
-alter table egeis_leaveapplication alter column status type character varying(15);

@@ -1,1 +1,0 @@
-ALTER TABLE egw_offlinestatus ADD COLUMN referencenumber varchar(100);

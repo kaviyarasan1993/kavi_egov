@@ -1,7 +1,0 @@
-Dear {{Owner}},
-
-The application Fees of Rs. {{Amount}} is received for Application No. {{Application Number}}  for New license. 
-The receipt number for the payment made is {{Receipt Number}}
-
-Thanks,
-{{ULB Name}}

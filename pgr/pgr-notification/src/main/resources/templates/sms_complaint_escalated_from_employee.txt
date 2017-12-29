@@ -1,1 +1,0 @@
-The grievance request ({{number}}) assigned to you regarding {{name}} has been escalated to {{nextAssigneeName}} (designation / position).

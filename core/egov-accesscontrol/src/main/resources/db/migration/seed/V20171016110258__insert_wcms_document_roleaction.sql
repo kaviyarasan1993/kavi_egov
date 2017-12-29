@@ -1,3 +1,0 @@
-insert into eg_roleaction(roleCode,actionid,tenantId)values('ULB Operator',(select id from eg_action where name='ConnectionDocumentDataCreate'),'default');
-insert into eg_roleaction(roleCode,actionid,tenantId)values('ULB Operator',(select id from eg_action where name='ConnectionDocumentDataSearch'),'default');
-insert into eg_roleaction(roleCode,actionid,tenantId)values('ULB Operator',(select id from eg_action where name='WCDocumentType'),'default');

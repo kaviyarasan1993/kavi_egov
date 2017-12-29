@@ -1,1 +1,0 @@
-ALTER TABLE eg_user add column identificationmark character varying(300);

@@ -1,1 +1,0 @@
-alter table submission alter column details drop not null;

@@ -1,3 +1,0 @@
-# pgr-services
-
-PGR microservices

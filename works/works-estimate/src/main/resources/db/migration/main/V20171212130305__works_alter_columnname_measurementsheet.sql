@@ -1,1 +1,0 @@
-alter table egw_estimate_measurementsheet rename column no to number;

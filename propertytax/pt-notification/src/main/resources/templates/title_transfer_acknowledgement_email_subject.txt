@@ -1,1 +1,0 @@
-Title Transfer application request accepted for Property No: {{Property Number}}

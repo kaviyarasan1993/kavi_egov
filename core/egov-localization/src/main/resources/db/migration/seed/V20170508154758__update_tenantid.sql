@@ -1,1 +1,0 @@
-update message set tenantid='default' where tenantid='ap.public';

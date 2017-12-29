@@ -1,1 +1,0 @@
-Subject: Property tax application request accepted with acknowledgement No: {{acknowledgementNo}}

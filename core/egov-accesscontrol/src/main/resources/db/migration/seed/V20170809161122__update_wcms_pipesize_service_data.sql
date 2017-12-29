@@ -1,2 +1,0 @@
-update service set name='ConnectionSize Master' where name='PipeSize Master' and tenantId='default';
-update service set name='PropertyConnectionSize' where name='PropertyPipeSize' and tenantId='default';

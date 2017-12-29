@@ -1,1 +1,0 @@
-update eg_action set url='/hr-employee/employees/{id}/_search',name='EmployeeSearch' where name='Employee';

@@ -1,1 +1,0 @@
-ALTER TABLE egov_lcms_case ADD COLUMN casestatus jsonb;

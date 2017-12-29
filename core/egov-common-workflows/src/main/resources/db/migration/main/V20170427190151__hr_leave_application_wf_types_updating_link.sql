@@ -1,1 +1,0 @@
-update eg_wf_types set link = '/hr-web/app/hr/leavemaster/update-leave.html?stateId=:ID' where type = 'LeaveApplication';

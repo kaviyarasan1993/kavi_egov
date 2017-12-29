@@ -1,2 +1,0 @@
-ALTER TABLE egtl_license
-ALTER COLUMN status DROP NOT NULL;

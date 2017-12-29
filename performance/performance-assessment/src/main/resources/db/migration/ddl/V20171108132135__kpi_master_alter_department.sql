@@ -1,1 +1,0 @@
-alter table egpa_kpi_master alter column department type bigint using department::bigint;

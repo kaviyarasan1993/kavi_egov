@@ -1,1 +1,0 @@
-alter table egw_estimatetemplateactivities drop column unitrate;

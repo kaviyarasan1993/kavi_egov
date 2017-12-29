@@ -1,1 +1,0 @@
-alter table submission alter COLUMN details type character varying(1000);

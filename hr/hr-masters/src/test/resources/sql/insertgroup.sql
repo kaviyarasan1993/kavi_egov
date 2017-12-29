@@ -1,1 +1,0 @@
-insert into egeis_group(id,name,description,tenantid) values (1,'State','State','default');

@@ -1,1 +1,0 @@
-insert into eg_roleaction(roleCode,actionid,tenantId) values ('COLL_OPERATOR',(select id from eg_action where name='ViewBusinessDetailMaster'),'default');

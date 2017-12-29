@@ -1,1 +1,0 @@
-update eg_wf_matrix set nextaction = 'Print Certificate Pending' where objecttype = 'New Trade License' and currentstate = 'SI/MHO/SS Approved' and tenantid = 'default';

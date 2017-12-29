@@ -1,1 +1,0 @@
-ALTER TABLE eg_user add column bloodgroup character varying(32);

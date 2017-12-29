@@ -1,1 +1,0 @@
-curl -X PUT 'localhost:9200/instrumenttype/_mapping/instrumenttype?pretty' -H 'Content-Type: application/json' -d @update_instrumenttype_mapping.json

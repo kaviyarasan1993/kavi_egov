@@ -1,1 +1,0 @@
-update service set enabled = false where code ='WATERCHARGESCONFIGURATIONMASTER' and tenantId ='default';

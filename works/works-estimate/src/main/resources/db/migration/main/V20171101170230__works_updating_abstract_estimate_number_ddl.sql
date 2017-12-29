@@ -1,1 +1,0 @@
-ALTER TABLE egw_abstractestimate ALTER column abstractestimatenumber type character varying(50);

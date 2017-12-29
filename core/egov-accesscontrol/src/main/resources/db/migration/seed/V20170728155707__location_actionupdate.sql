@@ -1,2 +1,0 @@
-update eg_action set url='/egov-location/boundarytypes/getByHierarchyType' where name='Get BoundaryTypes By Heirarchy Type';
-update eg_action set url='/egov-location/boundarys/getByBoundaryType' where name='Get Boundary by Boundary Type';

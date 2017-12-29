@@ -1,1 +1,0 @@
-ALTER TABLE egov_lcms_advocate RENAME COLUMN isfcCode TO ifscCode;

@@ -1,1 +1,0 @@
-ALTER TABLE egswm_sourcesegregation ADD COLUMN ulb varchar(256) NOT NULL default 'default';

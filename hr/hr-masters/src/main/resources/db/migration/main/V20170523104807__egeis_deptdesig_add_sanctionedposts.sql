@@ -1,1 +1,0 @@
-alter table egeis_departmentDesignation add column sanctionedposts bigint ;

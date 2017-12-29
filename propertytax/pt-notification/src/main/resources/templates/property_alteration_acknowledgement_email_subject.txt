@@ -1,1 +1,0 @@
-Subject: Property alteration application accepted with Acknowledgement No. {{acknowledgementNo}}

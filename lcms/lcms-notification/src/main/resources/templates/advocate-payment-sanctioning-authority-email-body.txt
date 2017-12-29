@@ -1,6 +1,0 @@
-Dear {{Sanctioning Legal Advisor}},
-
-Demand request from {{Advocate Name}} against {{Case No}} dated {{Case Date}} is received for verification.
-
-Sincerely,
-{{ULB Name}}

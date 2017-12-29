@@ -1,1 +1,0 @@
-insert into egeis_recruitmentMode(id,name,description,tenantid) values(1,'Sports','Sports','default');

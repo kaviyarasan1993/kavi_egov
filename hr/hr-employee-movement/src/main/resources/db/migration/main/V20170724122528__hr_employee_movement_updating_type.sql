@@ -1,1 +1,0 @@
-ALTER TABLE egeis_movement alter column transferedLocation type CHARACTER VARYING(30);

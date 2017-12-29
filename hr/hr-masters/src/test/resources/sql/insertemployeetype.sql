@@ -1,1 +1,0 @@
-INSERT INTO egeis_employeetype (id, name, chartofaccounts, tenantid) VALUES (1, 'Temporary', NULL, 'default');

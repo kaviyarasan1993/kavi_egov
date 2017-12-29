@@ -1,1 +1,0 @@
-ALTER TABLE eglams_lamsConfiguration ALTER COLUMN keyName TYPE CHARACTER VARYING(250) 

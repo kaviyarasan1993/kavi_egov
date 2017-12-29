@@ -1,1 +1,0 @@
-ALTER TABLE egov_lcms_advocate_payment ALTER COLUMN ispartialpayment DROP  NOT NULL;

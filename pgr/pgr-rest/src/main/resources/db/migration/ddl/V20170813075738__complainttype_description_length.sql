@@ -1,1 +1,0 @@
-alter table egpgr_complainttype alter COLUMN description type character varying(250);

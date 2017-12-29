@@ -1,1 +1,0 @@
-alter table egasset_asset add column enableyearwisedepriciation boolean, add column depriciationrate numeric;

@@ -1,1 +1,0 @@
-Subject: Property title transfer application request accepted with acknowledgement No: {{acknowledgementNo}}

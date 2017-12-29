@@ -1,1 +1,0 @@
-delete from attribute_action_definition where name = 'NOTCOMPLETED' and attributecode = 'PRIORITY' and tenantid = 'default';

@@ -1,1 +1,0 @@
-ALTER TABLE egw_estimate_appropriation  RENAME COLUMN budgetusage TO budgetrefnumber;

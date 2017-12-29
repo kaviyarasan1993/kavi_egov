@@ -1,1 +1,0 @@
-delete from egeis_employeetype;

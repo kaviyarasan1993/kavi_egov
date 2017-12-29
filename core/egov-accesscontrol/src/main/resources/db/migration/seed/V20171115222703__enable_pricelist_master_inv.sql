@@ -1,1 +1,0 @@
-update eg_action set enabled = true where name = 'PriceList Search' and servicecode = 'PRICE LIST MASTER' ;

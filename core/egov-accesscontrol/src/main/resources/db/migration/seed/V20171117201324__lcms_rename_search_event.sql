@@ -1,1 +1,0 @@
-update eg_action set displayname='My Events'  where name = 'Search Event';

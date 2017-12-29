@@ -1,8 +1,0 @@
-ALTER TABLE egeis_leaveallotment
-	RENAME CONSTRAINT fk_egeis_leaveallotment_leavetypeid TO fk_egeis_leaveallotment_leavetypeid_tenantid;
-
-ALTER TABLE egeis_leaveapplication
-	RENAME CONSTRAINT fk_egeis_leaveapplication_leavetypeid TO fk_egeis_leaveapplication_leavetypeid_tenantid;
-
-ALTER TABLE egeis_leaveopeningbalance
-	RENAME CONSTRAINT fk_egeis_leaveopeningbalance_leavetypeid TO fk_egeis_leaveopeningbalance_leavetypeid_tenantid;

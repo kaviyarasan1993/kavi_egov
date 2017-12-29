@@ -1,1 +1,0 @@
-ALTER TABLE egcl_bankaccountservicemapping ALTER COLUMN bankaccount type character varying(12);

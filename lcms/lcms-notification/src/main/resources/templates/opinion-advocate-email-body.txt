@@ -1,6 +1,0 @@
-Dear {{Advocate}},
-
-	Opinion {{Opinion No}} is received successfully.
-	 
-Sincerely,
-{{ULB Name}}
