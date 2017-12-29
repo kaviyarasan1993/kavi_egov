@@ -1,1 +1,24 @@
-{"LayerType":[{"tenantId":"default","name":"FAKE LAYER 3","layerSize":2,"description":"./temp/images/headerLogo.png","id":3,"numberOfLayers":2,"isActive":true}],"tenantId":"default","moduleName":"ASSET"}
+{
+  "tenantId": "default",
+  "moduleName": "ASSET",
+  "LayerType": [
+    {
+      "id": 1,
+      "tenantId": "default",
+      "name": "FAKE LAYER 1",
+      "description": "./temp/images/headerLogo.png",
+      "numberOfLayers": 2,
+      "layerSize": 2,
+      "isActive": true
+    },
+    {
+      "id": 2,
+      "tenantId": "default",
+      "name": "FAKE LAYER 2",
+      "description": "./temp/images/mortarlessPavement.jpg",
+      "numberOfLayers": 4,
+      "layeSize": 2,
+      "isActive": true
+    }
+  ]
+}
