@@ -1,1 +1,1 @@
-{"role":[{"code":"CITIZE1N","name":"Citizen","description":"Citizen who can raise complaint"}],"tenantId":"default","moduleName":"ACCESSCONTROL-ROLES"}
+{"role":[{"code":"CITIZE1N","name":"Citizen","description":"Citizen who can raise complaint"},{"code":"CITIZE1N","name":"Citizen","description":"Citizen who can raise complaint"}],"tenantId":"default","moduleName":"ACCESSCONTROL-ROLES"}
