@@ -1,0 +1,5 @@
+{
+  "tenantId": "mh",
+  "moduleName": "ACCESSCONTROL-ACTIONS-TEST",
+  "new-master123": "[{code\u003dACQUIRED, tenantId\u003ddefault, name\u003dDefault Acquired Name , id\u003d1, isActive\u003dtrue}, {code\u003dACQUIRED, tenantId\u003ddefault, name\u003dDefault Acquired Name , id\u003d2, isActive\u003dtrue}, {code\u003dACQUIRED, tenantId\u003ddefault, name\u003dDefault Acquired Name , id\u003d3, isActive\u003dtrue}]"
+}
