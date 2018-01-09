@@ -10126,6 +10126,18 @@
       "url": "/app/asset/search-asset-revaluation.html",
       "parentModule": "152",
       "enabled": true
+    },
+    {
+      "path": "Asset Management.Asset Transactions.Asset Revaluation.AssetRevaluationSearchToCreate",
+      "orderNumber": 1,
+      "code": "null",
+      "serviceCode": "AssetRevaluation",
+      "displayName": "Revaluate Asset updated",
+      "name": "AssetRevaluationSearchToCreate",
+      "id": 323,
+      "url": "/app/asset/search-asset-revaluation.html",
+      "parentModule": "152",
+      "enabled": true
     }
   ]
 }
