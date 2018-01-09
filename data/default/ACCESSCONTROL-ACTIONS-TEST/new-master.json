@@ -27,6 +27,13 @@
       "name": "Default Acquired Name ",
       "id": 4,
       "isActive": true
+    },
+    {
+      "code": "ACQUIRED",
+      "tenantId": "default",
+      "name": "Default Acquired Name ",
+      "id": 5,
+      "isActive": true
     }
   ],
   "tenantId": "default",
