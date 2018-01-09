@@ -1,0 +1,27 @@
+{
+  "tenantId": "mh",
+  "moduleName": "ACCESSCONTROL-ACTIONS-TEST",
+  "new-master123": [
+    {
+      "code": "ACQUIRED",
+      "tenantId": "default",
+      "name": "Default Acquired Name ",
+      "id": 1,
+      "isActive": true
+    },
+    {
+      "code": "ACQUIRED",
+      "tenantId": "default",
+      "name": "Default Acquired Name ",
+      "id": 2,
+      "isActive": true
+    },
+    {
+      "code": "ACQUIRED",
+      "tenantId": "default",
+      "name": "Default Acquired Name ",
+      "id": 3,
+      "isActive": true
+    }
+  ]
+}
