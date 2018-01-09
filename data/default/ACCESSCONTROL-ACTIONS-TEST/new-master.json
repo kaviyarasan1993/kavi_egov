@@ -1,0 +1,34 @@
+{
+  "new-master": [
+    {
+      "code": "ACQUIRED",
+      "tenantId": "default",
+      "name": "Default Acquired Name ",
+      "id": 1,
+      "isActive": true
+    },
+    {
+      "code": "ACQUIRED",
+      "tenantId": "default",
+      "name": "Default Acquired Name ",
+      "id": 2,
+      "isActive": true
+    },
+    {
+      "code": "ACQUIRED",
+      "tenantId": "default",
+      "name": "Default Acquired Name ",
+      "id": 3,
+      "isActive": true
+    },
+    {
+      "code": "ACQUIRED",
+      "tenantId": "default",
+      "name": "Default Acquired Name ",
+      "id": 4,
+      "isActive": true
+    }
+  ],
+  "tenantId": "default",
+  "moduleName": "ACCESSCONTROL-ACTIONS-TEST"
+}
