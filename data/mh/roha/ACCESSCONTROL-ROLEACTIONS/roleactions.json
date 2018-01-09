@@ -13051,6 +13051,12 @@
       "actionid": 1480,
       "actioncode": "",
       "tenantid": "mh.roha"
+    },
+    {
+      "rolecode": "SUPERUSER",
+      "actionid": 10023,
+      "actioncode": "",
+      "tenantid": "mh.roha"
     }
   ]
 }
