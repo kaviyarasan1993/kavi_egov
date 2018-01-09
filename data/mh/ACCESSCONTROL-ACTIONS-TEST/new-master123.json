@@ -22,6 +22,34 @@
       "name": "Default Acquired Name ",
       "id": 3,
       "isActive": true
+    },
+    {
+      "code": "ACQUIRED",
+      "tenantId": "default",
+      "name": "Default Acquired Name ",
+      "id": 4,
+      "isActive": true
+    },
+    {
+      "code": "ACQUIRED",
+      "tenantId": "default",
+      "name": "Default Acquired Name ",
+      "id": 5,
+      "isActive": true
+    },
+    {
+      "code": "ACQUIRED",
+      "tenantId": "default",
+      "name": "Default Acquired Name ",
+      "id": 6,
+      "isActive": true
+    },
+    {
+      "code": "ACQUIRED",
+      "tenantId": "default",
+      "name": "Default Acquired Name ",
+      "id": 7,
+      "isActive": true
     }
   ]
 }
