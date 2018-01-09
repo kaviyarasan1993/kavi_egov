@@ -1841,6 +1841,12 @@
       "name": "Ghantagadi (TATA-ACE)- 3",
       "code": "Vehicle Type Code 12 Test updated_update",
       "id": "112131113"
+    },
+    {
+      "tenantId": "mh",
+      "name": "Ghantagadi (TATA-ACE)- 3",
+      "code": "Vehicle Type Code 12 Test updated_update",
+      "id": "200"
     }
   ]
 }
