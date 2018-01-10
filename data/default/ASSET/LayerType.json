@@ -5,7 +5,7 @@
     {
       "id": 1,
       "tenantId": "default",
-      "name": "FAKE LAYER 1",
+      "name": "",
       "description": "./temp/images/headerLogo.png",
       "numberOfLayers": 2,
       "layerSize": 2,
@@ -114,15 +114,6 @@
       "id": 15,
       "tenantId": "default",
       "name": "FAKE LAYER 2",
-      "description": "./temp/images/mortarlessPavement.jpg",
-      "numberOfLayers": 4,
-      "layeSize": 2,
-      "isActive": true
-    },
-    {
-      "id": 16,
-      "tenantId": "default",
-      "name": "FAKE LAYER 2 updated test name ",
       "description": "./temp/images/mortarlessPavement.jpg",
       "numberOfLayers": 4,
       "layeSize": 2,
