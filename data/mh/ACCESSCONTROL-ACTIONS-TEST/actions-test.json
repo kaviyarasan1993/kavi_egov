@@ -11157,7 +11157,7 @@
     },
     {
       "id": 1480,
-      "name": "PerfAssmtKpiCategoryMasterSearch",
+      "name": null,
       "url": "/perfmanagement/v1/kpicategory/_search",
       "displayName": "KPI Category Master",
       "orderNumber": 2,
