@@ -5,7 +5,6 @@
     {
       "id": 1,
       "tenantId": "default",
-      "name": "",
       "description": "./temp/images/headerLogo.png",
       "numberOfLayers": 2,
       "layerSize": 2,
