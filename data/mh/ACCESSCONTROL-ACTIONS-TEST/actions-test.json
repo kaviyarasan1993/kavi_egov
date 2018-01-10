@@ -10120,6 +10120,14 @@
       "numberOfLayers": 4,
       "layeSize": 2,
       "isActive": true
+    },
+    {
+      "id": 28,
+      "tenantId": "default",
+      "description": "./temp/images/mortarlessPavement.jpg",
+      "numberOfLayers": 4,
+      "layeSize": 2,
+      "isActive": true
     }
   ]
 }
