@@ -18,11 +18,18 @@
       "name": "Infrastructure assets",
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -30,11 +37,18 @@
       "name": "Plant and Machinery",
       "code": "003",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -42,11 +56,18 @@
       "name": "Electrical Installations",
       "code": "004",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -57,6 +78,10 @@
       "parent": 2,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 6.66,
@@ -67,6 +92,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -74,6 +104,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -81,6 +116,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -88,6 +128,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -95,6 +140,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -103,6 +153,10 @@
           "isActive": true,
           "isMandatory": false,
           "values": "WBM, Bitomun, Concrete, Tremix concrete",
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -110,7 +164,11 @@
           "type": "Select",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
           "url": "/egov-mdms-service/v1/_get?moduleName\u003dASSET\u0026masterName\u003dLayerType\u0026tenantId\u003dpulsar",
+          "order": null,
           "columns": []
         },
         {
@@ -118,6 +176,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -125,6 +188,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -132,6 +200,11 @@
           "type": "image",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         }
       ]
@@ -145,6 +218,10 @@
       "parent": 2,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 6.66,
@@ -155,6 +232,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -162,6 +244,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -169,6 +256,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -176,6 +268,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -183,6 +280,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         }
       ]
@@ -196,6 +298,10 @@
       "parent": 2,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 6.66,
@@ -206,6 +312,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -214,6 +325,10 @@
           "isActive": true,
           "isMandatory": false,
           "values": " Distribution, Raw water raising main, Pure water raising main",
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -221,6 +336,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -229,6 +349,10 @@
           "isActive": true,
           "isMandatory": false,
           "values": "MS, CI, DI, HWPE, PVC, BRW/WRB",
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -237,6 +361,10 @@
           "isActive": true,
           "isMandatory": false,
           "values": "SSR, GSR,MBR",
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -244,6 +372,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         }
       ]
@@ -257,6 +390,10 @@
       "parent": 3,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 10,
@@ -267,6 +404,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -274,6 +416,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         }
       ]
@@ -287,10 +434,15 @@
       "parent": 4,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 15,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -301,10 +453,15 @@
       "parent": 4,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 15,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -312,11 +469,18 @@
       "name": "Commercial Vehicles",
       "code": "018",
       "assetCategoryType": "MOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -324,11 +488,18 @@
       "name": "Other Vehicles",
       "code": "019",
       "assetCategoryType": "MOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -336,11 +507,18 @@
       "name": "Office Equipment’s, computers and peripherals",
       "code": "020",
       "assetCategoryType": "MOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -348,10 +526,16 @@
       "name": "Furniture and Fixtures",
       "code": "021",
       "assetCategoryType": "MOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
+      "depreciationRate": null,
       "isDepreciationApplicable": true,
       "assetFieldsDefination": [
         {
@@ -360,6 +544,10 @@
           "isActive": true,
           "isMandatory": false,
           "values": "wood,plastic,steel",
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -367,6 +555,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         }
       ]
@@ -377,11 +570,18 @@
       "name": "Intangible Assets",
       "code": "022",
       "assetCategoryType": "MOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -392,10 +592,15 @@
       "parent": 18,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 20,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -406,10 +611,15 @@
       "parent": 18,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 20,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -420,10 +630,15 @@
       "parent": 18,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 20,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -434,10 +649,15 @@
       "parent": 18,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 20,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -448,10 +668,15 @@
       "parent": 18,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 20,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -462,10 +687,15 @@
       "parent": 19,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 15,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -476,10 +706,15 @@
       "parent": 19,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 15,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -490,10 +725,15 @@
       "parent": 20,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 20,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -504,10 +744,15 @@
       "parent": 20,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 20,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -518,10 +763,15 @@
       "parent": 20,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 20,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -532,10 +782,15 @@
       "parent": 20,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 20,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -546,10 +801,15 @@
       "parent": 20,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 20,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -560,10 +820,15 @@
       "parent": 20,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 20,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -574,6 +839,10 @@
       "parent": 21,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 15,
@@ -585,6 +854,10 @@
           "isActive": true,
           "isMandatory": false,
           "values": "wood,plastic,steel",
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -592,6 +865,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         }
       ]
@@ -605,10 +883,15 @@
       "parent": 21,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 15,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -619,10 +902,15 @@
       "parent": 21,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 15,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -633,6 +921,10 @@
       "parent": 21,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 15,
@@ -644,6 +936,10 @@
           "isActive": true,
           "isMandatory": false,
           "values": "wood,plastic,steel",
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -651,6 +947,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         }
       ]
@@ -664,10 +965,15 @@
       "parent": 22,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 20,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -678,10 +984,15 @@
       "parent": 22,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 20,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -689,9 +1000,16 @@
       "name": "Land",
       "code": "042",
       "assetCategoryType": "LAND",
+      "parent": null,
+      "depreciationMethod": null,
       "isAssetAllow": false,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
+      "depreciationRate": null,
       "isDepreciationApplicable": false,
       "assetFieldsDefination": [
         {
@@ -699,6 +1017,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -706,6 +1029,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -713,6 +1041,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -720,6 +1053,11 @@
           "type": "Date",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -727,6 +1065,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -734,6 +1077,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -741,6 +1089,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -748,6 +1101,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         }
       ]
@@ -759,9 +1117,15 @@
       "code": "043",
       "assetCategoryType": "LAND",
       "parent": 42,
+      "depreciationMethod": null,
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
+      "depreciationRate": null,
       "isDepreciationApplicable": false,
       "assetFieldsDefination": [
         {
@@ -769,6 +1133,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -776,6 +1145,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -783,6 +1157,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -790,6 +1169,11 @@
           "type": "Date",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -797,6 +1181,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -804,6 +1193,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -811,6 +1205,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -818,6 +1217,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         }
       ]
@@ -829,9 +1233,15 @@
       "code": "044",
       "assetCategoryType": "LAND",
       "parent": 42,
+      "depreciationMethod": null,
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
+      "depreciationRate": null,
       "isDepreciationApplicable": false,
       "assetFieldsDefination": [
         {
@@ -839,6 +1249,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -846,6 +1261,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -853,6 +1273,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -860,6 +1285,11 @@
           "type": "Date",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -867,6 +1297,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -874,6 +1309,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -881,6 +1321,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -888,6 +1333,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         }
       ]
@@ -899,9 +1349,15 @@
       "code": "045",
       "assetCategoryType": "LAND",
       "parent": 42,
+      "depreciationMethod": null,
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
+      "depreciationRate": null,
       "isDepreciationApplicable": false,
       "assetFieldsDefination": [
         {
@@ -909,6 +1365,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -916,6 +1377,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -923,6 +1389,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -930,6 +1401,11 @@
           "type": "Date",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -937,6 +1413,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -944,6 +1425,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -951,6 +1437,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -958,6 +1449,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         }
       ]
@@ -969,9 +1465,15 @@
       "code": "046",
       "assetCategoryType": "LAND",
       "parent": 42,
+      "depreciationMethod": null,
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
+      "depreciationRate": null,
       "isDepreciationApplicable": false,
       "assetFieldsDefination": [
         {
@@ -979,6 +1481,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -986,6 +1493,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -993,6 +1505,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1000,6 +1517,11 @@
           "type": "Date",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1007,6 +1529,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1014,6 +1541,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1021,6 +1553,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1028,6 +1565,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         }
       ]
@@ -1039,9 +1581,15 @@
       "code": "047",
       "assetCategoryType": "LAND",
       "parent": 42,
+      "depreciationMethod": null,
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
+      "depreciationRate": null,
       "isDepreciationApplicable": false,
       "assetFieldsDefination": [
         {
@@ -1049,6 +1597,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1056,6 +1609,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1063,6 +1621,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1070,6 +1633,11 @@
           "type": "Date",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1077,6 +1645,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1084,6 +1657,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1091,6 +1669,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1098,6 +1681,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         }
       ]
@@ -1109,9 +1697,15 @@
       "code": "048",
       "assetCategoryType": "LAND",
       "parent": 42,
+      "depreciationMethod": null,
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
+      "depreciationRate": null,
       "isDepreciationApplicable": false,
       "assetFieldsDefination": [
         {
@@ -1119,6 +1713,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1126,6 +1725,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1133,6 +1737,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1140,6 +1749,11 @@
           "type": "Date",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1147,6 +1761,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1154,6 +1773,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1161,6 +1785,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1168,6 +1797,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         }
       ]
@@ -1179,9 +1813,15 @@
       "code": "049",
       "assetCategoryType": "LAND",
       "parent": 42,
+      "depreciationMethod": null,
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
+      "depreciationRate": null,
       "isDepreciationApplicable": false,
       "assetFieldsDefination": [
         {
@@ -1189,6 +1829,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1196,6 +1841,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1203,6 +1853,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1210,6 +1865,11 @@
           "type": "Date",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1217,6 +1877,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1224,6 +1889,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1231,6 +1901,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1238,6 +1913,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         }
       ]
@@ -1249,9 +1929,15 @@
       "code": "050",
       "assetCategoryType": "LAND",
       "parent": 42,
+      "depreciationMethod": null,
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
+      "depreciationRate": null,
       "isDepreciationApplicable": false,
       "assetFieldsDefination": [
         {
@@ -1259,6 +1945,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1266,6 +1957,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1273,6 +1969,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1280,6 +1981,11 @@
           "type": "Date",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1287,6 +1993,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1294,6 +2005,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1301,6 +2017,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1308,6 +2029,11 @@
           "type": "Text",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         }
       ]
@@ -1321,6 +2047,10 @@
       "parent": 2,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 6.66,
@@ -1331,6 +2061,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         },
         {
@@ -1338,6 +2073,11 @@
           "type": "Number",
           "isActive": true,
           "isMandatory": false,
+          "values": null,
+          "localText": null,
+          "regExFormate": null,
+          "url": null,
+          "order": null,
           "columns": []
         }
       ]
@@ -1386,11 +2126,18 @@
       "name": "Trucks",
       "code": "090",
       "assetCategoryType": "MOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "pulsar",
@@ -1398,11 +2145,18 @@
       "name": "Dumpers-1",
       "code": "091",
       "assetCategoryType": "MOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "depreciationMethod": "Straight Line method",
@@ -1527,10 +2281,15 @@
       "parent": 4,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
       "depreciationRate": 15,
-      "isDepreciationApplicable": true
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "depreciationMethod": "Straight Line method",
@@ -1853,278 +2612,482 @@
     {
       "tenantId": "testtenant",
       "id": "903",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90345",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90355",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90365",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90375",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90465",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90466",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90467",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90468",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90469",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90470",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90471",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90472",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90473",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90474",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90475",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90476",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90477",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90478",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90479",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90480",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90481",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     },
     {
       "tenantId": "testtenant",
       "id": "90482",
+      "name": null,
       "code": "002",
       "assetCategoryType": "IMMOVABLE",
+      "parent": null,
       "depreciationMethod": "STRAIGHT_LINE_METHOD",
       "isAssetAllow": false,
       "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
       "unitOfMeasurement": "NOS",
       "version": "1.0",
-      "isDepreciationApplicable": true
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
+    },
+    {
+      "tenantId": "testtenant",
+      "id": "90483",
+      "name": null,
+      "code": "002",
+      "assetCategoryType": "IMMOVABLE",
+      "parent": null,
+      "depreciationMethod": "STRAIGHT_LINE_METHOD",
+      "isAssetAllow": false,
+      "isAssetAllowFromUi": true,
+      "assetAccount": null,
+      "accumulatedDepreciationAccount": null,
+      "revaluationReserveAccount": null,
+      "depreciationExpenseAccount": null,
+      "unitOfMeasurement": "NOS",
+      "version": "1.0",
+      "depreciationRate": null,
+      "isDepreciationApplicable": true,
+      "assetFieldsDefination": null
     }
   ],
   "ModeOfAcquisition": [
