@@ -11199,7 +11199,7 @@
       "orderNumber": 345,
       "parentModule": "6432",
       "enabled": false,
-      "serviceCode": "WORKS_    REPORTS",
+      "serviceCode": "WORKS   _    REPORTS",
       "code": "null",
       "path": "Works Management.Reports.WorkOrderRegister"
     }
