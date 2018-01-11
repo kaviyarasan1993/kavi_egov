@@ -11195,10 +11195,10 @@
       "id": 1500,
       "name": "Wor kOrRe gister",
       "url": "/report/works/metadata/_get",
-      "displayName": "Work Order Register",
+      "displayName": "WorkOrderRegister",
       "orderNumber": null,
       "parentModule": "644",
-      "enabled": true,
+      "enabled": false,
       "serviceCode": "WORKS_REPORTS  ",
       "code": "null",
       "path": "Works Management.Reports.WorkOrderRegister"
