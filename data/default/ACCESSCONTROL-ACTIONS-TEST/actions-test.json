@@ -11197,7 +11197,7 @@
       "url": "/report/works/metadata/_get",
       "displayName": "Work Order Register test4556",
       "orderNumber": 345,
-      "parentModule": "644",
+      "parentModule": "6432",
       "enabled": false,
       "serviceCode": "WORKS_REPORTS  ",
       "code": "null",
