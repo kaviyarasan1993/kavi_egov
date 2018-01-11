@@ -1769,6 +1769,47 @@
       "numberOfLayers": 4,
       "layeSize": 2,
       "isActive": true
+    },
+    {
+      "tenantId": "default",
+      "id": "8567",
+      "name": "Building 7257824568723",
+      "code": "001",
+      "assetCategoryType": "IMMOVABLE",
+      "depreciationMethod": "STRAIGHT_LINE_METHOD",
+      "isAssetAllow": false,
+      "isAssetAllowFromUi": false,
+      "unitOfMeasurement": "NOS",
+      "version": "1.0",
+      "assetFieldsDefination": [
+        {
+          "name": "Construction Class    3424",
+          "isActive": true,
+          "isMandatory": false,
+          "columns": []
+        },
+        {
+          "name": "Usage",
+          "type": "Text",
+          "isActive": true,
+          "isMandatory": false,
+          "columns": []
+        },
+        {
+          "name": "Occupancy By",
+          "type": "Text",
+          "isActive": true,
+          "isMandatory": false,
+          "columns": []
+        },
+        {
+          "name": "Name Of Occupant",
+          "type": "Text",
+          "isActive": true,
+          "isMandatory": false,
+          "columns": []
+        }
+      ]
     }
   ]
 }
