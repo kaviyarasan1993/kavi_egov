@@ -11193,13 +11193,13 @@
     },
     {
       "id": 1500,
-      "name": "WorkOrRegister",
+      "name": "Wor kOrRe gister",
       "url": "/report/works/metadata/_get",
-      "displayName": "WorkOrderRegister",
+      "displayName": "Work Order Register",
       "orderNumber": null,
       "parentModule": "644",
       "enabled": true,
-      "serviceCode": "WORKS_REPORTS",
+      "serviceCode": "WORKS_REPORTS  ",
       "code": "null",
       "path": "Works Management.Reports.WorkOrderRegister"
     }
