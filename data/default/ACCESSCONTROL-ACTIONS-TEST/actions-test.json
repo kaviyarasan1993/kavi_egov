@@ -10108,7 +10108,6 @@
       "name": "WorkOrderRegister",
       "url": "/report/works/metadata/_get",
       "displayName": "Work Order Register",
-      "orderNumber": 1,
       "parentModule": "644",
       "enabled": true,
       "serviceCode": "WORKS_REPORTS",
