@@ -10104,40 +10104,16 @@
       "path": "Asset Management.Asset Transactions.Asset Revaluation.AssetRevaluationSearchToCreate"
     },
     {
-      "path": "Asset Management.Asset Transactions.Asset Revaluation.AssetRevaluationSearchToCreate",
+      "id": 1497,
+      "name": "WorkOrderRegister",
+      "url": "/report/works/metadata/_get",
+      "displayName": "Work Order Register",
       "orderNumber": 1,
+      "parentModule": "644",
+      "enabled": true,
+      "serviceCode": "WORKS_REPORTS",
       "code": "null",
-      "serviceCode": "AssetRevaluation",
-      "displayName": "Revaluate Asset updated",
-      "name": "AssetRevaluationSearchToCreate",
-      "id": 321,
-      "url": "/app/asset/search-asset-revaluation.html",
-      "parentModule": "152",
-      "enabled": true
-    },
-    {
-      "path": "Asset Management.Asset Transactions.Asset Revaluation.AssetRevaluationSearchToCreate",
-      "orderNumber": 1,
-      "code": "null",
-      "serviceCode": "AssetRevaluation",
-      "displayName": "Revaluate Asset updated",
-      "name": "AssetRevaluationSearchToCreate",
-      "id": 322,
-      "url": "/app/asset/search-asset-revaluation.html",
-      "parentModule": "152",
-      "enabled": true
-    },
-    {
-      "path": "Asset Management.Asset Transactions.Asset Revaluation.AssetRevaluationSearchToCreate",
-      "orderNumber": 1,
-      "code": "null",
-      "serviceCode": "AssetRevaluation ",
-      "displayName": "Revaluate Asset updated",
-      "name": "AssetRevaluationSearchToCreateUpdated Name",
-      "id": 323,
-      "url": "/app/asset/search-asset-revaluation.html",
-      "parentModule": "152",
-      "enabled": true
+      "path": "Works Management.Reports.WorkOrderRegister"
     }
   ]
 }
