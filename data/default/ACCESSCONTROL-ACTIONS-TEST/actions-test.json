@@ -11193,7 +11193,7 @@
     },
     {
       "id": 1500,
-      "name": "WorkOrderRegister",
+      "name": "WorkOrder     Register",
       "url": "/report/works/metadata/_get",
       "displayName": "Work Order Register",
       "orderNumber": null,
