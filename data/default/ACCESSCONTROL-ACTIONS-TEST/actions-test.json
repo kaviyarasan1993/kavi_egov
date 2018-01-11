@@ -11169,7 +11169,7 @@
     },
     {
       "id": 1498,
-      "name": "WorkOrderRegister123",
+      "name": "test",
       "url": "/report/works/metadata/_get",
       "displayName": "Work Order Register",
       "orderNumber": null,
