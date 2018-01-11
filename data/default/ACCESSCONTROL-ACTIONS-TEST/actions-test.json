@@ -10105,7 +10105,7 @@
     },
     {
       "id": 1497,
-      "name": "WorkOrderRegister123                  09",
+      "name": "WorkOrderRegister",
       "url": "/report/works/metadata/_get",
       "displayName": "Work Order Register",
       "parentModule": "644",
