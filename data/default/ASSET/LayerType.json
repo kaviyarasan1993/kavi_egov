@@ -120,45 +120,9 @@
       "isActive": true
     },
     {
-      "id": 800,
-      "tenantId": "default",
-      "name": "???????? ??????",
-      "description": null,
-      "numberOfLayers": 2,
-      "layerSize": 2,
-      "isActive": true
-    },
-    {
-      "id": 799,
-      "tenantId": "default",
-      "name": "?nal?\u0027ina mar??h? t? mar??h?",
-      "description": null,
-      "numberOfLayers": 2,
-      "layerSize": 2,
-      "isActive": true
-    },
-    {
-      "id": 798,
-      "tenantId": "default",
-      "name": "??????????.",
-      "description": null,
-      "numberOfLayers": 2,
-      "layerSize": 2,
-      "isActive": true
-    },
-    {
-      "id": 797,
-      "tenantId": "default",
-      "name": "??????????.",
-      "description": null,
-      "numberOfLayers": 2,
-      "layerSize": 2,
-      "isActive": true
-    },
-    {
       "id": 796,
       "tenantId": "default",
-      "name": "??????????????",
+      "name": "दुनियासुंदरहै।",
       "description": null,
       "numberOfLayers": 2,
       "layerSize": 2,
