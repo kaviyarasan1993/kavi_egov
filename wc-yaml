@@ -1,0 +1,831 @@
+swagger: '2.0'
+info:
+  version: 2.0.0
+  title: Water Charges Management Service (WCMS) APIs
+  description: |
+    APIs available for WCMS
+      - Apply for new water connection.
+      - Search water connection details based on acknowledgement number/legacyConsumerNumber.
+      - Modify water connection details.
+      - Apply for additional water connection.
+  contact:
+    name: Ghanshyam Rawat
+    email: ghanshyam.rawat@egovernments.org
+schemes:
+  - https
+basePath: /connection/v2
+paths:
+  /_create:
+    post:
+      summary: >-
+        Creates new water connection and accepts entry for legacy connections.
+      description: >-
+        creating a new water connection is based on various master data
+        configured for the respective ULB. For Legacy records, legacyConsumerNumber is
+        required.
+      tags:
+        - Water Connection
+      parameters:
+        - name: connections
+          in: body
+          description: required parameters have to be populated
+          required: true
+          schema:
+            $ref: '#/definitions/WaterConnectionReq'
+      responses:
+        '201':
+          description: >-
+            New water connection request acknowledged sucessfully or Legacy
+            Record Created SucessFully.
+          schema:
+            $ref: '#/definitions/WaterConnectionRes'
+        '400':
+          description: New water connection request failed
+          schema:
+            $ref: >-
+              https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes
+        '404':
+          description: tenantId provided was not found
+          schema:
+            $ref: >-
+              https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes
+  /_search:
+    post:
+      summary: Retuns a list of water connections
+      description: >-
+        Searchs water connection details based on the parameters mention below, in case multiple parameterts each parameter will be treated as 'AND' condition(all parameters must match else no data will be retrived) while retriving.
+      tags:
+        - Water Connection
+      parameters:
+        - $ref: >-
+            https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/parameters/requestInfo
+        - $ref: >-
+            https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/parameters/tenantId
+        - $ref: '#/parameters/oldConnectionNumber'
+        - $ref: '#/parameters/acknowledgmentNumber'
+        - $ref: '#/parameters/connectionNumber'
+        - $ref: '#/parameters/name'
+        - $ref: '#/parameters/mobileNumber'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/WaterConnectionRes'
+        '400':
+          description: Invalid input
+          schema:
+            $ref: >-
+              https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes
+  /_update:
+    post:
+      summary: 'create Demand,update workflow,update index.'
+      description: 'updates existing values.updates demand and workflow details , update Index.'
+      tags:
+        - Water Connection
+      parameters:
+        - name: connection
+          in: body
+          description: required parameters have to be populated
+          required: true
+          schema:
+            $ref: '#/definitions/WaterConnectionReq'
+      responses:
+        '200':
+          description: Water Connection updated successfully.
+          schema:
+            $ref: '#/definitions/WaterConnectionRes'
+        '400':
+          description: Request failed
+          schema:
+            $ref: >-
+              https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes
+
+  /meterreading/_create:
+    post:
+      summary: >-
+        Capture meter reading in the system for connections.
+      description: >-
+        Capture meter reading in the system for connections.
+        Support Bulk Meter Reading for single tenant.
+      tags:
+        - Meter Reading
+      parameters:
+        - name: meterReadings
+          in: body
+          description: required parameters have to be populated
+          required: true
+          schema:
+            $ref: '#/definitions/MeterReadingReq'
+      responses:
+        '201':
+          description: >-
+            New water connection request acknowledged sucessfully or Legacy
+            Record Created SucessFully.
+          schema:
+            $ref: '#/definitions/MeterReadingRes'
+        '400':
+          description: invalid input.
+          schema:
+            $ref: >-
+              https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes
+        '404':
+          description: tenantId provided was not found
+          schema:
+            $ref: >-
+              https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes
+  /meterreading/_search:
+    post:
+      summary: Retuns a list of meter reading for water connections.
+      description: >-
+        Search meter reading by tenant.
+        Search meter Reading by connection number.
+      tags:
+        - Meter Reading
+      parameters:
+        - $ref: >-
+            https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/parameters/requestInfo
+        - $ref: >-
+            https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/parameters/tenantId
+        - $ref: '#/parameters/connectionNumber'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/MeterReadingRes'
+        '400':
+          description: Invalid input
+          schema:
+            $ref: >-
+              https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes
+              
+  /meterreading/_update:
+    post:
+      summary: 'Update existing meter reading in the system for connections'
+      description: >- 
+        Update existing meter reading in the system for connections,
+        Support Bulk update for single tenant.
+      tags:
+        - Meter Reading
+      parameters:
+        - name: meterReadings
+          in: body
+          description: required parameters have to be populated
+          required: true
+          schema:
+            $ref: '#/definitions/MeterReadingReq'
+      responses:
+        '200':
+          description: Water Connection updated successfully.
+          schema:
+            $ref: '#/definitions/MeterReadingRes'
+        '400':
+          description: Invalid input.
+          schema:
+            $ref: >-
+              https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes
+
+definitions:
+
+  BillingType:
+      description: what type of billing is applicable for particular connection, supported values are "code" from "BillingType" Master.
+      type: string
+      enum:
+        - MeterBased
+        - PlotBased
+        - TabBased
+        - Fixed
+        - Custom
+
+  BillingSlab:
+    type: object
+    description: Billing type master defines types of type of billing for a connection(eg. Plot based, Tab based, Fixed, Other)
+    properties:
+      id:
+        type: string
+        description: >-
+          unique code for each connection billing.
+        maxLength: 64
+        minLength: 2
+      billingType:
+        $ref: '#/definitions/BillingType'
+      from:
+        type: string
+        description: start range for billing type.
+        maxLength: 64
+      to:
+        type: string
+        description: end range for billing type.
+        maxLength: 64
+      unitRate:
+        type: number
+        format: double
+        description: description of the SourceType.
+        maxLength: 64
+      uom:
+        type: string
+        description: unit of measurement.
+      monthlyAmount:
+        type: number
+        format: double
+        description: description of the SourceType.
+        maxLength: 64
+      minimunAmount:
+        type: number
+        format: double
+        description: description of the SourceType.
+        maxLength: 64
+      fromDate:
+        type: integer
+        format: int64
+        description: description of the SourceType.
+        maxLength: 128
+      toDate:
+        type: integer
+        format: int64
+        description: description of the SourceType.
+        maxLength: 128
+      isActive:
+        type: boolean
+        description: TRUE for active and FALSE for inactive.
+      tenantId:
+        type: string
+        description: unique ulb id.
+        minLength: 2
+        maxLength: 256
+    required:
+      - billingType
+      - tenantId
+##################################################
+
+  ApplicationType:
+    description: description
+    type: object
+    properties:
+      tenantId:
+        type: string
+        description: unique Ulb id.
+        minLength: 2
+        maxLength: 256
+      code:
+        description: to enforce uniquness of the object.
+        type: string
+        maxLength: 100
+        minLength: 3
+      name:
+        type: string
+        description: name of the type.
+        maxLength: 100
+        minLength: 3
+      description:
+        type: string
+        description: describes the nature and purpose of each application type.
+        maxLength: 100
+      documentType:
+        type: array
+        description: >-
+         Types of documents accepted for particular "ApplicationType", refers code from "DocumentType".
+        items:
+          type: string
+    required:
+      - code
+      - name
+      - tenantId
+##################################################
+
+  DocumentType:
+    type: object
+    properties:
+      code:
+        type: string
+        description: >-
+          enforces uniqueness, internally generated by the system as a sequence number
+          and readonly.
+        maxLength: 20
+        minLength: 1
+      description:
+        type: string
+        description: description of the DocumentType .
+        maxLength: 250
+      isActive:
+        type: boolean
+        description: TRUE for active and FALSE for inactive.
+      tenantId:
+        type: string
+        description: unique ULB id.
+        minLength: 2
+        maxLength: 128
+    required:
+      - code
+      - tenantId
+
+##################################################
+
+  PipeSize:
+    type: object
+    properties:
+      code:
+        type: string
+        description: >-
+          enforces uniqueness, internally generated by the system as a sequence number
+          and readonly.
+        maxLength: 32
+        minLength: 1
+      sizeInInch:
+        type: number
+        format: double
+        description: H.S.C pipe size in inches.
+      description:
+        type: string
+        description: describes the nature and purpose(where the particular pipe size will be used) of the size.
+        maxLength: 250
+      isActive:
+        type: boolean
+        description: TRUE for active and FALSE for inactive.
+      tenantId:
+        type: string
+        description: tenant id of the PipeSize
+        minLength: 2
+        maxLength: 128
+    required:
+      - code
+      - tenantId
+
+
+##################################################
+
+  Property:
+    type: object
+    properties:
+      propertyId:
+        type: string
+        description: tax Assessment number which will come from propertyTax
+      oldPropertyId:
+        type: number
+        description: This field holds the DB Value of the Property Identifier
+      address:
+        type: string
+        description: address of the property.
+        readOnly: true
+      nameOfApplicant:
+        type: string
+        description: Name Of the person who applied for the connection.
+      mobileNumber:
+        type: string
+      email:
+        type: string
+      adharNumber:
+        type: string
+      locality:
+        type: string
+        description: Applicant Locality.
+
+##################################################
+
+  Document:
+    type: object
+    description: entity represinting each document required under respective water connection operations.
+    properties:
+      id:
+        type: string
+        description: Unique identifier of the document.
+      documentType:
+        type: string
+        description: values are from "DocumentMaster".
+        readOnly: true
+      isActive:
+        type: boolean
+        format: varchar
+        description: TRUE for active Document Names and FALSE for inactive Document Names.
+      auditDetails:
+        $ref: >-
+          https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails
+      tenantId:
+        type: string
+        description: Unique Identifier of the
+    required:
+      - id
+      - isActive
+      - tenantId
+
+##################################################
+
+  Meter:
+    type: object
+    description: Represents meter hardware used for water connection
+    properties:
+      id:
+        type: string
+        description: Unique identifier of the meter(UUID).
+        readOnly: true
+      connectionNumber:
+        type: string
+        description: unique identifier of connection.
+      meterOwner:
+        type: string
+        description: Holds the owner details of the Meter
+        enum:
+          - ULB
+          - Citizen
+      meterModel:
+        type: string
+        description: Holds the make details of the Meter
+        enum:
+          - RFID
+          - General
+      meterCost:
+        type: integer
+        format: int64
+        description: cost incured for the procurment of the meter.
+      meterSlNo:
+        type: integer
+        format: int64
+        description: Meter SerialNumber.
+      auditDetails:
+        $ref: >-
+          https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails
+      tenantId:
+        type: string
+        description: Unique Identifier of the tenant
+        minLength: 2
+        maxLength: 256
+    required:
+      - connectionNumber
+      - meterSlNo
+      - tenantId
+
+##################################################
+  MeterReading:
+    type: object
+    description: Captures periodical meter reading of a connection
+    properties:
+      id:
+        type: string
+        description: Unique identifier of the meter reading(UUID).
+        readOnly: true
+      connectionNumber:
+        type: string
+        description: unique identifier of connection.
+      readingDate:
+        type: integer
+        format: int64
+        description: readingDate of capturing meter reading.
+      reading:
+        type: number
+        format: double
+        description: capture meter reading.
+      auditDetails:
+        $ref: >-
+          https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails
+      tenantId:
+        type: string
+        description: Unique Identifier of the tenant
+      gapCode:
+        type: string
+        description: Defines the Gap Code Formula to be used on this meter reading
+      consumption:
+        type: number
+        description: Value of consumption recorded on the meter
+      consumptionAdjusted:
+        type: number
+        description: Adjustment value done on the consumption reading recorded
+      numberOfDays:
+        type: number
+        description: Number of days based for which the reading has been recorded
+      resetFlag:
+        type: boolean
+        description: Indicates whether the meter reading has been reset or not
+    required:
+      - reading
+      - readingDate
+      - tenantId
+
+##################################################
+  Location:
+    type: object
+    description: Captures Location of a connection
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: Unique identifier of the address.
+      buildingName:
+        type: string
+        description: Name of the Building for which the connection is being given
+      roadName:
+        type: string
+        description: Street Name of the Connection Location
+      billingAddress:
+        type: string
+        description: Address to which the bill has to be addressed
+      gisNumber:
+        type: string
+        description: GIS Number of the Connection
+      revenueBoundary:
+        $ref: '#/definitions/Boundary'
+      locationBoundary:
+        $ref: '#/definitions/Boundary'
+      adminBoundary:
+        $ref: '#/definitions/Boundary'
+      auditDetails:
+        $ref: >-
+          https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails
+##################################################
+  Boundary:
+    type: object
+    description: Represents the boundary info
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: unique id of the Boundary.
+      code:
+        type: string
+        description: Unique Code of the boundary.
+      name:
+        type: string
+        description: Name of the boundary.
+##################################################
+  Connection:
+    type: object
+    description: water connection attributes
+    properties:
+      uuid:
+        type: string
+        description: unique identifier for connection, this will be used to refer internally.
+        readOnly: true
+        minLength: 2
+        maxLength: 128
+      type:
+        type: string
+        description: possible and supported type of new water connection, default value will be "PERMANENT".
+        enum:
+          - TEMPORARY
+          - PERMANENT
+      status:
+        type: string
+        readOnly: true
+        description: water connection status.
+        enum:
+          - ACTIVE
+          - INACTIVE
+          - INPROGRESS
+      acknowledgmentNumber:
+        type: string
+        description: >-
+          the acknowledgement number generated after successful acceptance of
+          request for new water connection.
+        readOnly: true
+        minLength: 2
+        maxLength: 128
+      connectionNumber:
+        type: string
+        description: HSC connection number generated after completion of entire workflow.
+        readOnly: true
+        minLength: 2
+        maxLength: 128
+      oldConnectionNumber:
+        type: string
+        description: legacy connection number for existing consumer.
+        minLength: 2
+        maxLength: 128
+      applicationType:
+        type: string
+        description: this field hold value of "code" from "ApplicationType" master.
+        minLength: 2
+        maxLength: 64
+      billingType:
+        $ref: '#/definitions/BillingType'
+      pipesize:
+        type: string
+        description: This field holds the "Code" form "PipeSize" master.
+        minLength: 2
+        maxLength: 64
+      sourceType:
+        type: string
+        description: Water source type.
+        enum:
+          - GroundWater
+          - SurafceWater
+
+      tenantId:
+        type: string
+        description: Unique Identifier of the ULB.
+        minLength: 2
+        maxLength: 256
+      numberOfTaps:
+        type: integer
+        format: int64
+        description: number of taps required.
+        minLength: 1
+        maxLength: 10
+      numberOfPersons:
+        type: integer
+        description: Defines the number of persons in the household.
+        minLength: 1
+        maxLength: 100
+      parentConnection:
+        type: string
+        description: >-
+          holds identifier of previous connection if current connection request
+          is for additional water connection.
+      documents:
+        type: array
+        items:
+          $ref: '#/definitions/Document'
+      property:
+        $ref: '#/definitions/Property'
+      address:
+        $ref: https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-1-0.yml#/definitions/Address
+      location:
+        $ref: '#/definitions/Location'
+      meter:
+        $ref: '#/definitions/Meter'
+      owner:
+        description: Connection owners, these will be citizen users in system.
+        type: array
+        maximum: 100
+        items:
+          $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/egov-user/contracts/v1-0-0.yml#/definitions/User'
+      aditionalDetails:
+        type: object
+        description: >- 
+          This fiels will be used to capture additional information about connection as json.
+      auditDetails:
+        $ref: >-
+          https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails
+    required:
+      - type
+      - billingType
+      - address
+
+##################################################
+  WaterConnectionReq:
+    type: object
+    properties:
+      RequestInfo:
+        $ref: >-
+          https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/RequestInfo
+      connections:
+        type: array
+        maximum: 100
+        items:
+          $ref: '#/definitions/Connection'
+      actionInfo:
+        type: array
+        maximum: 100
+        items:
+          $ref: '#/definitions/ActionInfo'
+    required:
+      - RequestInfo
+      - connections
+  
+  WaterConnectionRes:
+    type: object
+    properties:
+      ResponseInfo:
+        $ref: >-
+          https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ResponseInfo
+      connections:
+        type: array
+        items:
+          $ref: '#/definitions/Connection'
+      actionHistory:
+        type: array
+        items:
+          $ref: '#/definitions/ActionHistory'
+##################################################
+  
+  MeterReadingReq:
+    type: object
+    properties:
+      RequestInfo:
+        $ref: >-
+          https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/RequestInfo
+      meterReading:
+        type: array
+        maximum: 100
+        items:
+          $ref: '#/definitions/MeterReading'
+      actionInfo:
+        type: array
+        maximum: 100
+        items:
+          $ref: '#/definitions/ActionInfo'
+    required:
+      - RequestInfo
+      - connections
+  
+  MeterReadingRes:
+    type: object
+    properties:
+      ResponseInfo:
+        $ref: >-
+          https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ResponseInfo
+      meterReading:
+        type: array
+        items:
+          $ref: '#/definitions/MeterReading'
+      actionHistory:
+        type: array
+        maximum: 100
+        items:
+          $ref: '#/definitions/ActionHistory'
+
+##################################################
+
+  ActionInfo:
+    type: object
+    description: Capture the details of action on service request.
+    properties:
+      tenantId:
+        type: string
+        description: The unique identifier for Service - this is equivalent to jurisdiction_id in Open311. As the platform intends to be multi tenanted - this is always required
+        minLength: 2
+        maxLength: 50
+      by:
+        type: string
+        description: who made the Action Citizen/Employee, it's a combination of userid and role delimited by colon (ex- userid:citizen).
+        readOnly: true
+      isInternal:
+        type: string
+        description: If employee is making an action with isInteral as true then server will not return that action info to citizen search result.
+      when:
+        type: integer
+        format: int64
+        description: epoch time of when the action made.
+        x-format: 'dd/mm/yyyy HH-MM-SS'
+        readOnly: true
+      businessKey:
+        type: string
+        readOnly: true
+        description: The server generated unique ID of the service request.
+        minLength: 2
+        maxLength: 64
+      action:
+        type: string
+        description: Action will be Reject, Approve, Reassign, Forward.
+      status:
+        type: string
+        readOnly: true
+        description: Each action will have a mapping with status at server side.
+      assignee:
+        type: string
+        description: user id of the employee to whom request id need to be assigne.
+      media:
+        type: array
+        maximum: 10
+        items:
+         type: string
+      comment:
+        type: string
+        description: Capture the comments made by Employee/Citizen.
+
+##################################################
+
+  ActionHistory:
+      type: object
+      description: Each Object of action History will point to the Service.
+      properties:
+        actions:
+          type: array
+          maximum: 100
+          items:
+             $ref: '#/definitions/ActionInfo'
+
+##################################################
+parameters:
+  oldConnectionNumber:
+    name: legacyConsumerNumber
+    in: query
+    description: legacy consumer number of citizen
+    required: false
+    type: integer
+    format: int64
+  acknowledgmentNumber:
+    name: acknowledgmentNumber
+    in: query
+    description: acknowledgment number of the connection
+    required: false
+    type: string
+    minLength: 0
+    maxLength: 64
+  connectionNumber:
+    name: consumerNumber
+    in: query
+    description: HSC consumer number for the water connection
+    required: false
+    type: string
+    minLength: 0
+    maxLength: 64
+  name:
+    name: name
+    in: query
+    description: name of citizen
+    required: false
+    type: string
+  mobileNumber:
+    name: mobileNumber
+    in: query
+    description: mobile number of citizen
+    required: false
+    type: string
