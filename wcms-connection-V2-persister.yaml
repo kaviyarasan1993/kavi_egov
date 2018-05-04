@@ -16,19 +16,19 @@ serviceMaps:
 
        - jsonPath: $.connections.*.address.tenantid
 
-       - jsonPath: $.connections.*.address.buildingname
+       - jsonPath: $.connections.*.address.buildingName
 
-       - jsonPath: $.connections.*.address.roadname
+       - jsonPath: $.connections.*.address.roadName
 
-       - jsonPath: $.connections.*.address.billingaddress
+       - jsonPath: $.connections.*.address.billingAddress
 
-       - jsonPath: $.connections.*.address.gisnumber
+       - jsonPath: $.connections.*.address.gisNumber
 
-       - jsonPath: $.connections.*.address.revenueboundary
+       - jsonPath: $.connections.*.address.revenueBoundary
 
-       - jsonPath: $.connections.*.address.locationboundary
+       - jsonPath: $.connections.*.address.locationBoundary
 
-       - jsonPath: $.connections.*.address.adminboundary
+       - jsonPath: $.connections.*.address.adminBoundary
 
 
     - query: INSERT INTO public.wcms_connection_v2(uuid, tenantid, type, status, oldconnectionnumber, acknowledgmentnumber, connectionnumber, applicationtype, billingtype, pipesize, sourcetype, numberoftaps, numberofpersons, parentconnection, documents, property, address, meter, owner, additionaldetails, createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
@@ -37,23 +37,23 @@ serviceMaps:
 
        - jsonPath: $.connections.*.uuid
 
-       - jsonPath: $.connections.*.tenantid
+       - jsonPath: $.connections.*.tenantId
 
        - jsonPath: $.connections.*.type
 
        - jsonPath: $.connections.*.status
 
-       - jsonPath: $.connections.*.oldconnectionnumber
+       - jsonPath: $.connections.*.oldConnectionNumber
 
-       - jsonPath: $.connections.*.acknowledgmentnumber
+       - jsonPath: $.connections.*.acknowledgmentNumber
 
-       - jsonPath: $.connections.*.connectionnumber
+       - jsonPath: $.connections.*.connectionNumber
 
-       - jsonPath: $.connections.*.applicationtype
+       - jsonPath: $.connections.*.applicationType
 
-       - jsonPath: $.connections.*.billingtype
+       - jsonPath: $.connections.*.billingType
 
-       - jsonPath: $.connections.*.pipesize
+       - jsonPath: $.connections.*.pipeSize
 
        - jsonPath: $.connections.*.sourceType
 
@@ -61,7 +61,7 @@ serviceMaps:
 
        - jsonPath: $.connections.*.numberOfPersons
 
-       - jsonPath: $.connections.*.parentconnection
+       - jsonPath: $.connections.*.parentConnection
 
        - jsonPath: $.connections.*.documents
 
@@ -99,19 +99,19 @@ serviceMaps:
       basePath: connections.*.address
       jsonMaps:
 
-       - jsonPath: $.connections.*.address.buildingname
+       - jsonPath: $.connections.*.address.buildingName
 
-       - jsonPath: $.connections.*.address.roadname
+       - jsonPath: $.connections.*.address.roadName
 
-       - jsonPath: $.connections.*.address.billingaddress
+       - jsonPath: $.connections.*.address.billingAddress
 
-       - jsonPath: $.connections.*.address.gisnumber
+       - jsonPath: $.connections.*.address.gisNumber
 
-       - jsonPath: $.connections.*.address.revenueboundary
+       - jsonPath: $.connections.*.address.revenueBoundary
 
-       - jsonPath: $.connections.*.address.locationboundary
+       - jsonPath: $.connections.*.address.locationBoundary
 
-       - jsonPath: $.connections.*.address.adminboundary
+       - jsonPath: $.connections.*.address.adminBoundary
 
     - query: INSERT INTO public.wcms_connection_v2(uuid, tenantid, type, status, oldconnectionnumber, acknowledgmentnumber, connectionnumber, applicationtype, billingtype, pipesize, sourcetype, numberoftaps, numberofpersons, parentconnection, documents, property, address, meter, owner, additionaldetails, lastmodifiedby, lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: connections.*
@@ -119,23 +119,23 @@ serviceMaps:
 
        - jsonPath: $.connections.*.uuid
 
-       - jsonPath: $.connections.*.tenantid
+       - jsonPath: $.connections.*.tenantId
 
        - jsonPath: $.connections.*.type
 
        - jsonPath: $.connections.*.status
 
-       - jsonPath: $.connections.*.oldconnectionnumber
+       - jsonPath: $.connections.*.oldConnectionNumber
 
-       - jsonPath: $.connections.*.acknowledgmentnumber
+       - jsonPath: $.connections.*.acknowledgmentNumber
 
-       - jsonPath: $.connections.*.connectionnumber
+       - jsonPath: $.connections.*.connectionNumber
 
-       - jsonPath: $.connections.*.applicationtype
+       - jsonPath: $.connections.*.applicationType
 
-       - jsonPath: $.connections.*.billingtype
+       - jsonPath: $.connections.*.billingType
 
-       - jsonPath: $.connections.*.pipesize
+       - jsonPath: $.connections.*.pipeSize
 
        - jsonPath: $.connections.*.sourceType
 
@@ -143,7 +143,7 @@ serviceMaps:
 
        - jsonPath: $.connections.*.numberOfPersons
 
-       - jsonPath: $.connections.*.parentconnection
+       - jsonPath: $.connections.*.parentConnection
 
        - jsonPath: $.connections.*.documents
 
