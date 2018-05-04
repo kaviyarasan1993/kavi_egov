@@ -14,7 +14,7 @@ serviceMaps:
 
        - jsonPath: $.connections.*.address.uuid
 
-       - jsonPath: $.connections.*.address.tenantid
+       - jsonPath: $.connections.*.address.tenantId
 
        - jsonPath: $.connections.*.address.buildingName
 
