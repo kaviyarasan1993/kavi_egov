@@ -63,15 +63,15 @@ serviceMaps:
 
        - jsonPath: $.connections.*.uuid
        
-       - jsonPath: $.connections.*.meter.uuid
+       - jsonPath: $.connections.*.meter.id
        
-       - jsonPath: $.connections.*.meter.meterowner
+       - jsonPath: $.connections.*.meter.meterOwner
        
-       - jsonPath: $.connections.*.meter.metermodel
+       - jsonPath: $.connections.*.meter.meterModel
        
-       - jsonPath: $.connections.*.meter.metercost
+       - jsonPath: $.connections.*.meter.meterCost
        
-       - jsonPath: $.connections.*.meter.meterslno
+       - jsonPath: $.connections.*.meter.meterSlNo
        
        - jsonPath: $.connections.*.auditDetails.createdBy
 
@@ -94,15 +94,15 @@ serviceMaps:
        
        - jsonPath: $.connections.*.address.longitude
        
-       - jsonPath: $.connections.*.address.addressid
+       - jsonPath: $.connections.*.address.addressId
        
-       - jsonPath: $.connections.*.address.addressnumber
+       - jsonPath: $.connections.*.address.addressNumber
        
-       - jsonPath: $.connections.*.address.addresstype
+       - jsonPath: $.connections.*.address.addressType
        
-       - jsonPath: $.connections.*.address.addressline1
+       - jsonPath: $.connections.*.address.addressLine1
        
-       - jsonPath: $.connections.*.address.addressline2
+       - jsonPath: $.connections.*.address.addressLine2
        
        - jsonPath: $.connections.*.address.landmark
        
@@ -110,7 +110,7 @@ serviceMaps:
        
        - jsonPath: $.connections.*.address.pincode
        
-       - jsonPath: $.connections.*.address.addressdetail
+       - jsonPath: $.connections.*.address.addressDetail
        
        - jsonPath: $.connections.*.auditDetails.createdBy
 
@@ -128,9 +128,9 @@ serviceMaps:
        
        - jsonPath: $.connections[?(uuid in @.documents[*].uuid)].uuid
        
-       - jsonPath: $.connections.*.documents.*.documenttype
+       - jsonPath: $.connections.*.documents.*.documentType
        
-       - jsonPath: $.connections.*.documents.*.isactive
+       - jsonPath: $.connections.*.documents.*.isActive
        
        - jsonPath: $.connections[?(uuid in @.documents[*].uuid)].auditDetails.createdBy
 
@@ -148,7 +148,7 @@ serviceMaps:
        
        - jsonPath: $.connections.*.owner.*.id
        
-       - jsonPath: $.connections.*.owner.*.isactive
+       - jsonPath: $.connections.*.owner.*.isActive
        
        - jsonPath: $.connections[?(id in @.owner[*].id)].auditDetails.createdBy
 
