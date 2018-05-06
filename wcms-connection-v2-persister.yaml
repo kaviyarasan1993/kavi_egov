@@ -141,7 +141,7 @@ serviceMaps:
        - jsonPath: $.connections[*][?({id} in @.documents[*].id)].auditDetails.lastModifiedTime
        
     - query: INSERT INTO eg_wcms_owner_v2(connectionuuid, userid, isactive, createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?);
-      basePath: connections.*.owner
+      basePath: connections.*.owner.*
       jsonMaps:
 
        - jsonPath: $.connections[*][?({id} in @.owner[*].id)].uuid
