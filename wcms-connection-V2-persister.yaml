@@ -124,7 +124,7 @@ serviceMaps:
       basePath: connections.*.documents.*
       jsonMaps:
        
-       - jsonPath: $.connections.*.documents.*.uuid
+       - jsonPath: $.connections.*.documents.*.id
        
        - jsonPath: $.connections[*][?({id} in @.documents[*].id)].uuid
        
