@@ -126,37 +126,37 @@ serviceMaps:
        
        - jsonPath: $.connections.*.documents.*.uuid
        
-       - jsonPath: $.connections[?(uuid in @.documents[*].uuid)].uuid
+       - jsonPath: $.connections[*][?({uuid} in @.documents[*].uuid)].uuid
        
        - jsonPath: $.connections.*.documents.*.documentType
        
        - jsonPath: $.connections.*.documents.*.isActive
        
-       - jsonPath: $.connections[?(uuid in @.documents[*].uuid)].auditDetails.createdBy
+       - jsonPath: $.connections[*][?({uuid} in @.documents[*].uuid)].auditDetails.createdBy
 
-       - jsonPath: $.connections[?(uuid in @.documents[*].uuid)].auditDetails.lastModifiedBy
+       - jsonPath: $.connections[*][?({uuid} in @.documents[*].uuid)].auditDetails.lastModifiedBy
        
-       - jsonPath: $.connections[?(uuid in @.documents[*].uuid)].auditDetails.createdTime
+       - jsonPath: $.connections[*][?({uuid} in @.documents[*].uuid)].auditDetails.createdTime
 
-       - jsonPath: $.connections[?(uuid in @.documents[*].uuid)].auditDetails.lastModifiedTime
+       - jsonPath: $.connections[*][?({uuid} in @.documents[*].uuid)].auditDetails.lastModifiedTime
        
     - query: INSERT INTO eg_wcms_owner_v2(connectionuuid, userid, isactive, createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?);
       basePath: connections.*.owner
       jsonMaps:
 
-       - jsonPath: $.connections[?(id in @.owner[*].id)].uuid
+       - jsonPath: $.connections[*][?({id} in @.owner[*].id)].uuid
        
        - jsonPath: $.connections.*.owner.*.id
        
        - jsonPath: $.connections.*.owner.*.isActive
        
-       - jsonPath: $.connections[?(id in @.owner[*].id)].auditDetails.createdBy
+       - jsonPath: $.connections[*][?({id} in @.owner[*].id)].auditDetails.createdBy
 
-       - jsonPath: $.connections[?(id in @.owner[*].id)].auditDetails.lastModifiedBy
+       - jsonPath: $.connections[*][?({id} in @.owner[*].id)].auditDetails.lastModifiedBy
        
-       - jsonPath: $.connections[?(id in @.owner[*].id)].auditDetails.createdTime
+       - jsonPath: $.connections[*][?({id} in @.owner[*].id)].auditDetails.createdTime
 
-       - jsonPath: $.connections[?(id in @.owner[*].id)].auditDetails.lastModifiedTime
+       - jsonPath: $.connections[*][?({id} in @.owner[*].id)].auditDetails.lastModifiedTime
        
        
        
