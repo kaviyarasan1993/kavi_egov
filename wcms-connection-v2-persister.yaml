@@ -126,19 +126,19 @@ serviceMaps:
        
        - jsonPath: $.connections.*.documents.*.uuid
        
-       - jsonPath: $.connections[*][?({uuid} in @.documents[*].uuid)].uuid
+       - jsonPath: $.connections[*][?({id} in @.documents[*].id)].uuid
        
        - jsonPath: $.connections.*.documents.*.documentType
        
        - jsonPath: $.connections.*.documents.*.isActive
        
-       - jsonPath: $.connections[*][?({uuid} in @.documents[*].uuid)].auditDetails.createdBy
+       - jsonPath: $.connections[*][?({id} in @.documents[*].id)].auditDetails.createdBy
 
-       - jsonPath: $.connections[*][?({uuid} in @.documents[*].uuid)].auditDetails.lastModifiedBy
+       - jsonPath: $.connections[*][?({id} in @.documents[*].id)].auditDetails.lastModifiedBy
        
-       - jsonPath: $.connections[*][?({uuid} in @.documents[*].uuid)].auditDetails.createdTime
+       - jsonPath: $.connections[*][?({id} in @.documents[*].id)].auditDetails.createdTime
 
-       - jsonPath: $.connections[*][?({uuid} in @.documents[*].uuid)].auditDetails.lastModifiedTime
+       - jsonPath: $.connections[*][?({id} in @.documents[*].id)].auditDetails.lastModifiedTime
        
     - query: INSERT INTO eg_wcms_owner_v2(connectionuuid, userid, isactive, createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?);
       basePath: connections.*.owner
