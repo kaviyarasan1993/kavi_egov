@@ -14,6 +14,7 @@ info:
 schemes:
   - https
 basePath: /properties/v2
+x-module: "PT"
 x-common-path: >-
   https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml
 paths:
