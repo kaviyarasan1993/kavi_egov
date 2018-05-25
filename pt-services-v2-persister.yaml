@@ -7,7 +7,7 @@ serviceMaps:
    isTransaction: true
    queryMaps:
 
-       - query: INSERT INTO eg_pt_property_v2(tenantId,id, status,acknowldgementNumber, financialYear, propertyType, oldAssessmentNumber, assessmentDate, creationReason, occupancyDate,createdBy,createdTime,lastModifiedBy,lastModifiedTime ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+       - query: INSERT INTO eg_pt_property_v2(tenantId,id, status,acknowldgementNumber, financialYear, propertyType,assessmentNumber, oldAssessmentNumber, assessmentDate, creationReason, occupancyDate, propertySubType, usageCategoryMajor ,createdBy,createdTime,lastModifiedBy,lastModifiedTime ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
          basePath: properties.*
          jsonMaps:
           - jsonPath: $.properties.*.tenantId
@@ -24,11 +24,17 @@ serviceMaps:
 
           - jsonPath: $.properties.*.oldAssessmentNumber
 
+          - jsonPath: $.properties.*.oldAssessmentNumber
+
           - jsonPath: $.properties.*.assessmentDate
 
           - jsonPath: $.properties.*.creationReason
 
           - jsonPath: $.properties.*.occupancyDate
+
+          - jsonPath: $.properties.*.propertySubType
+
+          - jsonPath: $.properties.*.usageCategoryMajor
 
           - jsonPath: $.properties.*.auditDetails.createdBy
 
@@ -61,7 +67,7 @@ serviceMaps:
 
 
 
-       - query: INSERT INTO eg_pt_propertyDetail_v2(id,property,source,usage,noOfFloors,landArea,buildUpArea,additionalDetails,channel) VALUES(?,?,?,?,?,?,?,?,?);
+       - query: INSERT INTO eg_pt_propertyDetail_v2(id,property,source,usage,noOfFloors,landArea,buildUpArea,additionalDetails,channel,createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?);
          basePath: properties.*.propertyDetail
          jsonMaps:
 
@@ -82,6 +88,14 @@ serviceMaps:
            - jsonPath: $.properties.*.additionalDetails
 
            - jsonPath: $.properties.*.channel
+
+           - jsonPath: $.properties.*.auditDetails.createdBy
+
+           - jsonPath: $.properties.*.auditDetails.lastModifiedBy
+
+           - jsonPath: $.properties.*.auditDetails.createdTime
+
+           - jsonPath: $.properties.*.auditDetails.lastModifiedTime
 
 
 
@@ -108,7 +122,7 @@ serviceMaps:
 
 
 
-       - query: INSERT INTO eg_pt_unit_v2(id,propertyDetail,floorNo,unitType,unitArea) VALUES(?,?,?,?,?);
+       - query: INSERT INTO eg_pt_unit_v2(id,propertyDetail,floorNo,unitType,unitArea,usageCategoryMajor,usageCategoryMinor	,usageCategorySubMinor,usageCategoryDetail,occupancyType,occupancyDate,constructionType,constructionSubType,arv,createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
          basePath: properties.*.propertyDetail.units.*
          jsonMaps:
 
@@ -122,23 +136,31 @@ serviceMaps:
 
           - jsonPath: $.properties.*.propertyDetail.units.*.unitArea
 
+          - jsonPath: $.properties.*.propertyDetail.units.*.usageCategoryMajor
 
+          - jsonPath: $.properties.*.propertyDetail.units.*.usageCategoryMinor
 
-       - query: INSERT INTO eg_pt_usage_v2(id,unit,usage,fromDate,toDate,occupancyType) VALUES(?,?,?,?,?,?);
-         basePath: properties.*.propertyDetail.units.*.usage.*
-         jsonMaps:
+          - jsonPath: $.properties.*.propertyDetail.units.*.usageCategorySubMinor
 
-         - jsonPath: $.properties.*.propertyDetail.units.*.usage.*.id
+          - jsonPath: $.properties.*.propertyDetail.units.*.usageCategoryDetail
 
-         - jsonPath: $.properties.*.propertyDetail.units[*][?({id} in @.usage[*].id)].id
+          - jsonPath: $.properties.*.propertyDetail.units.*.occupancyType
 
-         - jsonPath: $.properties.*.propertyDetail.units.*.usage.*.usage
+          - jsonPath: $.properties.*.propertyDetail.units.*.occupancyDate
 
-         - jsonPath: $.properties.*.propertyDetail.units.*.usage.*.fromDate
+          - jsonPath: $.properties.*.propertyDetail.units.*.constructionType
 
-         - jsonPath: $.properties.*.propertyDetail.units.*.usage.*.toDate
+          - jsonPath: $.properties.*.propertyDetail.units.*.constructionSubType
 
-         - jsonPath: $.properties.*.propertyDetail.units.*.usage.*.occupancyType
+          - jsonPath: $.properties.*.propertyDetail.units.*.arv
+
+          - jsonPath: $.properties[*][?({id} in @.propertyDetail.units[*].id)].auditDetails.createdBy
+
+          - jsonPath: $.properties[*][?({id} in @.propertyDetail.units[*].id)].auditDetails.lastModifiedBy
+
+          - jsonPath: $.properties[*][?({id} in @.propertyDetail.units[*].id)].auditDetails.createdTime
+
+          - jsonPath: $.properties[*][?({id} in @.propertyDetail.units[*].id)].auditDetails.lastModifiedTime
 
 
 
@@ -196,7 +218,7 @@ serviceMaps:
    isTransaction: true
    queryMaps:
 
-        - query: UPDATE eg_pt_property_v2 SET status=?,acknowldgementNumber=?, financialYear=?, propertyType=?, oldAssessmentNumber=?, assessmentDate=?, creationReason=?, occupancyDate=? where id=? AND tenantId=?;
+        - query: UPDATE eg_pt_property_v2 SET status=?,acknowldgementNumber=?, financialYear=?, propertyType=?, propertySubType=?,usageCategoryMajor=?, oldAssessmentNumber=?, assessmentNumber=?, assessmentDate=?, creationReason=?, occupancyDate=?,lastModifiedBy=?, lastModifiedTime=? where id=? AND tenantId=?;
           basePath: properties.*
           jsonMaps:
 
@@ -208,7 +230,13 @@ serviceMaps:
 
            - jsonPath: $.properties.*.propertyType
 
+           - jsonPath: $.properties.*.propertySubType
+
+           - jsonPath: $.properties.*.usageCategoryMajor
+
            - jsonPath: $.properties.*.oldAssessmentNumber
+
+           - jsonPath: $.properties.*.assessmentNumber
 
            - jsonPath: $.properties.*.assessmentDate
 
@@ -216,13 +244,19 @@ serviceMaps:
 
            - jsonPath: $.properties.*.occupancyDate
 
+           - jsonPath: $.properties.*.auditDetails.lastModifiedBy
+
+           - jsonPath: $.properties.*.auditDetails.lastModifiedTime
+
            - jsonPath: $.properties.*.id
 
            - jsonPath: $.properties.*.tenantId
 
 
 
-        - query: INSERT INTO eg_pt_owner_v2(property, userid, isactive, createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?) ON CONFLICT (userid,property) DO UPDATE SET isactive =?, lastmodifiedby =?, lastmodifiedtime =?;
+
+
+        - query: INSERT INTO eg_pt_owner_v2(property, userid, isActive, createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?) ON CONFLICT (userid,property) DO UPDATE SET isActive =?, lastmodifiedby =?, lastmodifiedtime =?;
           basePath: properties.*.owners.*
           jsonMaps:
 
@@ -232,11 +266,11 @@ serviceMaps:
 
            - jsonPath: $.properties.*.owners.*.isActive
 
-           - jsonPath: $.properties[*][?({id} in @.owners[*].id)].auditDetails.createdBy
+           - jsonPath: $.properties[*][?({id} in @.owners[*].id)].auditDetails.lastModifiedBy
 
            - jsonPath: $.properties[*][?({id} in @.owners[*].id)].auditDetails.lastModifiedBy
 
-           - jsonPath: $.properties[*][?({id} in @.owners[*].id)].auditDetails.createdTime
+           - jsonPath: $.properties[*][?({id} in @.owners[*].id)].auditDetails.lastModifiedTime
 
            - jsonPath: $.properties[*][?({id} in @.owners[*].id)].auditDetails.lastModifiedTime
 
@@ -248,7 +282,7 @@ serviceMaps:
 
 
 
-        - query: UPDATE eg_pt_propertyDetail_v2 SET source=?,usage=?,noOfFloors=?,landArea=?,buildUpArea=?,additionalDetails=?,channel=? where id=?;
+        - query: UPDATE eg_pt_propertyDetail_v2 SET source=?,usage=?,noOfFloors=?,landArea=?,buildUpArea=?,additionalDetails=?,channel=?,lastModifiedBy=?, lastModifiedTime=? where id=?;
           basePath: properties.*.propertyDetail
           jsonMaps:
 
@@ -267,6 +301,10 @@ serviceMaps:
 
             - jsonPath: $.properties.*.channel
 
+            - jsonPath: $.properties.*.auditDetails.lastModifiedBy
+
+            - jsonPath: $.properties.*.auditDetails.lastModifiedTime
+
             - jsonPath: $.properties.*.propertyDetail.id
 
 
@@ -283,11 +321,11 @@ serviceMaps:
 
             - jsonPath: $.properties.*.propertyDetail.documents.*.fileStore
 
-            - jsonPath: $.properties[*][?({id} in @.propertyDetail.documents[*].id)].auditDetails.createdBy
+            - jsonPath: $.properties[*][?({id} in @.propertyDetail.documents[*].id)].auditDetails.lastModifiedBy
 
             - jsonPath: $.properties[*][?({id} in @.propertyDetail.documents[*].id)].auditDetails.lastModifiedBy
 
-            - jsonPath: $.properties[*][?({id} in @.propertyDetail.documents[*].id)].auditDetails.createdTime
+            - jsonPath: $.properties[*][?({id} in @.propertyDetail.documents[*].id)].auditDetails.lastModifiedTime
 
             - jsonPath: $.properties[*][?({id} in @.propertyDetail.documents[*].id)].auditDetails.lastModifiedTime
 
@@ -300,7 +338,7 @@ serviceMaps:
             - jsonPath: $.properties[*][?({id} in @.propertyDetail.documents[*].id)].auditDetails.lastModifiedTime
 
 
-        - query: INSERT INTO eg_pt_unit_v2(id,propertyDetail,floorNo,unitType,unitArea,createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES(?,?,?,?,?,?,?,?,?) ON CONFLICT (id) DO UPDATE SET floorNo=?,unitType=?,unitArea=?,lastmodifiedby=?,lastmodifiedtime=?;
+        - query: INSERT INTO eg_pt_unit_v2(id,propertyDetail,floorNo,unitType,unitArea,usageCategoryMajor,usageCategoryMinor,usageCategorySubMinor,usageCategoryDetail,occupancyType,occupancyDate,constructionType,constructionSubType,arv,createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT (id) DO UPDATE SET floorNo=?,unitType=?,unitArea=?,usageCategoryMajor=?,usageCategoryMinor=?,usageCategorySubMinor=?,usageCategoryDetail=?,occupancyType=?,occupancyDate=?,constructionType=?,constructionSubType=?,arv=?,lastmodifiedby=?,lastmodifiedtime=?;
           basePath: properties.*.propertyDetail.units.*
           jsonMaps:
 
@@ -315,11 +353,29 @@ serviceMaps:
 
            - jsonPath: $.properties.*.propertyDetail.units.*.unitArea
 
-           - jsonPath: $.properties[*][?({id} in @.propertyDetail.units[*].id)].auditDetails.createdBy
+           - jsonPath: $.properties.*.propertyDetail.units.*.usageCategoryMajor
+
+           - jsonPath: $.properties.*.propertyDetail.units.*.usageCategoryMinor
+
+           - jsonPath: $.properties.*.propertyDetail.units.*.usageCategorySubMinor
+
+           - jsonPath: $.properties.*.propertyDetail.units.*.usageCategoryDetail
+
+           - jsonPath: $.properties.*.propertyDetail.units.*.occupancyType
+
+           - jsonPath: $.properties.*.propertyDetail.units.*.occupancyDate
+
+           - jsonPath: $.properties.*.propertyDetail.units.*.constructionType
+
+           - jsonPath: $.properties.*.propertyDetail.units.*.constructionSubType
+
+           - jsonPath: $.properties.*.propertyDetail.units.*.arv
 
            - jsonPath: $.properties[*][?({id} in @.propertyDetail.units[*].id)].auditDetails.lastModifiedBy
 
-           - jsonPath: $.properties[*][?({id} in @.propertyDetail.units[*].id)].auditDetails.createdTime
+           - jsonPath: $.properties[*][?({id} in @.propertyDetail.units[*].id)].auditDetails.lastModifiedBy
+
+           - jsonPath: $.properties[*][?({id} in @.propertyDetail.units[*].id)].auditDetails.lastModifiedTime
 
            - jsonPath: $.properties[*][?({id} in @.propertyDetail.units[*].id)].auditDetails.lastModifiedTime
 
@@ -329,37 +385,27 @@ serviceMaps:
 
            - jsonPath: $.properties.*.propertyDetail.units.*.unitArea
 
+           - jsonPath: $.properties.*.propertyDetail.units.*.usageCategoryMajor
+
+           - jsonPath: $.properties.*.propertyDetail.units.*.usageCategoryMinor
+
+           - jsonPath: $.properties.*.propertyDetail.units.*.usageCategorySubMinor
+
+           - jsonPath: $.properties.*.propertyDetail.units.*.usageCategoryDetail
+
+           - jsonPath: $.properties.*.propertyDetail.units.*.occupancyType
+
+           - jsonPath: $.properties.*.propertyDetail.units.*.occupancyDate
+
+           - jsonPath: $.properties.*.propertyDetail.units.*.constructionType
+
+           - jsonPath: $.properties.*.propertyDetail.units.*.constructionSubType
+
+           - jsonPath: $.properties.*.propertyDetail.units.*.arv
+
            - jsonPath: $.properties[*][?({id} in @.propertyDetail.units[*].id)].auditDetails.lastModifiedBy
 
            - jsonPath: $.properties[*][?({id} in @.propertyDetail.units[*].id)].auditDetails.lastModifiedTime
-
-
-
-        - query: INSERT INTO eg_pt_usage_v2(id,unit,usage,fromDate,toDate,occupancyType) VALUES(?,?,?,?,?,?) ON CONFLICT (id) DO UPDATE SET usage=?,fromDate=?,toDate=?,occupancyType=?;
-          basePath: properties.*.propertyDetail.units.*.usage.*
-          jsonMaps:
-
-
-          - jsonPath: $.properties.*.propertyDetail.units.*.usage.*.id
-
-          - jsonPath: $.properties.*.propertyDetail.units[*][?({id} in @.usage[*].id)].id
-
-          - jsonPath: $.properties.*.propertyDetail.units.*.usage.*.usage
-
-          - jsonPath: $.properties.*.propertyDetail.units.*.usage.*.fromDate
-
-          - jsonPath: $.properties.*.propertyDetail.units.*.usage.*.toDate
-
-          - jsonPath: $.properties.*.propertyDetail.units.*.usage.*.occupancyType
-
-          - jsonPath: $.properties.*.propertyDetail.units.*.usage.*.usage
-
-          - jsonPath: $.properties.*.propertyDetail.units.*.usage.*.fromDate
-
-          - jsonPath: $.properties.*.propertyDetail.units.*.usage.*.toDate
-
-          - jsonPath: $.properties.*.propertyDetail.units.*.usage.*.occupancyType
-
 
 
 
@@ -401,3 +447,4 @@ serviceMaps:
           - jsonPath: $.properties.*.auditDetails.lastModifiedTime
 
           - jsonPath: $.properties.*.address.id
+
