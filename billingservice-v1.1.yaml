@@ -50,34 +50,6 @@ paths:
           description: 'Billing system details e.g., PropertyTax,Water Charges etc.'
           required: true
           type: string
-        - name: demandFrom
-          in: query
-          description: Starting range of the demand amount to be searched for
-          required: false
-          type: number
-          format: double
-        - name: receiptRequired
-          in: query
-          description: indicates whether receipt is required or not
-          required: false
-          type: boolean
-        - name: demandTo
-          in: query
-          description: Ending range of the demand amount to be searched for
-          required: false
-          type: number
-          format: double
-        - name: type
-          in: query
-          description: 'Determines the type of the demand., Ex- Arrears or Current or Dues. This field will be mandatory if both demandFrom and demandTo amounts are sent'
-          required: false
-          type: array
-          items:
-            type: string
-            enum:
-              - ARREARS
-              - CURRENT
-              - DUES
       tags:
         - Demand
       responses:
@@ -204,12 +176,12 @@ paths:
           format: int64
         - name: consumerCode
           in: query
-          description: A unique identification for a billing entity.
+          description: A unique identification for a demand entity with respect to the consumer and the service being consumer.
           required: false
           type: string
         - name: businessService
           in: query
-          description: 'Billing system details e.g., PropertyTax,Water Charges etc.'
+          description: 'The service which demand is generated e.g., PropertyTax,Water Charges etc.'
           required: false
           type: string
         - name: email
@@ -314,7 +286,7 @@ definitions:
       demandDetails:
         type: array
         items:
-          $ref: '#/definitions/DemandDetails'
+          $ref: '#/definitions/DemandDetail'
       auditDetails:
         $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails'
       minimumAmountPayable:
@@ -337,7 +309,7 @@ definitions:
       - tenantId
       - consumerType
       - owner
-  DemandDetails:
+  DemandDetail:
     type: object
     description: A object holds a demand and collection values for a tax head and period.
     properties:
@@ -600,7 +572,7 @@ definitions:
       billDetail:
         type: string
         description: Id of billdetail
-      DemandDetail:
+      demandDetailId:
         type: string
         description: unique id of the demand detail object.
       order:
@@ -724,7 +696,7 @@ definitions:
         type: array
         maximum: 500
         items:
-          $ref: '#/definitions/DemandDetails'
+          $ref: '#/definitions/DemandDetail'
     type: object
   BillRequest:
     properties:
