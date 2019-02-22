@@ -605,6 +605,9 @@ definitions:
       isActualDemand:
         type: boolean
         description: True for tax/charges/penalty. False for advances(if any).
+      glcode:
+        type: string
+        description: field for capturing the glcode value.
       additionalDetails:  
         type: string
         description: field for capturing any additional details.        
