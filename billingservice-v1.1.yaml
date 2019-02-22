@@ -273,7 +273,7 @@ definitions:
         description: 'Billing system e.g., Property Tax, Water Charges etc.'
         maxLength: 256
         minLength: 4
-      owner:
+      payer:
         $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/egov-user/contracts/v1-1-0.yml#/definitions/User'
       taxPeriodFrom:
         type: integer
@@ -289,6 +289,9 @@ definitions:
           $ref: '#/definitions/DemandDetail'
       auditDetails:
         $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails'
+      additionalDetails:  
+        type: string
+        description: field for capturing any additional details.
       minimumAmountPayable:
         type: number
         format: double
@@ -330,6 +333,9 @@ definitions:
         format: double
         default: 0
         description: collection against taxAmount.
+      additionalDetails:  
+        type: string
+        description: field for capturing any additional details.
       auditDetails:
         $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/AuditDetails'
       tenantId:
@@ -463,19 +469,25 @@ definitions:
         description: Id of the bill
       mobileNumber:
         type: string
-        description: MobileNumber for whom the bill is generated.
-      payeeAddress:
+        description: MobileNumber of the payer.
+      payeerName:
         type: string
-        description: Consumer address for whom the bill is generated.
-      payeeEmail:
+        description: name of the payer.        
+      payeerAddress:
         type: string
-        description: Consumer email for whom the bill is generated.
+        description: Address details from the payer.
+      payeerEmail:
+        type: string
+        description: email address of the payer.
       isActive:
         type: boolean
         description: 'true when active bill is created, false when inactive bill is created.'
       isCancelled:
         type: boolean
         description: 'true when cancelled bill is cancelled, false when non-cancelled bill is created.'
+      additionalDetails:  
+        type: string
+        description: field for capturing any additional details.
       billDetails:
         type: array
         items:
@@ -547,6 +559,9 @@ definitions:
       partPaymentAllowed:
         type: boolean
         description: 'true if part payment allowed, false if part payment is not allowed.'
+      additionalDetails:  
+        type: string
+        description: field for capturing any additional details.
       billAccountDetails:
         type: array
         items:
@@ -590,18 +605,16 @@ definitions:
       isActualDemand:
         type: boolean
         description: True for tax/charges/penalty. False for advances(if any).
+      additionalDetails:  
+        type: string
+        description: field for capturing any additional details.        
       purpose:
         type: string
         description: Purpose of Account head.
         enum:
-          - ARREAR_AMOUNT
-          - CURRENT_AMOUNT
-          - ADVANCE_AMOUNT
-          - ARREAR_LATEPAYMENT_CHARGES
-          - CURRENT_LATEPAYMENT_CHARGES
-          - CHEQUE_BOUNCE_PENALTY
-          - REBATE
-          - OTHERS
+          - ARREAR
+          - CURRENT
+          - ADVANCE
   BusinessServiceDetails:
     type: object
     description: 'The object holds the configuration details for each business service.'
